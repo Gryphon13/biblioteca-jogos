@@ -11,6 +11,7 @@ const config = window.APP_CONFIG || {};
 const configured = /^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(config.supabaseUrl || '') && !!config.publishableKey;
 const $ = selector => document.querySelector(selector);
 let games = [];
+let seedCovers = new Map();
 let currentId = null;
 let rating = 0;
 let session = null;
@@ -65,7 +66,7 @@ function render() {
   $('#shown-count').textContent=`${list.length}`;
   $('#empty-state').hidden=list.length>0;
   $('#game-grid').innerHTML=list.map(g=>{
-    const cover=safeCover(g.cover), label=STATUS[g.status]||STATUS.nao_classificado;
+    const cover=safeCover(g.cover || seedCovers.get(g.id)), label=STATUS[g.status]||STATUS.nao_classificado;
     return `<article class="game-card" data-platform="${g.platform==='Switch'?'switch':'playstation'}"><div class="card-main" ${ownerAccess?`data-edit="${g.id}" role="button" tabindex="0" aria-label="Editar ${escapeHtml(g.title)} em ${g.platform}"`:''}><div class="card-visual">${cover?`<img src="${escapeHtml(cover)}" alt="Capa de ${escapeHtml(g.title)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">`:''}<span class="placeholder" style="${cover?'display:none':''}">${escapeHtml(initials(g.title))}</span><span class="platform-pill">${g.platform==='Switch'?'SWITCH':'PLAYSTATION'} · ${g.format==='fisico'?'FÍSICO':g.format==='digital'?'DIGITAL':'FORMATO A DEFINIR'}</span>${g.priority?`<span class="priority-pill">P${g.priority}</span>`:''}</div><div class="card-body"><h3>${escapeHtml(g.title)}</h3><div class="card-meta"><span class="status-badge ${g.status}">${escapeHtml(label)}</span><span class="stars" aria-label="Nota ${g.rating||'não definida'} de 5">${g.rating?'★'.repeat(g.rating)+'☆'.repeat(5-g.rating):'Sem nota'}</span></div>${g.notes?`<p class="card-note">${escapeHtml(g.notes)}</p>`:''}</div></div>${ownerAccess?`<div class="card-footer"><select data-status="${g.id}" aria-label="Status de ${escapeHtml(g.title)}">${Object.entries(STATUS).map(([v,l])=>`<option value="${v}" ${g.status===v?'selected':''}>${l}</option>`).join('')}</select><button type="button" data-edit="${g.id}">Editar</button></div>`:''}</article>`;
   }).join('');
   $('#sync-status').textContent=ownerAccess?'Sincronizado com sua conta':'Visualização pública';
@@ -79,7 +80,7 @@ function openEditor(id=null) {
   $('#editor-title').textContent=g?'Editar jogo':'Adicionar jogo';
   $('#delete-button').hidden=!g;
   $('#editor-error').hidden=true;
-  for(const name of ['title','platform','format','status','priority','completion','expansions','trophiesEarned','trophiesTotal','trophiesMissing','notes','cover']) f.elements[name].value=g?.[name]??(name==='platform'?'PlayStation':name==='format'?'digital':name==='status'?'nao_classificado':'');
+  for(const name of ['title','platform','format','status','priority','completion','expansions','trophiesEarned','trophiesTotal','trophiesMissing','notes','cover']) f.elements[name].value=(name==='cover' ? (g?.cover || seedCovers.get(g?.id) || '') : g?.[name])??(name==='platform'?'PlayStation':name==='format'?'digital':name==='status'?'nao_classificado':'');
   f.elements.disliked.checked=!!g?.disliked; f.elements.returnLater.checked=!!g?.returnLater;
   rating=g?.rating||0; renderRating(); updatePlatformFields(); $('#editor-dialog').showModal();
 }
@@ -107,6 +108,7 @@ async function sync(){if(!configured||!session||!ownerAccess)return;if(syncBusy)
 async function uploadCover(file,id){if(!ownerAccess||!configured||!session)throw new Error('Entre na sua conta para enviar uma capa.');if(!await ensureSession())throw new Error('Sua sessão expirou. Entre novamente.');if(file.size>5*1024*1024)throw new Error('A capa deve ter até 5 MB.');if(!['image/jpeg','image/png','image/webp'].includes(file.type))throw new Error('Para enviar pelo site, use JPG, PNG ou WebP.');const ext=file.type==='image/png'?'png':file.type==='image/webp'?'webp':'jpg';const name=`${session.user.id}/${id}-${Date.now()}.${ext}`;const response=await fetch(`${config.supabaseUrl}/storage/v1/object/covers/${name}`,{method:'POST',headers:{apikey:config.publishableKey,Authorization:`Bearer ${session.access_token}`,'Content-Type':file.type,'x-upsert':'false'},body:file});if(!response.ok){const result=await response.json().catch(()=>({}));throw new Error(result.message||'Não foi possível enviar a capa.')}return `${config.supabaseUrl}/storage/v1/object/public/covers/${name}`;}
 async function boot(){
   const seed=await fetch('data/games.json').then(r=>r.json()).catch(()=>[]);
+  seedCovers=new Map(seed.filter(g=>g.cover).map(g=>[g.id,g.cover]));
   const cached=JSON.parse(localStorage.getItem(STORE_KEY)||'null');games=Array.isArray(cached)?cached.map(normalized):seed.map(normalized);
   if(Array.isArray(cached)){const known=new Set(games.map(g=>g.id));for(const g of seed)if(!known.has(g.id))games.push(normalized(g));}
   saveCache();
