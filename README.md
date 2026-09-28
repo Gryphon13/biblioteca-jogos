@@ -10,7 +10,7 @@ Abra a pasta com um servidor local. Clicar diretamente no arquivo HTML pode impe
 
 1. Crie um projeto em [Supabase](https://supabase.com/).
 2. No SQL Editor, execute `supabase.sql`.
-3. Em **Project Settings → API**, copie a URL do projeto e a chave **publishable** para `config.js`. Nunca coloque a chave `secret` ou `service_role` no site.
+3. A URL do projeto e a chave **publishable** estão no início de `index.html`. Se mudar de projeto, atualize esses dois valores ali. Nunca coloque a chave `secret` ou `service_role` no site.
 4. Em **Authentication → URL Configuration**, informe a URL final do GitHub Pages em **Site URL** e **Redirect URLs**. O link de acesso por e-mail precisa voltar para essa URL.
 5. Publique no GitHub Pages. Entre pelo botão **Sincronizar**. A primeira conexão envia o catálogo inicial e suas alterações locais para sua conta.
 
