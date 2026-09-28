@@ -1,5 +1,7 @@
 const STORE_KEY = 'biblioteca-jogos-v1';
 const SESSION_KEY = 'biblioteca-jogos-session-v1';
+const THEME_KEY = 'biblioteca-jogos-theme-v1';
+const THEMES = ['dark', 'original', 'light', 'console'];
 const STATUS = {
   nao_classificado: 'Para organizar', a_chegar: 'A chegar', prioridade: 'Quero jogar', jogando: 'Jogando', pausado: 'Pausado',
   zerado: 'Zerado', abandonado: 'Abandonado', nao_jogarei: 'Não jogarei'
@@ -24,6 +26,18 @@ function escapeHtml(s) { return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'
 function safeCover(url) { if (!url) return ''; if (/^covers\/[a-z0-9_./-]+\.(jpg|jpeg|png|webp)$/i.test(url) && !url.includes('..')) return url; if (/^https:\/\//i.test(url)) return url; if (/^data:image\/(jpeg|png|webp);base64,/i.test(url)) return url; return ''; }
 function initials(title) { return title.split(/\s+/).filter(w => !/^(the|of|a|de|do|da|e)$/i.test(w)).slice(0,2).map(w => w[0]).join('').toUpperCase(); }
 function showToast(message) { const t=$('#toast'); t.textContent=message; t.classList.add('show'); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'),2700); }
+function applyTheme(theme, persist = true) {
+  const selected = THEMES.includes(theme) ? theme : 'original';
+  document.documentElement.dataset.theme = selected;
+  document.querySelectorAll('[data-theme-choice]').forEach(button => {
+    button.setAttribute('aria-pressed', String(button.dataset.themeChoice === selected));
+  });
+  const colors = { dark: '#080b13', original: '#0b0f17', light: '#f4f7fb', console: '#07142d' };
+  document.querySelector('meta[name="theme-color"]').content = colors[selected];
+  if (persist) {
+    try { localStorage.setItem(THEME_KEY, selected); } catch { /* A escolha continua ativa nesta página. */ }
+  }
+}
 function activeGames() { return games.filter(g=>!g.deletedAt); }
 function render() {
   const active=activeGames();
@@ -40,7 +54,7 @@ function render() {
   $('#empty-state').hidden=list.length>0;
   $('#game-grid').innerHTML=list.map(g=>{
     const cover=safeCover(g.cover), label=STATUS[g.status]||STATUS.nao_classificado;
-    return `<article class="game-card"><button class="card-main" type="button" data-edit="${g.id}" aria-label="Editar ${escapeHtml(g.title)} em ${g.platform}"><div class="card-visual">${cover?`<img src="${escapeHtml(cover)}" alt="Capa de ${escapeHtml(g.title)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">`:''}<span class="placeholder" style="${cover?'display:none':''}">${escapeHtml(initials(g.title))}</span><span class="platform-pill">${g.platform==='Switch'?'SWITCH':'PLAYSTATION'} · ${g.format==='fisico'?'FÍSICO':g.format==='digital'?'DIGITAL':'FORMATO A DEFINIR'}</span>${g.priority?`<span class="priority-pill">P${g.priority}</span>`:''}</div><div class="card-body"><h3>${escapeHtml(g.title)}</h3><div class="card-meta"><span class="status-badge ${g.status}">${escapeHtml(label)}</span><span class="stars" aria-label="Nota ${g.rating||'não definida'} de 5">${g.rating?'★'.repeat(g.rating)+'☆'.repeat(5-g.rating):'Sem nota'}</span></div>${g.notes?`<p class="card-note">${escapeHtml(g.notes)}</p>`:''}</div></button><div class="card-footer"><select data-status="${g.id}" aria-label="Status de ${escapeHtml(g.title)}">${Object.entries(STATUS).map(([v,l])=>`<option value="${v}" ${g.status===v?'selected':''}>${l}</option>`).join('')}</select><button type="button" data-edit="${g.id}">Editar</button></div></article>`;
+    return `<article class="game-card" data-platform="${g.platform==='Switch'?'switch':'playstation'}"><button class="card-main" type="button" data-edit="${g.id}" aria-label="Editar ${escapeHtml(g.title)} em ${g.platform}"><div class="card-visual">${cover?`<img src="${escapeHtml(cover)}" alt="Capa de ${escapeHtml(g.title)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">`:''}<span class="placeholder" style="${cover?'display:none':''}">${escapeHtml(initials(g.title))}</span><span class="platform-pill">${g.platform==='Switch'?'SWITCH':'PLAYSTATION'} · ${g.format==='fisico'?'FÍSICO':g.format==='digital'?'DIGITAL':'FORMATO A DEFINIR'}</span>${g.priority?`<span class="priority-pill">P${g.priority}</span>`:''}</div><div class="card-body"><h3>${escapeHtml(g.title)}</h3><div class="card-meta"><span class="status-badge ${g.status}">${escapeHtml(label)}</span><span class="stars" aria-label="Nota ${g.rating||'não definida'} de 5">${g.rating?'★'.repeat(g.rating)+'☆'.repeat(5-g.rating):'Sem nota'}</span></div>${g.notes?`<p class="card-note">${escapeHtml(g.notes)}</p>`:''}</div></button><div class="card-footer"><select data-status="${g.id}" aria-label="Status de ${escapeHtml(g.title)}">${Object.entries(STATUS).map(([v,l])=>`<option value="${v}" ${g.status===v?'selected':''}>${l}</option>`).join('')}</select><button type="button" data-edit="${g.id}">Editar</button></div></article>`;
   }).join('');
   $('#sync-status').textContent=configured?(session?'Sincronizado com sua conta':'Salvo neste aparelho'):'Salvo neste aparelho';
   $('#account-button').textContent=session?'Minha conta':'Sincronizar';
@@ -91,4 +105,9 @@ async function boot(){
   $('#close-account').onclick=()=>$('#account-dialog').close();$('#login-form').onsubmit=sendMagicLink;$('#logout-button').onclick=()=>{saveSession(null);$('#account-dialog').close();showToast('Você saiu da conta')};
   render();if(configured){session=JSON.parse(localStorage.getItem(SESSION_KEY)||'null');await handleAuthRedirect();if(session)sync();}window.addEventListener('online',()=>{if(session)sync()});window.addEventListener('focus',()=>{if(session)sync()});
 }
+applyTheme(document.documentElement.dataset.theme, false);
+document.querySelector('.theme-options').addEventListener('click', event => {
+  const button = event.target.closest('[data-theme-choice]');
+  if (button) applyTheme(button.dataset.themeChoice);
+});
 boot();
