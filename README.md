@@ -14,7 +14,7 @@ Abra a pasta com um servidor local. Clicar diretamente no arquivo HTML pode impe
 4. Em **Authentication → URL Configuration**, informe a URL final do GitHub Pages em **Site URL** e **Redirect URLs**. O link de acesso por e-mail precisa voltar para essa URL.
 5. Publique no GitHub Pages. Entre pelo botão **Sincronizar**. A primeira conexão envia o catálogo inicial e suas alterações locais para sua conta.
 
-O banco protege jogos e anotações por conta. As capas enviadas usam um bucket público e ficam acessíveis por link; não envie fotos privadas inteiras. As fotos originais em `fotos-consulta` não precisam ser publicadas. Antes de criar o repositório público, mova essa pasta para fora do repositório ou mantenha-a ignorada pelo Git.
+Visitantes usam a visualização pública, sem botões de edição. Somente a conta proprietária configurada no aplicativo pode alterar e sincronizar esta biblioteca. O banco protege jogos e anotações por conta. As capas enviadas usam um bucket público e ficam acessíveis por link; não envie fotos privadas inteiras. As fotos originais em `fotos-consulta` não precisam ser publicadas. Antes de criar o repositório público, mova essa pasta para fora do repositório ou mantenha-a ignorada pelo Git.
 
 ## Publicar no GitHub Pages
 
