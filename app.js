@@ -15,6 +15,7 @@ let seedCovers = new Map();
 let seedConsoles = new Map();
 let currentId = null;
 let rating = 0;
+let previewObjectUrl = '';
 let session = null;
 let ownerAccess = false;
 let syncBusy = false;
@@ -25,7 +26,8 @@ const dirty = new Set(JSON.parse(localStorage.getItem('biblioteca-jogos-dirty-v1
 function saveCache() { localStorage.setItem(STORE_KEY, JSON.stringify(games)); }
 function saveDirty() { localStorage.setItem('biblioteca-jogos-dirty-v1', JSON.stringify([...dirty])); }
 function stamp(game) { game.updatedAt = new Date().toISOString(); dirty.add(game.id); saveDirty(); saveCache(); }
-function normalized(game) { return { id: game.id, title: game.title || '', platform: game.platform || 'PlayStation', console: game.console || '', format: game.format || 'digital', status: game.status || 'nao_classificado', priority: game.priority || '', rating: Number(game.rating) || 0, completion: game.completion || '', expansions: game.expansions || '', disliked: !!game.disliked, returnLater: !!game.returnLater, trophiesEarned:game.trophiesEarned??'', trophiesTotal:game.trophiesTotal??'', trophiesMissing:game.trophiesMissing||'', notes: game.notes || '', cover: game.cover || '', updatedAt: game.updatedAt || '', source: game.source || 'manual', deletedAt: game.deletedAt || '' }; }
+function normalized(game) { return { id: game.id, title: game.title || '', platform: game.platform || 'PlayStation', console: game.console || '', format: game.format || 'digital', status: game.status || 'nao_classificado', priority: game.priority || '', rating: Number(game.rating) || 0, completion: game.completion || '', expansions: game.expansions || '', disliked: !!game.disliked, returnLater: !!game.returnLater, trophiesEarned:game.trophiesEarned??'', trophiesTotal:game.trophiesTotal??'', trophiesMissing:game.trophiesMissing||'', notes: game.notes || '', cover: game.cover || '', coverPositionX: coverPosition(game.coverPositionX), coverPositionY: coverPosition(game.coverPositionY), updatedAt: game.updatedAt || '', source: game.source || 'manual', deletedAt: game.deletedAt || '' }; }
+function coverPosition(value) { return value === '' || value == null || !Number.isFinite(Number(value)) ? 50 : Math.max(0, Math.min(100, Math.round(Number(value)))); }
 function escapeHtml(s) { return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function safeCover(url) { if (!url) return ''; if (/^covers\/[a-z0-9_./-]+\.(jpg|jpeg|png|webp)$/i.test(url) && !url.includes('..')) return url; if (/^https:\/\//i.test(url)) return url; if (/^data:image\/(jpeg|png|webp);base64,/i.test(url)) return url; return ''; }
 function consoleFor(game) { return game.console || seedConsoles.get(game.id) || ''; }
@@ -71,7 +73,7 @@ function render() {
     const cover=safeCover(g.cover || seedCovers.get(g.id)), label=STATUS[g.status]||STATUS.nao_classificado;
     const generation=consoleFor(g), consoleOptions=g.platform==='Switch'?['Switch','Switch 2']:['PS5','PS4','PS3','PS Vita'];
     const format=g.format==='fisico'?'Físico':g.format==='digital'?'Digital':'Formato a definir';
-    return `<article class="game-card" data-platform="${g.platform==='Switch'?'switch':'playstation'}"><div class="card-main" ${ownerAccess?`data-edit="${g.id}" role="button" tabindex="0" aria-label="Editar ${escapeHtml(g.title)} em ${escapeHtml(generation||g.platform)}"`:''}><div class="card-visual">${cover?`<img src="${escapeHtml(cover)}" alt="Capa de ${escapeHtml(g.title)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">`:''}<span class="placeholder" style="${cover?'display:none':''}">${escapeHtml(initials(g.title))}</span><span class="platform-pill">${g.platform==='Switch'?'NINTENDO':'PLAYSTATION'}</span>${g.priority?`<span class="priority-pill">P${g.priority}</span>`:''}</div><div class="card-body"><h3>${escapeHtml(g.title)}</h3><div class="console-row"><strong class="console-badge${generation?'':' undefined'}">${escapeHtml(generation||'Console a definir')}</strong><span class="format-label">${format}</span></div><div class="card-meta"><span class="status-badge ${g.status}">${escapeHtml(label)}</span><span class="stars" aria-label="Nota ${g.rating||'não definida'} de 5">${g.rating?'★'.repeat(g.rating)+'☆'.repeat(5-g.rating):'Sem nota'}</span></div>${g.notes?`<p class="card-note">${escapeHtml(g.notes)}</p>`:''}</div></div>${ownerAccess?`<div class="card-footer"><select data-console="${g.id}" aria-label="Console de ${escapeHtml(g.title)}"><option value="" ${generation?'':'selected'}>Definir console</option>${consoleOptions.map(value=>`<option value="${value}" ${generation===value?'selected':''}>${value}</option>`).join('')}</select><select data-status="${g.id}" aria-label="Status de ${escapeHtml(g.title)}">${Object.entries(STATUS).map(([v,l])=>`<option value="${v}" ${g.status===v?'selected':''}>${l}</option>`).join('')}</select><button type="button" data-edit="${g.id}">Editar</button></div>`:''}</article>`;
+    return `<article class="game-card" data-platform="${g.platform==='Switch'?'switch':'playstation'}"><div class="card-main" ${ownerAccess?`data-edit="${g.id}" role="button" tabindex="0" aria-label="Editar ${escapeHtml(g.title)} em ${escapeHtml(generation||g.platform)}"`:''}><div class="card-visual">${cover?`<img src="${escapeHtml(cover)}" alt="Capa de ${escapeHtml(g.title)}" loading="lazy" style="object-position:${coverPosition(g.coverPositionX)}% ${coverPosition(g.coverPositionY)}%" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">`:''}<span class="placeholder" style="${cover?'display:none':''}">${escapeHtml(initials(g.title))}</span><span class="platform-pill">${g.platform==='Switch'?'NINTENDO':'PLAYSTATION'}</span>${g.priority?`<span class="priority-pill">P${g.priority}</span>`:''}</div><div class="card-body"><h3>${escapeHtml(g.title)}</h3><div class="console-row"><strong class="console-badge${generation?'':' undefined'}">${escapeHtml(generation||'Console a definir')}</strong><span class="format-label">${format}</span></div><div class="card-meta"><span class="status-badge ${g.status}">${escapeHtml(label)}</span><span class="stars" aria-label="Nota ${g.rating||'não definida'} de 5">${g.rating?'★'.repeat(g.rating)+'☆'.repeat(5-g.rating):'Sem nota'}</span></div>${g.notes?`<p class="card-note">${escapeHtml(g.notes)}</p>`:''}</div></div>${ownerAccess?`<div class="card-footer"><select data-console="${g.id}" aria-label="Console de ${escapeHtml(g.title)}"><option value="" ${generation?'':'selected'}>Definir console</option>${consoleOptions.map(value=>`<option value="${value}" ${generation===value?'selected':''}>${value}</option>`).join('')}</select><select data-status="${g.id}" aria-label="Status de ${escapeHtml(g.title)}">${Object.entries(STATUS).map(([v,l])=>`<option value="${v}" ${g.status===v?'selected':''}>${l}</option>`).join('')}</select><button type="button" data-edit="${g.id}">Editar</button></div>`:''}</article>`;
   }).join('');
   $('#sync-status').textContent=ownerAccess?'Sincronizado com sua conta':'Visualização pública';
   $('#account-button').textContent=ownerAccess?'Minha conta':session?'Conta sem acesso':'Entrar para editar';
@@ -80,13 +82,52 @@ function render() {
 }
 function openEditor(id=null) {
   if (!ownerAccess) return;
+  clearPreviewObjectUrl();
   currentId=id; const g=id?games.find(x=>x.id===id):null; const f=$('#editor-form'); f.reset();
   $('#editor-title').textContent=g?'Editar jogo':'Adicionar jogo';
   $('#delete-button').hidden=!g;
   $('#editor-error').hidden=true;
   for(const name of ['title','platform','console','format','status','priority','completion','expansions','trophiesEarned','trophiesTotal','trophiesMissing','notes','cover']) f.elements[name].value=(name==='cover' ? (g?.cover || seedCovers.get(g?.id) || '') : name==='console' ? (g ? consoleFor(g) : '') : g?.[name])??(name==='platform'?'PlayStation':name==='format'?'digital':name==='status'?'nao_classificado':'');
   f.elements.disliked.checked=!!g?.disliked; f.elements.returnLater.checked=!!g?.returnLater;
-  rating=g?.rating||0; renderRating(); updatePlatformFields(); $('#editor-dialog').showModal();
+  rating=g?.rating||0; renderRating(); updatePlatformFields();
+  $('#cover-position-x').value=coverPosition(g?.coverPositionX);
+  $('#cover-position-y').value=coverPosition(g?.coverPositionY);
+  updateCoverPreview();
+  $('#editor-dialog').showModal();
+}
+function clearPreviewObjectUrl() { if(previewObjectUrl) URL.revokeObjectURL(previewObjectUrl); previewObjectUrl=''; }
+function updateCoverPreview() {
+  const file=$('#cover-file').files[0];
+  clearPreviewObjectUrl();
+  const source=file ? (previewObjectUrl=URL.createObjectURL(file)) : safeCover($('#editor-form').elements.cover.value.trim());
+  const image=$('#cover-preview-image');
+  image.hidden=!source;
+  $('#cover-preview-empty').hidden=!!source;
+  if(source) image.src=source; else image.removeAttribute('src');
+  updateCoverPosition();
+}
+function updateCoverPosition() {
+  $('#cover-preview-image').style.objectPosition=`${$('#cover-position-x').value}% ${$('#cover-position-y').value}%`;
+}
+function dragCover(event) {
+  if(event.button!==0 && event.pointerType==='mouse') return;
+  const image=$('#cover-preview-image'), frame=$('#cover-preview');
+  if(image.hidden || !image.naturalWidth || !image.naturalHeight) return;
+  const scale=Math.max(frame.clientWidth/image.naturalWidth,frame.clientHeight/image.naturalHeight);
+  const overflowX=image.naturalWidth*scale-frame.clientWidth;
+  const overflowY=image.naturalHeight*scale-frame.clientHeight;
+  const startX=event.clientX, startY=event.clientY;
+  const initialX=Number($('#cover-position-x').value), initialY=Number($('#cover-position-y').value);
+  frame.setPointerCapture(event.pointerId);
+  frame.onpointermove=move=>{
+    if(move.pointerId!==event.pointerId)return;
+    if(overflowX>0.5)$('#cover-position-x').value=coverPosition(initialX-(move.clientX-startX)/overflowX*100);
+    if(overflowY>0.5)$('#cover-position-y').value=coverPosition(initialY-(move.clientY-startY)/overflowY*100);
+    updateCoverPosition();
+  };
+  const finish=()=>{frame.onpointermove=null;frame.onpointerup=null;frame.onpointercancel=null;};
+  frame.onpointerup=finish;
+  frame.onpointercancel=finish;
 }
 function renderRating(){ $('#rating-buttons').innerHTML=[1,2,3,4,5].map(n=>`<button type="button" class="${n<=rating?'active':''}" data-rating="${n}" role="radio" aria-checked="${rating===n}" aria-label="${n} de 5 estrelas">★</button>`).join(''); }
 function updatePlatformFields(){const f=$('#editor-form');const isSwitch=f.elements.platform.value==='Switch';const o=f.elements.completion.querySelector('option[value="platinado"]');o.hidden=isSwitch;$('#trophy-fields').hidden=isSwitch;if(isSwitch&&f.elements.completion.value==='platinado')f.elements.completion.value='zerado';for(const option of f.elements.console.options)if(option.value)option.hidden=isSwitch?!option.value.startsWith('Switch'):option.value.startsWith('Switch');if(f.elements.console.selectedOptions[0]?.hidden)f.elements.console.value='';}
@@ -96,9 +137,9 @@ async function saveEditor(event) {
   const file=$('#cover-file').files[0]; let cover=f.elements.cover.value.trim();
   if(file) { try { cover=await uploadCover(file,currentId||crypto.randomUUID()); } catch(err){ $('#editor-error').textContent=err.message;$('#editor-error').hidden=false;return; } }
   if(cover&&!safeCover(cover)){ $('#editor-error').textContent='Use uma URL https ou um arquivo dentro de covers/.';$('#editor-error').hidden=false;return; }
-  const game=normalized({...existing,id:existing?.id||crypto.randomUUID(),title,platform:f.elements.platform.value,console:f.elements.console.value,format:f.elements.format.value,status:f.elements.status.value,priority:f.elements.priority.value,rating,completion:f.elements.completion.value,expansions:f.elements.expansions.value,disliked:f.elements.disliked.checked,returnLater:f.elements.returnLater.checked,trophiesEarned:f.elements.platform.value==='Switch'?'':f.elements.trophiesEarned.value,trophiesTotal:f.elements.platform.value==='Switch'?'':f.elements.trophiesTotal.value,trophiesMissing:f.elements.platform.value==='Switch'?'':f.elements.trophiesMissing.value.trim(),notes:f.elements.notes.value.trim(),cover,source:existing?.source||'manual'});
+  const game=normalized({...existing,id:existing?.id||crypto.randomUUID(),title,platform:f.elements.platform.value,console:f.elements.console.value,format:f.elements.format.value,status:f.elements.status.value,priority:f.elements.priority.value,rating,completion:f.elements.completion.value,expansions:f.elements.expansions.value,disliked:f.elements.disliked.checked,returnLater:f.elements.returnLater.checked,trophiesEarned:f.elements.platform.value==='Switch'?'':f.elements.trophiesEarned.value,trophiesTotal:f.elements.platform.value==='Switch'?'':f.elements.trophiesTotal.value,trophiesMissing:f.elements.platform.value==='Switch'?'':f.elements.trophiesMissing.value.trim(),notes:f.elements.notes.value.trim(),cover,coverPositionX:$('#cover-position-x').value,coverPositionY:$('#cover-position-y').value,source:existing?.source||'manual'});
   if(existing)Object.assign(existing,game);else games.push(game);
-  stamp(existing||game); $('#editor-dialog').close(); render(); showToast('Jogo salvo'); if(session)sync();
+  stamp(existing||game); $('#editor-dialog').close(); clearPreviewObjectUrl(); render(); showToast('Jogo salvo'); if(session)sync();
 }
 function deleteGame(){if(!ownerAccess||!currentId)return;const g=games.find(x=>x.id===currentId);if(!g)return;if(!confirm(`Excluir ${g.title} da biblioteca?`))return;g.deletedAt=new Date().toISOString();stamp(g);$('#editor-dialog').close();render();showToast('Jogo excluído');if(session)sync();}
 function setQuickStatus(id,status){if(!ownerAccess)return;const g=games.find(x=>x.id===id);if(!g)return;g.status=status;stamp(g);render();showToast('Status atualizado');if(session)sync();}
@@ -112,14 +153,22 @@ async function handleAuthRedirect(){const hash=new URLSearchParams(location.hash
 async function sync(){if(!configured||!session||!ownerAccess)return;if(syncBusy){syncAgain=true;return}syncBusy=true;try{if(!await ensureSession()||!ownerAccess)return;if(!session.user)session.user=await api('/auth/v1/user');const remote=await api('/rest/v1/games?select=id,data,updated_at&limit=1000',{headers:{Accept:'application/json'}});const remoteById=new Map(remote.map(row=>[row.id,row]));for(const game of games)if(!remoteById.has(game.id))dirty.add(game.id);saveDirty();for(const id of [...dirty]){const local=games.find(g=>g.id===id);if(!local){dirty.delete(id);continue}const other=remoteById.get(id);if(other&&(other.updated_at||'')>(local.updatedAt||'')){games=games.map(g=>g.id===id?normalized(other.data):g);dirty.delete(id);continue}const uploadStamp=local.updatedAt;await api('/rest/v1/games?on_conflict=owner_id,id',{method:'POST',headers:{Prefer:'resolution=merge-duplicates'},body:JSON.stringify({id,owner_id:session.user.id,data:local,updated_at:uploadStamp||new Date().toISOString()})});if(games.find(g=>g.id===id)?.updatedAt===uploadStamp)dirty.delete(id)}saveDirty();for(const row of remote){if(!dirty.has(row.id)){const index=games.findIndex(g=>g.id===row.id);if(index<0)games.push(normalized(row.data));else if((row.updated_at||'')>(games[index].updatedAt||''))games[index]=normalized(row.data)}}saveCache();render();$('#sync-status').textContent='Sincronizado agora';}catch(err){$('#sync-status').textContent='Sem conexão · salvo aqui';console.error(err)}finally{syncBusy=false;if(syncAgain){syncAgain=false;queueMicrotask(sync)}}}
 async function uploadCover(file,id){if(!ownerAccess||!configured||!session)throw new Error('Entre na sua conta para enviar uma capa.');if(!await ensureSession())throw new Error('Sua sessão expirou. Entre novamente.');if(file.size>5*1024*1024)throw new Error('A capa deve ter até 5 MB.');if(!['image/jpeg','image/png','image/webp'].includes(file.type))throw new Error('Para enviar pelo site, use JPG, PNG ou WebP.');const ext=file.type==='image/png'?'png':file.type==='image/webp'?'webp':'jpg';const name=`${session.user.id}/${id}-${Date.now()}.${ext}`;const response=await fetch(`${config.supabaseUrl}/storage/v1/object/covers/${name}`,{method:'POST',headers:{apikey:config.publishableKey,Authorization:`Bearer ${session.access_token}`,'Content-Type':file.type,'x-upsert':'false'},body:file});if(!response.ok){const result=await response.json().catch(()=>({}));throw new Error(result.message||'Não foi possível enviar a capa.')}return `${config.supabaseUrl}/storage/v1/object/public/covers/${name}`;}
 async function boot(){
-  const seed=await fetch('data/games.json?v=20260928-console-card-fix').then(r=>r.json()).catch(()=>[]);
+  const seed=await fetch('data/games.json?v=20260928-cover-position').then(r=>r.json()).catch(()=>[]);
   seedCovers=new Map(seed.filter(g=>g.cover).map(g=>[g.id,g.cover]));
   seedConsoles=new Map(seed.filter(g=>g.console).map(g=>[g.id,g.console]));
   const cached=JSON.parse(localStorage.getItem(STORE_KEY)||'null');games=Array.isArray(cached)?cached.map(normalized):seed.map(normalized);
   if(Array.isArray(cached)){const known=new Set(games.map(g=>g.id));for(const g of seed)if(!known.has(g.id))games.push(normalized(g));}
   saveCache();
   for(const [value,label] of Object.entries(STATUS)){$('#status-filter').add(new Option(label,value));$('#editor-form').elements.status.add(new Option(label,value));}
+  $('#cover-file').closest('label').insertAdjacentHTML('afterend',`<div class="span-2 cover-framing"><strong>Enquadramento da capa</strong><p>Arraste a imagem para escolher o que aparece no card. A proporção original é preservada.</p><div id="cover-preview" class="cover-preview"><img id="cover-preview-image" alt="Prévia da capa" draggable="false" hidden><span id="cover-preview-empty">Escolha uma capa para ajustar o enquadramento</span></div><div class="cover-position-controls"><label>Horizontal<input id="cover-position-x" type="range" min="0" max="100" value="50"></label><label>Vertical<input id="cover-position-y" type="range" min="0" max="100" value="50"></label></div></div>`);
   $('#add-button').onclick=()=>openEditor();$('#close-editor').onclick=$('#cancel-editor').onclick=()=>$('#editor-dialog').close();$('#editor-form').onsubmit=saveEditor;$('#delete-button').onclick=deleteGame;$('#editor-form').elements.platform.onchange=updatePlatformFields;
+  $('#editor-dialog').addEventListener('close',clearPreviewObjectUrl);
+  $('#cover-file').addEventListener('change',()=>{if($('#cover-file').files[0]){$('#cover-position-x').value=50;$('#cover-position-y').value=50;}updateCoverPreview()});
+  $('#editor-form').elements.cover.addEventListener('input',()=>{if(!$('#cover-file').files.length)updateCoverPreview()});
+  $('#cover-preview-image').addEventListener('error',()=>{$('#cover-preview-image').hidden=true;$('#cover-preview-empty').hidden=false;$('#cover-preview-empty').textContent='Não foi possível mostrar esta capa';});
+  $('#cover-preview-image').addEventListener('load',()=>{$('#cover-preview-empty').textContent='Escolha uma capa para ajustar o enquadramento';});
+  for(const id of ['cover-position-x','cover-position-y'])$('#'+id).addEventListener('input',updateCoverPosition);
+  $('#cover-preview').addEventListener('pointerdown',dragCover);
   $('#rating-buttons').onclick=e=>{const btn=e.target.closest('[data-rating]');if(btn){rating=Number(btn.dataset.rating);renderRating()}};$('#clear-rating').onclick=()=>{rating=0;renderRating()};
   for(const id of ['search','platform-filter','console-filter','status-filter','priority-filter','sort-filter'])$('#'+id).addEventListener(id==='search'?'input':'change',render);
   $('#game-grid').onclick=e=>{if(!ownerAccess)return;const edit=e.target.closest('[data-edit]');if(edit)openEditor(edit.dataset.edit)};
