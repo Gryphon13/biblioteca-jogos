@@ -111,3 +111,11 @@ dialog::backdrop{background:var(--backdrop)}
 @media(max-width:650px){.theme-bar{align-items:stretch;flex-direction:column;gap:5px}.theme-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.theme-option{white-space:normal}}
 
 .platform-pill{max-width:calc(100% - 48px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.console-row{display:flex;align-items:center;justify-content:space-between;gap:6px;margin:0 0 10px}
+.console-badge{display:inline-block;border-radius:7px;background:var(--platform-ps-pill);color:#fff;font-size:12px;font-weight:800;padding:5px 9px;white-space:nowrap}
+.game-card[data-platform="switch"] .console-badge{background:var(--platform-switch-pill)}
+.console-badge.undefined{background:var(--panel2);color:var(--muted);border:1px solid var(--edge);font-size:11px}
+.format-label{color:var(--muted);font-size:11px;text-align:right}
+.card-footer{flex-wrap:wrap}
+.card-footer select[data-console]{flex:1 1 100%;max-width:none;font-weight:700}
+@media(max-width:650px){.console-row{align-items:flex-start;flex-direction:column}.format-label{font-size:10px}.card-footer select[data-console]{font-size:11px}}
