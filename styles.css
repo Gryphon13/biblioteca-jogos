@@ -14,6 +14,8 @@
   --footer-control:#1c2737;--dialog-edge:#445267;--label:#c4cfdb;
   --star-empty:#708091;--toast-bg:#334437;--toast-text:#fff;
   --danger-edge:#604244;--backdrop:#03070cbb;
+  --platform-ps:#328efe;--platform-ps-pill:#155a9d;
+  --platform-switch:#e33a49;--platform-switch-pill:#a92334;
 }
 :root[data-theme="dark"] {
   color-scheme:dark;--bg:#080b13;--panel:#111724;--panel2:#192133;
@@ -30,6 +32,8 @@
   --footer-control:#172237;--dialog-edge:#536887;--label:#d4e0f1;
   --star-empty:#8194ac;--toast-bg:#243d58;--toast-text:#fff;
   --danger-edge:#81505b;--backdrop:#03070ccc;
+  --platform-ps:#55a7ff;--platform-ps-pill:#155b9e;
+  --platform-switch:#f05361;--platform-switch-pill:#ae2839;
 }
 :root[data-theme="light"] {
   color-scheme:light;--bg:#f4f7fb;--panel:#fff;--panel2:#edf3f9;
@@ -46,6 +50,8 @@
   --footer-control:#f7fafe;--dialog-edge:#bbccdd;--label:#344a63;
   --star-empty:#64758a;--toast-bg:#173b66;--toast-text:#fff;
   --danger-edge:#dc9ba4;--backdrop:#17243a80;
+  --platform-ps:#1768b8;--platform-ps-pill:#155c9f;
+  --platform-switch:#c22e40;--platform-switch-pill:#a92335;
 }
 :root[data-theme="console"] {
   color-scheme:dark;--bg:#07142d;--panel:#0d1d3b;--panel2:#14294e;
@@ -62,6 +68,8 @@
   --footer-control:#142b50;--dialog-edge:#4a72a4;--label:#d6e5fa;
   --star-empty:#849fbe;--toast-bg:#17437a;--toast-text:#fff;
   --danger-edge:#995263;--backdrop:#030918cc;
+  --platform-ps:#328efe;--platform-ps-pill:#1266bf;
+  --platform-switch:#f03441;--platform-switch-pill:#bf2334;
 }
 body{background:radial-gradient(circle at 80% -10%,var(--body-glow) 0,transparent 36%),var(--bg)}
 .brand-mark,.primary-button{color:var(--button-text)}
@@ -95,8 +103,9 @@ dialog::backdrop{background:var(--backdrop)}
 .swatch-light{background:linear-gradient(135deg,#fff 50%,#13579a 50%)}
 .swatch-console{background:linear-gradient(120deg,#176dc8 48%,#f03441 52%)}
 :root[data-theme="console"] .brand-mark{background:linear-gradient(135deg,#75b7ff 52%,#f03441 52%)}
-:root[data-theme="console"] .game-card[data-platform="switch"]{border-top:3px solid #f03441}
-:root[data-theme="console"] .game-card[data-platform="playstation"]{border-top:3px solid #328efe}
-:root[data-theme="console"] .game-card[data-platform="switch"] .platform-pill{background:#bf2334;color:#fff}
+.game-card[data-platform="switch"]{border-top:3px solid var(--platform-switch)}
+.game-card[data-platform="playstation"]{border-top:3px solid var(--platform-ps)}
+.game-card[data-platform="switch"] .platform-pill{background:var(--platform-switch-pill);color:#fff}
+.game-card[data-platform="playstation"] .platform-pill{background:var(--platform-ps-pill);color:#fff}
 :root[data-theme="console"] .theme-option[data-theme-choice="console"][aria-pressed="true"]{border-color:#f03441}
 @media(max-width:650px){.theme-bar{align-items:stretch;flex-direction:column;gap:5px}.theme-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.theme-option{white-space:normal}}
