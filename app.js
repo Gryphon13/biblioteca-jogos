@@ -256,10 +256,10 @@ async function sync(){if(!configured||!session||!ownerAccess)return;if(syncBusy)
 async function loadPublic(){if(!configured||ownerAccess)return;try{const remote=await api('/rest/v1/games?select=id,data,updated_at&limit=2000',{access:false,headers:{Accept:'application/json'}});if(!Array.isArray(remote)||!remote.length)return;const byId=new Map(remote.map(r=>[r.id,normalized(r.data)]));games=games.map(g=>byId.get(g.id)||g);for(const [id,g] of byId)if(!games.some(x=>x.id===id))games.push(g);render();}catch(err){console.error(err)}}
 async function uploadCover(file,id){if(!ownerAccess||!configured||!session)throw new Error('Entre na sua conta para enviar uma capa.');if(!await ensureSession())throw new Error('Sua sessão expirou. Entre novamente.');if(file.size>5*1024*1024)throw new Error('A capa deve ter até 5 MB.');if(!['image/jpeg','image/png','image/webp'].includes(file.type))throw new Error('Para enviar pelo site, use JPG, PNG ou WebP.');const ext=file.type==='image/png'?'png':file.type==='image/webp'?'webp':'jpg';const name=`${session.user.id}/${id}-${Date.now()}.${ext}`;const response=await fetch(`${config.supabaseUrl}/storage/v1/object/covers/${name}`,{method:'POST',headers:{apikey:config.publishableKey,Authorization:`Bearer ${session.access_token}`,'Content-Type':file.type,'x-upsert':'false'},body:file});if(!response.ok){const result=await response.json().catch(()=>({}));throw new Error(result.message||'Não foi possível enviar a capa.')}return `${config.supabaseUrl}/storage/v1/object/public/covers/${name}`;}
 async function boot(){
-  const seed=await fetch('data/games.json?v=20260929-capas').then(r=>r.json()).catch(()=>[]);
+  const seed=await fetch('data/games.json',{cache:'no-cache'}).then(r=>r.json()).catch(()=>[]);
   seedCovers=new Map(seed.filter(g=>g.cover).map(g=>[g.id,g.cover]));
   seedConsoles=new Map(seed.filter(g=>g.console).map(g=>[g.id,g.console]));
-  trophyData=await fetch('data/trophies.json?v=20260929-trofeus').then(r=>r.ok?r.json():{}).then(d=>d.games||{}).catch(()=>({}));
+  trophyData=await fetch('data/trophies.json',{cache:'no-cache'}).then(r=>r.ok?r.json():{}).then(d=>d.games||{}).catch(()=>({}));
   const cached=JSON.parse(localStorage.getItem(STORE_KEY)||'null');games=Array.isArray(cached)?cached.map(normalized):seed.map(normalized);
   if(Array.isArray(cached)){const known=new Set(games.map(g=>g.id));for(const g of seed)if(!known.has(g.id))games.push(normalized(g));}
   saveCache();
