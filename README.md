@@ -14,7 +14,7 @@ Abra a pasta com um servidor local. Clicar diretamente no arquivo HTML pode impe
 4. Em **Authentication → URL Configuration**, informe a URL final do GitHub Pages em **Site URL** e **Redirect URLs**. O link de acesso por e-mail precisa voltar para essa URL.
 5. Publique no GitHub Pages. Entre pelo botão **Sincronizar**. A primeira conexão envia o catálogo inicial e suas alterações locais para sua conta.
 
-Visitantes usam a visualização pública, sem botões de edição. Somente a conta proprietária configurada no aplicativo pode alterar e sincronizar esta biblioteca. O banco protege jogos e anotações por conta. As capas enviadas usam um bucket público e ficam acessíveis por link; não envie fotos privadas inteiras. As fotos originais em `fotos-consulta` não precisam ser publicadas. Antes de criar o repositório público, mova essa pasta para fora do repositório ou mantenha-a ignorada pelo Git.
+Visitantes usam a visualização pública, sem botões de edição, e veem as alterações salvas pelo proprietário (status, notas, anotações). Somente a conta proprietária pode alterar e sincronizar esta biblioteca: o banco só aceita escrita dessa conta e novos cadastros estão bloqueados. As capas enviadas usam um bucket público e ficam acessíveis por link; não envie fotos privadas inteiras. As fotos originais em `fotos-consulta` não precisam ser publicadas. Antes de criar o repositório público, mova essa pasta para fora do repositório ou mantenha-a ignorada pelo Git.
 
 ## Publicar no GitHub Pages
 
@@ -27,3 +27,7 @@ No editor de cada jogo, informe uma URL HTTPS, escreva um caminho para uma image
 ## Dados
 
 A lista inicial está em `data/games.json`. Após o primeiro acesso, as edições são salvas no navegador e, quando a conta estiver configurada e conectada, no Supabase. O site nunca envia suas fotos originais. Uma entrada de PlayStation e outra de Switch do mesmo jogo podem ter notas e progresso diferentes.
+
+## Troféus
+
+`data/trophies.json` guarda, para cada jogo de PlayStation, os troféus obtidos e o total, também separados em platina, ouro, prata e bronze. Os dados vêm do perfil público no Exophase (Gryphonn) e são importados de uma vez; para atualizar, peça uma nova importação. Os campos de troféus no editor continuam disponíveis para anotações manuais. Capas desses jogos, em `covers/`, vêm das imagens das listas de troféus.
