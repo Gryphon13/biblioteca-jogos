@@ -30,7 +30,7 @@ A lista inicial está em `data/games.json`. Após o primeiro acesso, as ediçõe
 
 ## Troféus
 
-`data/trophies.json` guarda, para cada jogo de PlayStation, os troféus obtidos e o total, também separados em platina, ouro, prata e bronze. Os dados vêm do perfil público no Exophase (Gryphonn) e são importados de uma vez; para atualizar, peça uma nova importação. Os campos de troféus no editor continuam disponíveis para anotações manuais. Capas desses jogos, em `covers/`, vêm das imagens das listas de troféus.
+`data/trophies.json` guarda, para cada jogo de PlayStation, os troféus obtidos e o total, também separados em platina, ouro, prata e bronze. Os dados vêm do perfil público no Exophase (Gryphonn) e são importados de uma vez; para atualizar, peça uma nova importação. Os campos de troféus no editor continuam disponíveis para anotações manuais. Capas desses jogos, em `covers/`, vêm das imagens das listas de troféus. As demais capas (`covers/rawg-*.jpg`) vieram do [RAWG](https://rawg.io/), cujo plano gratuito exige o link de crédito que fica no rodapé do site.
 
 ## Versões do mesmo jogo
 
