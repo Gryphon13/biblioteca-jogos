@@ -10,7 +10,7 @@ Abra a pasta com um servidor local. Clicar diretamente no arquivo HTML pode impe
 
 1. Crie um projeto em [Supabase](https://supabase.com/).
 2. No SQL Editor, execute `supabase.sql`.
-3. A URL do projeto e a chave **publishable** estão no início de `index.html`. Se mudar de projeto, atualize esses dois valores ali. Nunca coloque a chave `secret` ou `service_role` no site.
+3. A URL do projeto e a chave **publishable** ficam no início de `index.html` (não há outro arquivo de configuração). Se mudar de projeto, atualize esses dois valores ali. Nunca coloque a chave `secret` ou `service_role` no site.
 4. Em **Authentication → URL Configuration**, informe a URL final do GitHub Pages em **Site URL** e **Redirect URLs**. O link de acesso por e-mail precisa voltar para essa URL.
 5. Publique no GitHub Pages. Entre pelo botão **Sincronizar**. A primeira conexão envia o catálogo inicial e suas alterações locais para sua conta.
 
@@ -31,3 +31,16 @@ A lista inicial está em `data/games.json`. Após o primeiro acesso, as ediçõe
 ## Troféus
 
 `data/trophies.json` guarda, para cada jogo de PlayStation, os troféus obtidos e o total, também separados em platina, ouro, prata e bronze. Os dados vêm do perfil público no Exophase (Gryphonn) e são importados de uma vez; para atualizar, peça uma nova importação. Os campos de troféus no editor continuam disponíveis para anotações manuais. Capas desses jogos, em `covers/`, vêm das imagens das listas de troféus.
+
+## Versões do mesmo jogo
+
+Com **Versões juntas** (padrão), o mesmo jogo em vários consoles da mesma plataforma aparece num único card, com um botão para cada versão. Cada versão continua com status, nota e anotações próprios. **Versões separadas** volta a mostrar um card por versão.
+
+## Classificação rápida
+
+O botão **Classificar rapidamente** (só para o proprietário) mostra um jogo por vez entre os que ainda estão sem console, sem formato ou "Para organizar". Toque em console, formato e status; quando os três estão definidos, o próximo jogo abre sozinho.
+
+## Backup
+
+- **Manual:** em **Minha conta**, baixe o backup completo (JSON) ou uma planilha (CSV).
+- **Automático:** a ação `.github/workflows/backup.yml` roda todo dia, lê a biblioteca pública no Supabase e salva `data/backup/games-supabase.json` no repositório quando algo mudou. O histórico de commits guarda as versões anteriores. Para rodar na hora: aba **Actions** → **Backup diário da biblioteca** → **Run workflow**.

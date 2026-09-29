@@ -2,7 +2,8 @@ const STORE_KEY = 'biblioteca-jogos-v1';
 const SESSION_KEY = 'biblioteca-jogos-session-v1';
 const THEME_KEY = 'biblioteca-jogos-theme-v1';
 const THEMES = ['dark', 'original', 'light', 'console'];
-const OWNER_EMAIL_HASH = '10012b6c45dc751d855860f6c700e69b37ca9f74ab61ae1097d5068bc4cb3e99';
+const OWNER_ID = 'e5723e52-41e4-46cd-85cb-37ae533251d4';
+const GROUP_KEY = 'biblioteca-jogos-agrupar-v1';
 const STATUS = {
   nao_classificado: 'Para organizar', a_chegar: 'A chegar', prioridade: 'Quero jogar', jogando: 'Jogando', pausado: 'Pausado',
   zerado: 'Zerado', abandonado: 'Abandonado', nao_jogarei: 'Não jogarei'
@@ -22,8 +23,14 @@ let ownerAccess = false;
 let syncBusy = false;
 let syncAgain = false;
 let toastTimer;
+let syncTimer;
+let lastSyncAt = 0;
+let triageList = [];
+let triageIndex = 0;
 const dirty = new Set(JSON.parse(localStorage.getItem('biblioteca-jogos-dirty-v1') || '[]'));
 
+function ts(value) { const t=Date.parse(value||''); return Number.isFinite(t)?t:0; }
+function scheduleSync(delay=1500) { if(!session)return; clearTimeout(syncTimer); syncTimer=setTimeout(()=>sync(),delay); }
 function saveCache() { localStorage.setItem(STORE_KEY, JSON.stringify(games)); }
 function saveDirty() { localStorage.setItem('biblioteca-jogos-dirty-v1', JSON.stringify([...dirty])); }
 function stamp(game) { game.updatedAt = new Date().toISOString(); dirty.add(game.id); saveDirty(); saveCache(); }
@@ -38,12 +45,12 @@ function trophyProgress(game) {
   const earned=Number(game.trophiesEarned), total=Number(game.trophiesTotal);
   return total>0 && Number.isFinite(earned) ? { earned, total, auto:null } : null;
 }
-function trophyHtml(game) {
+function trophyHtml(game, label='') {
   const t=trophyProgress(game); if(!t) return '';
   const pct=Math.round(t.earned/t.total*100);
   const types=t.auto?[['platinum','P'],['gold','O'],['silver','Pr'],['bronze','B']].filter(([k])=>t.auto.totalByType[k]).map(([k,l])=>`<span class="trophy-type ${k}" title="${({platinum:'Platina',gold:'Ouro',silver:'Prata',bronze:'Bronze'})[k]}: ${t.auto.earnedByType[k]} de ${t.auto.totalByType[k]}">${l} ${t.auto.earnedByType[k]}/${t.auto.totalByType[k]}</span>`).join(''):'';
   const plat=t.auto?.earnedByType.platinum>0;
-  return `<div class="trophy-row${plat?' has-platinum':''}"><div class="trophy-head"><span>🏆 ${t.earned}/${t.total} troféus</span><b>${plat?'Platinado':pct+'%'}</b></div><div class="trophy-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}"><i style="width:${pct}%"></i></div>${types?`<div class="trophy-types">${types}</div>`:''}</div>`;
+  return `<div class="trophy-row${plat?' has-platinum':''}"><div class="trophy-head"><span>🏆 ${label?`<em>${escapeHtml(label)}</em> `:''}${t.earned}/${t.total} troféus</span><b>${plat?'Platinado':pct+'%'}</b></div><div class="trophy-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}"><i style="width:${pct}%"></i></div>${types?`<div class="trophy-types">${types}</div>`:''}</div>`;
 }
 function consoleFor(game) { return game.console || seedConsoles.get(game.id) || ''; }
 function initials(title) { return title.split(/\s+/).filter(w => !/^(the|of|a|de|do|da|e)$/i.test(w)).slice(0,2).map(w => w[0]).join('').toUpperCase(); }
@@ -60,41 +67,117 @@ function applyTheme(theme, persist = true) {
     try { localStorage.setItem(THEME_KEY, selected); } catch { /* A escolha continua ativa nesta página. */ }
   }
 }
-async function isOwnerEmail(email) {
-  const bytes = new TextEncoder().encode(String(email || '').trim().toLowerCase());
-  const hash = await crypto.subtle.digest('SHA-256', bytes);
-  return [...new Uint8Array(hash)].map(b => b.toString(16).padStart(2, '0')).join('') === OWNER_EMAIL_HASH;
-}
 async function verifyOwner() {
-  ownerAccess = !!(session?.user?.email && await isOwnerEmail(session.user.email));
+  ownerAccess = session?.user?.id === OWNER_ID;
   document.documentElement.dataset.access = ownerAccess ? 'owner' : 'visitor';
   render();
 }
 function activeGames() { return games.filter(g=>!g.deletedAt); }
+const CONSOLE_ORDER = ['PS5','PS4','PS3','PS Vita','Switch 2','Switch',''];
+function titleKey(title) { return String(title||'').normalize('NFKD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[’']/g,'').replace(/&/g,' and ').replace(/[^a-z0-9]+/g,' ').trim(); }
+function groupGames(list) {
+  const map=new Map();
+  for(const g of list){ const key=groupMode()?`${g.platform}|${titleKey(g.title)}`:g.id; if(!map.has(key))map.set(key,[]); map.get(key).push(g); }
+  return [...map.values()].map(versions=>{
+    versions.sort((a,b)=>CONSOLE_ORDER.indexOf(consoleFor(a))-CONSOLE_ORDER.indexOf(consoleFor(b)));
+    const score=g=>(g.status!=='nao_classificado'?4:0)+(trophyProgress(g)?.earned?2:0)+(g.rating?1:0);
+    const primary=[...versions].sort((a,b)=>score(b)-score(a)||ts(b.updatedAt)-ts(a.updatedAt))[0];
+    return { versions, primary };
+  });
+}
+function groupMode() { try { return localStorage.getItem(GROUP_KEY)!=='separado'; } catch { return true; } }
+function coverOf(g) { return safeCover(g.cover || seedCovers.get(g.id)); }
+function formatLabel(g) { return g.format==='fisico'?'Físico':g.format==='digital'?'Digital':'Formato a definir'; }
+function groupStat(groups, test) { return groups.filter(gr=>gr.versions.some(test)).length; }
 function render() {
   const active=activeGames();
-  $('#stat-total').textContent=active.length;
-  $('#stat-playing').textContent=active.filter(g=>g.status==='jogando').length;
-  $('#stat-finished').textContent=active.filter(g=>g.completion==='zerado'||g.completion==='platinado'||g.status==='zerado').length;
-  $('#stat-priority').textContent=active.filter(g=>g.priority==='1').length;
-  $('#stat-platinum').textContent=active.filter(g=>trophiesFor(g)?.earnedByType.platinum>0||g.completion==='platinado').length;
+  const allGroups=groupGames(active);
+  $('#stat-total').textContent=allGroups.length;
+  $('#stat-playing').textContent=groupStat(allGroups,g=>g.status==='jogando');
+  $('#stat-finished').textContent=groupStat(allGroups,g=>g.completion==='zerado'||g.completion==='platinado'||g.status==='zerado');
+  $('#stat-priority').textContent=groupStat(allGroups,g=>g.priority==='1');
+  $('#stat-platinum').textContent=groupStat(allGroups,g=>trophiesFor(g)?.earnedByType.platinum>0||g.completion==='platinado');
   const search=$('#search').value.trim().toLocaleLowerCase('pt-BR');
   const platform=$('#platform-filter').value, consoleFilter=$('#console-filter').value, status=$('#status-filter').value, priority=$('#priority-filter').value;
-  let list=active.filter(g=>(!search||`${g.title} ${g.notes}`.toLocaleLowerCase('pt-BR').includes(search))&&(!platform||g.platform===platform)&&(!consoleFilter||(consoleFilter==='__unknown__'?!consoleFor(g):consoleFor(g)===consoleFilter))&&(!status||g.status===status)&&(!priority||g.priority===priority));
-  const sort=$('#sort-filter').value;
-  list.sort((a,b)=>sort==='updated'?(b.updatedAt||'').localeCompare(a.updatedAt||'')||a.title.localeCompare(b.title,'pt-BR'):sort==='priority'?(Number(a.priority||9)-Number(b.priority||9))||a.title.localeCompare(b.title,'pt-BR'):sort==='rating'?(b.rating-a.rating)||a.title.localeCompare(b.title,'pt-BR'):sort==='trophies'?((p=>p(b)-p(a))(g=>{const t=trophyProgress(g);return t?t.earned/t.total:-1}))||a.title.localeCompare(b.title,'pt-BR'):a.title.localeCompare(b.title,'pt-BR'));
-  $('#shown-count').textContent=`${list.length}`;
-  $('#empty-state').hidden=list.length>0;
-  $('#game-grid').innerHTML=list.map(g=>{
-    const cover=safeCover(g.cover || seedCovers.get(g.id)), label=STATUS[g.status]||STATUS.nao_classificado;
-    const generation=consoleFor(g), consoleOptions=g.platform==='Switch'?['Switch','Switch 2']:['PS5','PS4','PS3','PS Vita'];
-    const format=g.format==='fisico'?'Físico':g.format==='digital'?'Digital':'Formato a definir';
-    return `<article class="game-card" data-platform="${g.platform==='Switch'?'switch':'playstation'}"><div class="card-main" ${ownerAccess?`data-edit="${g.id}" role="button" tabindex="0" aria-label="Editar ${escapeHtml(g.title)} em ${escapeHtml(generation||g.platform)}"`:''}><div class="card-visual">${cover?`<img src="${escapeHtml(cover)}" alt="Capa de ${escapeHtml(g.title)}" loading="lazy" style="object-position:${coverPosition(g.coverPositionX)}% ${coverPosition(g.coverPositionY)}%" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">`:''}<span class="placeholder" style="${cover?'display:none':''}">${escapeHtml(initials(g.title))}</span><span class="platform-pill">${g.platform==='Switch'?'NINTENDO':'PLAYSTATION'}</span>${g.priority?`<span class="priority-pill">P${g.priority}</span>`:''}</div><div class="card-body"><h3>${escapeHtml(g.title)}</h3><div class="console-row"><strong class="console-badge${generation?'':' undefined'}">${escapeHtml(generation||'Console a definir')}</strong><span class="format-label">${format}</span></div><div class="card-meta"><span class="status-badge ${g.status}">${escapeHtml(label)}</span><span class="stars" aria-label="Nota ${g.rating||'não definida'} de 5">${g.rating?'★'.repeat(g.rating)+'☆'.repeat(5-g.rating):'Sem nota'}</span></div>${trophyHtml(g)}${g.notes?`<p class="card-note">${escapeHtml(g.notes)}</p>`:''}</div></div>${ownerAccess?`<div class="card-footer"><select data-console="${g.id}" aria-label="Console de ${escapeHtml(g.title)}"><option value="" ${generation?'':'selected'}>Definir console</option>${consoleOptions.map(value=>`<option value="${value}" ${generation===value?'selected':''}>${value}</option>`).join('')}</select><select data-status="${g.id}" aria-label="Status de ${escapeHtml(g.title)}">${Object.entries(STATUS).map(([v,l])=>`<option value="${v}" ${g.status===v?'selected':''}>${l}</option>`).join('')}</select><button type="button" data-edit="${g.id}">Editar</button></div>`:''}</article>`;
-  }).join('');
+  const list=active.filter(g=>(!search||`${g.title} ${g.notes}`.toLocaleLowerCase('pt-BR').includes(search))&&(!platform||g.platform===platform)&&(!consoleFilter||(consoleFilter==='__unknown__'?!consoleFor(g):consoleFor(g)===consoleFilter))&&(!status||g.status===status)&&(!priority||g.priority===priority));
+  const groups=groupGames(list);
+  const sort=$('#sort-filter').value, byTitle=(a,b)=>a.primary.title.localeCompare(b.primary.title,'pt-BR');
+  const best=(gr,f)=>Math.max(...gr.versions.map(f));
+  const progress=g=>{const t=trophyProgress(g);return t?t.earned/t.total:-1};
+  groups.sort((a,b)=>sort==='updated'?best(b,g=>ts(g.updatedAt))-best(a,g=>ts(g.updatedAt))||byTitle(a,b):sort==='priority'?best(b,g=>-Number(g.priority||9))-best(a,g=>-Number(g.priority||9))||byTitle(a,b):sort==='rating'?best(b,g=>g.rating)-best(a,g=>g.rating)||byTitle(a,b):sort==='trophies'?best(b,progress)-best(a,progress)||byTitle(a,b):byTitle(a,b));
+  $('#shown-count').textContent=`${groups.length}`;
+  $('#empty-state').hidden=groups.length>0;
+  $('#group-toggle').textContent=groupMode()?'Versões juntas':'Versões separadas';
+  $('#group-toggle').setAttribute('aria-pressed',String(groupMode()));
+  $('#game-grid').innerHTML=groups.map(renderCard).join('');
   $('#sync-status').textContent=ownerAccess?'Sincronizado com sua conta':'Visualização pública';
   $('#account-button').textContent=ownerAccess?'Minha conta':session?'Conta sem acesso':'Entrar para editar';
   $('#add-button').hidden=!ownerAccess;
+  $('#triage-button').hidden=!ownerAccess;
+  $('#triage-button').textContent=`Classificar rapidamente (${triageQueue().length})`;
   $('#seed-note').textContent=ownerAccess?'Sua coleção: faça alterações quando quiser.':'Somente o proprietário pode editar esta biblioteca.';
+}
+function renderCard({versions, primary:g}) {
+  const multi=versions.length>1;
+  const coverGame=versions.find(v=>v===g&&coverOf(v))||versions.find(coverOf)||g, cover=coverOf(coverGame);
+  const label=STATUS[g.status]||STATUS.nao_classificado;
+  const generation=consoleFor(g), consoleOptions=g.platform==='Switch'?['Switch','Switch 2']:['PS5','PS4','PS3','PS Vita'];
+  const seenLists=new Set(), trophyRows=versions.filter(v=>{const t=trophiesFor(v);const k=t?t.exophase:`manual-${v.id}`;if(!trophyProgress(v)||seenLists.has(k))return false;seenLists.add(k);return true;});
+  const consoleRow=multi
+    ? `<div class="console-row versions">${versions.map(v=>`<${ownerAccess?`button type="button" data-edit="${v.id}"`:'span'} class="console-badge${consoleFor(v)?'':' undefined'}" title="${escapeHtml(formatLabel(v))} · ${escapeHtml(STATUS[v.status]||'')}">${escapeHtml(consoleFor(v)||'A definir')}<small>${v.format==='fisico'?'físico':v.format==='digital'?'digital':'?'}</small></${ownerAccess?'button':'span'}>`).join('')}</div>`
+    : `<div class="console-row"><strong class="console-badge${generation?'':' undefined'}">${escapeHtml(generation||'Console a definir')}</strong><span class="format-label">${formatLabel(g)}</span></div>`;
+  const trophies=trophyRows.map(v=>trophyHtml(v, multi&&trophyRows.length>1?(trophiesFor(v)?.platforms||consoleFor(v)):'')).join('');
+  const footer=!ownerAccess?'':multi
+    ? `<div class="card-footer versions-footer"><span>${versions.length} versões</span><div>${versions.map(v=>`<button type="button" data-edit="${v.id}">Editar ${escapeHtml(consoleFor(v)||'versão')}</button>`).join('')}</div></div>`
+    : `<div class="card-footer"><select data-console="${g.id}" aria-label="Console de ${escapeHtml(g.title)}"><option value="" ${generation?'':'selected'}>Definir console</option>${consoleOptions.map(value=>`<option value="${value}" ${generation===value?'selected':''}>${value}</option>`).join('')}</select><select data-status="${g.id}" aria-label="Status de ${escapeHtml(g.title)}">${Object.entries(STATUS).map(([v,l])=>`<option value="${v}" ${g.status===v?'selected':''}>${l}</option>`).join('')}</select><button type="button" data-edit="${g.id}">Editar</button></div>`;
+  return `<article class="game-card${multi?' is-group':''}" data-platform="${g.platform==='Switch'?'switch':'playstation'}"><div class="card-main" ${ownerAccess?`data-edit="${g.id}" role="button" tabindex="0" aria-label="Editar ${escapeHtml(g.title)} em ${escapeHtml(generation||g.platform)}"`:''}><div class="card-visual">${cover?`<img src="${escapeHtml(cover)}" alt="Capa de ${escapeHtml(g.title)}" loading="lazy" style="object-position:${coverPosition(coverGame.coverPositionX)}% ${coverPosition(coverGame.coverPositionY)}%" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">`:''}<span class="placeholder" style="${cover?'display:none':''}">${escapeHtml(initials(g.title))}</span><span class="platform-pill">${g.platform==='Switch'?'NINTENDO':'PLAYSTATION'}</span>${multi?`<span class="versions-pill">${versions.length} versões</span>`:''}${g.priority?`<span class="priority-pill">P${g.priority}</span>`:''}</div><div class="card-body"><h3>${escapeHtml(g.title)}</h3>${consoleRow}<div class="card-meta"><span class="status-badge ${g.status}">${escapeHtml(label)}</span><span class="stars" aria-label="Nota ${g.rating||'não definida'} de 5">${g.rating?'★'.repeat(g.rating)+'☆'.repeat(5-g.rating):'Sem nota'}</span></div>${trophies}${g.notes?`<p class="card-note">${escapeHtml(g.notes)}</p>`:''}</div></div>${footer}</article>`;
+}
+function consoleChoices(g) { return g.platform==='Switch'?['Switch','Switch 2']:['PS5','PS4','PS3','PS Vita']; }
+function needsTriage(g) { return !consoleFor(g) || g.format==='outro' || g.status==='nao_classificado'; }
+function triageQueue() { return activeGames().filter(needsTriage).sort((a,b)=>a.title.localeCompare(b.title,'pt-BR')||CONSOLE_ORDER.indexOf(consoleFor(a))-CONSOLE_ORDER.indexOf(consoleFor(b))); }
+function openTriage() {
+  if(!ownerAccess)return;
+  triageList=triageQueue().map(g=>g.id); triageIndex=0;
+  if(!triageList.length){ showToast('Nada pendente: todos os jogos já têm console, formato e status'); return; }
+  renderTriage(); $('#triage-dialog').showModal();
+}
+function renderTriage() {
+  const g=games.find(x=>x.id===triageList[triageIndex]);
+  if(!g){ $('#triage-dialog').close(); render(); return; }
+  const cover=coverOf(g), pending=triageList.filter(id=>{const x=games.find(y=>y.id===id);return x&&needsTriage(x)}).length;
+  $('#triage-progress').textContent=`${triageIndex+1} de ${triageList.length} · ${pending} pendentes`;
+  $('#triage-game').innerHTML=`<div class="triage-cover">${cover?`<img src="${escapeHtml(cover)}" alt="">`:`<span>${escapeHtml(initials(g.title))}</span>`}</div><div><span class="eyebrow">${g.platform==='Switch'?'NINTENDO':'PLAYSTATION'}</span><h3>${escapeHtml(g.title)}</h3>${trophyHtml(g)}</div>`;
+  const row=(field,options,current)=>options.map(([value,label])=>`<button type="button" class="triage-option${current===value?' selected':''}" data-triage-field="${field}" data-value="${value}" aria-pressed="${current===value}">${escapeHtml(label)}</button>`).join('');
+  $('#triage-console').innerHTML=row('console',consoleChoices(g).map(c=>[c,c]),consoleFor(g));
+  $('#triage-format').innerHTML=row('format',[['digital','Digital'],['fisico','Físico']],g.format);
+  $('#triage-status').innerHTML=row('status',Object.entries(STATUS).filter(([v])=>v!=='nao_classificado'),g.status);
+  $('#triage-prev').disabled=triageIndex===0;
+  $('#triage-next').textContent=triageIndex===triageList.length-1?'Concluir':'Próximo →';
+}
+function setTriageField(field,value) {
+  const g=games.find(x=>x.id===triageList[triageIndex]); if(!g||!ownerAccess)return;
+  if(field==='console'&&!consoleChoices(g).includes(value))return;
+  g[field]=value; stamp(g); scheduleSync(4000); renderTriage();
+  if(!needsTriage(g)) setTimeout(()=>{ if(triageList[triageIndex]===g.id) moveTriage(1); },450);
+}
+function moveTriage(step) {
+  triageIndex+=step;
+  if(triageIndex>=triageList.length){ $('#triage-dialog').close(); render(); showToast('Classificação concluída'); return; }
+  triageIndex=Math.max(0,triageIndex); renderTriage();
+}
+function downloadFile(name,content,type) {
+  const url=URL.createObjectURL(new Blob([content],{type})); const a=document.createElement('a');
+  a.href=url; a.download=name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+function backupName(ext) { return `biblioteca-jogos-${new Date().toISOString().slice(0,10)}.${ext}`; }
+function exportJson() {
+  downloadFile(backupName('json'),JSON.stringify({exportedAt:new Date().toISOString(),games:games.map(normalized)},null,2),'application/json');
+}
+function exportCsv() {
+  const cols=[['Título',g=>g.title],['Plataforma',g=>g.platform],['Console',g=>consoleFor(g)],['Formato',formatLabel],['Status',g=>STATUS[g.status]||g.status],['Prioridade',g=>g.priority],['Nota',g=>g.rating||''],['Campanha',g=>g.completion],['Expansões',g=>g.expansions],['Não gostei',g=>g.disliked?'sim':''],['Pretendo voltar',g=>g.returnLater?'sim':''],['Troféus obtidos',g=>trophyProgress(g)?.earned??''],['Troféus total',g=>trophyProgress(g)?.total??''],['Platina',g=>trophiesFor(g)?.earnedByType.platinum??''],['Ouro',g=>trophiesFor(g)?.earnedByType.gold??''],['Prata',g=>trophiesFor(g)?.earnedByType.silver??''],['Bronze',g=>trophiesFor(g)?.earnedByType.bronze??''],['Anotações',g=>g.notes],['Excluído em',g=>g.deletedAt],['Atualizado em',g=>g.updatedAt]];
+  const cell=v=>{const t=String(v??'');return /[";\n\r]/.test(t)?`"${t.replace(/"/g,'""')}"`:t;};
+  const rows=[cols.map(c=>c[0]).join(';'),...[...games].sort((a,b)=>a.title.localeCompare(b.title,'pt-BR')).map(g=>cols.map(c=>cell(c[1](g))).join(';'))];
+  downloadFile(backupName('csv'),'﻿'+rows.join('\r\n'),'text/csv;charset=utf-8');
 }
 function openEditor(id=null) {
   if (!ownerAccess) return;
@@ -158,18 +241,18 @@ async function saveEditor(event) {
   if(cover&&!safeCover(cover)){ $('#editor-error').textContent='Use uma URL https ou um arquivo dentro de covers/.';$('#editor-error').hidden=false;return; }
   const game=normalized({...existing,id:existing?.id||crypto.randomUUID(),title,platform:f.elements.platform.value,console:f.elements.console.value,format:f.elements.format.value,status:f.elements.status.value,priority:f.elements.priority.value,rating,completion:f.elements.completion.value,expansions:f.elements.expansions.value,disliked:f.elements.disliked.checked,returnLater:f.elements.returnLater.checked,trophiesEarned:f.elements.platform.value==='Switch'?'':f.elements.trophiesEarned.value,trophiesTotal:f.elements.platform.value==='Switch'?'':f.elements.trophiesTotal.value,trophiesMissing:f.elements.platform.value==='Switch'?'':f.elements.trophiesMissing.value.trim(),notes:f.elements.notes.value.trim(),cover,coverPositionX:$('#cover-position-x').value,coverPositionY:$('#cover-position-y').value,source:existing?.source||'manual'});
   if(existing)Object.assign(existing,game);else games.push(game);
-  stamp(existing||game); $('#editor-dialog').close(); clearPreviewObjectUrl(); render(); showToast('Jogo salvo'); if(session)sync();
+  stamp(existing||game); $('#editor-dialog').close(); clearPreviewObjectUrl(); render(); showToast('Jogo salvo'); scheduleSync();
 }
-function deleteGame(){if(!ownerAccess||!currentId)return;const g=games.find(x=>x.id===currentId);if(!g)return;if(!confirm(`Excluir ${g.title} da biblioteca?`))return;g.deletedAt=new Date().toISOString();stamp(g);$('#editor-dialog').close();render();showToast('Jogo excluído');if(session)sync();}
-function setQuickStatus(id,status){if(!ownerAccess)return;const g=games.find(x=>x.id===id);if(!g)return;g.status=status;stamp(g);render();showToast('Status atualizado');if(session)sync();}
-function setQuickConsole(id,consoleName){if(!ownerAccess||!consoleName)return;const g=games.find(x=>x.id===id);if(!g)return;const allowed=g.platform==='Switch'?['Switch','Switch 2']:['PS5','PS4','PS3','PS Vita'];if(!allowed.includes(consoleName))return;g.console=consoleName;stamp(g);render();showToast('Console atualizado');if(session)sync();}
+function deleteGame(){if(!ownerAccess||!currentId)return;const g=games.find(x=>x.id===currentId);if(!g)return;if(!confirm(`Excluir ${g.title} da biblioteca?`))return;g.deletedAt=new Date().toISOString();stamp(g);$('#editor-dialog').close();render();showToast('Jogo excluído');scheduleSync();}
+function setQuickStatus(id,status){if(!ownerAccess)return;const g=games.find(x=>x.id===id);if(!g)return;g.status=status;stamp(g);render();showToast('Status atualizado');scheduleSync();}
+function setQuickConsole(id,consoleName){if(!ownerAccess||!consoleName)return;const g=games.find(x=>x.id===id);if(!g)return;const allowed=g.platform==='Switch'?['Switch','Switch 2']:['PS5','PS4','PS3','PS Vita'];if(!allowed.includes(consoleName))return;g.console=consoleName;stamp(g);render();showToast('Console atualizado');scheduleSync();}
 function apiHeaders(access=true){const h={'apikey':config.publishableKey,'Content-Type':'application/json'};if(access&&session?.access_token)h.Authorization=`Bearer ${session.access_token}`;return h;}
 async function api(path,options={}){const response=await fetch(config.supabaseUrl+path,{...options,headers:{...apiHeaders(options.access!==false),...(options.headers||{})}});const text=await response.text();let data;try{data=text?JSON.parse(text):null}catch{data=text}if(!response.ok)throw new Error(data?.msg||data?.error_description||data?.message||`Erro ${response.status}`);return data;}
 function saveSession(value){session=value;ownerAccess=false;document.documentElement.dataset.access='visitor';if(value)localStorage.setItem(SESSION_KEY,JSON.stringify(value));else localStorage.removeItem(SESSION_KEY);render();}
 async function ensureSession(){if(!session)return false;if(Date.now() < (session.expires_at||0)*1000-60000)return true;try{const data=await api('/auth/v1/token?grant_type=refresh_token',{method:'POST',body:JSON.stringify({refresh_token:session.refresh_token}),access:false});saveSession({...data,expires_at:Math.floor(Date.now()/1000)+data.expires_in});await verifyOwner();return ownerAccess}catch{saveSession(null);return false}}
-async function sendMagicLink(event){event.preventDefault();if(!configured){$('#account-message').textContent='A sincronização ainda precisa ser conectada pelo proprietário do site.';return}const email=$('#login-email').value.trim();if(!await isOwnerEmail(email)){$('#account-message').textContent='Esta conta não tem permissão para editar a biblioteca.';return}try{const redirect=encodeURIComponent(location.origin+location.pathname);await api(`/auth/v1/otp?redirect_to=${redirect}`,{method:'POST',body:JSON.stringify({email,create_user:false}),access:false});$('#account-message').textContent=`Enviamos um link para ${email}. Abra o e-mail neste aparelho.`;}catch(err){$('#account-message').textContent=err.message}}
+async function sendMagicLink(event){event.preventDefault();if(!configured){$('#account-message').textContent='A sincronização ainda precisa ser conectada pelo proprietário do site.';return}const email=$('#login-email').value.trim();try{const redirect=encodeURIComponent(location.origin+location.pathname);await api(`/auth/v1/otp?redirect_to=${redirect}`,{method:'POST',body:JSON.stringify({email,create_user:false}),access:false});$('#account-message').textContent=`Enviamos um link para ${email}. Abra o e-mail neste aparelho.`;}catch(err){$('#account-message').textContent=/signup|not allowed|cadastros/i.test(err.message)?'Este e-mail não tem acesso para editar a biblioteca.':err.message}}
 async function handleAuthRedirect(){const hash=new URLSearchParams(location.hash.replace(/^#/,''));if(!hash.has('access_token'))return;const access_token=hash.get('access_token'),refresh_token=hash.get('refresh_token'),expires_in=Number(hash.get('expires_in')||3600);if(access_token&&refresh_token){const user=await api('/auth/v1/user',{headers:{Authorization:`Bearer ${access_token}`}}).catch(()=>null);saveSession({access_token,refresh_token,expires_at:Math.floor(Date.now()/1000)+expires_in,user});await verifyOwner();history.replaceState({},'',location.pathname+location.search);showToast('Conta conectada');}}
-async function sync(){if(!configured||!session||!ownerAccess)return;if(syncBusy){syncAgain=true;return}syncBusy=true;try{if(!await ensureSession()||!ownerAccess)return;if(!session.user)session.user=await api('/auth/v1/user');const remote=await api('/rest/v1/games?select=id,data,updated_at&limit=1000',{headers:{Accept:'application/json'}});const remoteById=new Map(remote.map(row=>[row.id,row]));for(const game of games)if(!remoteById.has(game.id))dirty.add(game.id);saveDirty();for(const id of [...dirty]){const local=games.find(g=>g.id===id);if(!local){dirty.delete(id);continue}const other=remoteById.get(id);if(other&&(other.updated_at||'')>(local.updatedAt||'')){games=games.map(g=>g.id===id?normalized(other.data):g);dirty.delete(id);continue}const uploadStamp=local.updatedAt;await api('/rest/v1/games?on_conflict=owner_id,id',{method:'POST',headers:{Prefer:'resolution=merge-duplicates'},body:JSON.stringify({id,owner_id:session.user.id,data:local,updated_at:uploadStamp||new Date().toISOString()})});if(games.find(g=>g.id===id)?.updatedAt===uploadStamp)dirty.delete(id)}saveDirty();for(const row of remote){if(!dirty.has(row.id)){const index=games.findIndex(g=>g.id===row.id);if(index<0)games.push(normalized(row.data));else if((row.updated_at||'')>(games[index].updatedAt||''))games[index]=normalized(row.data)}}saveCache();render();$('#sync-status').textContent='Sincronizado agora';}catch(err){$('#sync-status').textContent='Sem conexão · salvo aqui';console.error(err)}finally{syncBusy=false;if(syncAgain){syncAgain=false;queueMicrotask(sync)}}}
+async function sync(){if(!configured||!session||!ownerAccess)return;if(syncBusy){syncAgain=true;return}syncBusy=true;try{if(!await ensureSession()||!ownerAccess)return;if(!session.user)session.user=await api('/auth/v1/user');const remote=await api('/rest/v1/games?select=id,data,updated_at&limit=1000',{headers:{Accept:'application/json'}});const remoteById=new Map(remote.map(row=>[row.id,row]));for(const game of games)if(!remoteById.has(game.id))dirty.add(game.id);saveDirty();for(const id of [...dirty]){const local=games.find(g=>g.id===id);if(!local){dirty.delete(id);continue}const other=remoteById.get(id);if(other&&ts(other.updated_at)>ts(local.updatedAt)){games=games.map(g=>g.id===id?normalized(other.data):g);dirty.delete(id);continue}const uploadStamp=local.updatedAt;await api('/rest/v1/games?on_conflict=owner_id,id',{method:'POST',headers:{Prefer:'resolution=merge-duplicates'},body:JSON.stringify({id,owner_id:session.user.id,data:local,updated_at:uploadStamp||new Date().toISOString()})});if(games.find(g=>g.id===id)?.updatedAt===uploadStamp)dirty.delete(id)}saveDirty();for(const row of remote){if(!dirty.has(row.id)){const index=games.findIndex(g=>g.id===row.id);if(index<0)games.push(normalized(row.data));else if(ts(row.updated_at)>ts(games[index].updatedAt))games[index]=normalized(row.data)}}saveCache();render();$('#sync-status').textContent='Sincronizado agora';lastSyncAt=Date.now();}catch(err){$('#sync-status').textContent='Sem conexão · salvo aqui';console.error(err)}finally{syncBusy=false;if(syncAgain){syncAgain=false;queueMicrotask(sync)}}}
 async function loadPublic(){if(!configured||ownerAccess)return;try{const remote=await api('/rest/v1/games?select=id,data,updated_at&limit=2000',{access:false,headers:{Accept:'application/json'}});if(!Array.isArray(remote)||!remote.length)return;const byId=new Map(remote.map(r=>[r.id,normalized(r.data)]));games=games.map(g=>byId.get(g.id)||g);for(const [id,g] of byId)if(!games.some(x=>x.id===id))games.push(g);render();}catch(err){console.error(err)}}
 async function uploadCover(file,id){if(!ownerAccess||!configured||!session)throw new Error('Entre na sua conta para enviar uma capa.');if(!await ensureSession())throw new Error('Sua sessão expirou. Entre novamente.');if(file.size>5*1024*1024)throw new Error('A capa deve ter até 5 MB.');if(!['image/jpeg','image/png','image/webp'].includes(file.type))throw new Error('Para enviar pelo site, use JPG, PNG ou WebP.');const ext=file.type==='image/png'?'png':file.type==='image/webp'?'webp':'jpg';const name=`${session.user.id}/${id}-${Date.now()}.${ext}`;const response=await fetch(`${config.supabaseUrl}/storage/v1/object/covers/${name}`,{method:'POST',headers:{apikey:config.publishableKey,Authorization:`Bearer ${session.access_token}`,'Content-Type':file.type,'x-upsert':'false'},body:file});if(!response.ok){const result=await response.json().catch(()=>({}));throw new Error(result.message||'Não foi possível enviar a capa.')}return `${config.supabaseUrl}/storage/v1/object/public/covers/${name}`;}
 async function boot(){
@@ -195,9 +278,17 @@ async function boot(){
   $('#game-grid').onclick=e=>{if(!ownerAccess)return;const edit=e.target.closest('[data-edit]');if(edit)openEditor(edit.dataset.edit)};
   $('#game-grid').onkeydown=e=>{if(!ownerAccess||!['Enter',' '].includes(e.key))return;const edit=e.target.closest('.card-main[data-edit]');if(edit){e.preventDefault();openEditor(edit.dataset.edit)}};
   $('#game-grid').onchange=e=>{const consoleSelect=e.target.closest('[data-console]');if(consoleSelect){setQuickConsole(consoleSelect.dataset.console,consoleSelect.value);return}const statusSelect=e.target.closest('[data-status]');if(statusSelect)setQuickStatus(statusSelect.dataset.status,statusSelect.value)};
-  $('#account-button').onclick=()=>{const text=ownerAccess?`Conectado como ${session.user?.email||'usuário'}. Suas alterações sincronizam entre aparelhos.`:session?'Esta conta não tem permissão para editar esta biblioteca.':'Entre com a conta do proprietário para editar jogos, notas e anotações.';$('#account-explanation').textContent=text;$('#login-form').hidden=!!session||!configured;$('#logout-button').hidden=!session;$('#account-message').textContent='';$('#account-dialog').showModal()};
+  $('#group-toggle').onclick=()=>{try{localStorage.setItem(GROUP_KEY,groupMode()?'separado':'junto')}catch{}render()};
+  $('#triage-button').onclick=openTriage;
+  $('#close-triage').onclick=()=>{$('#triage-dialog').close();render()};
+  $('#triage-dialog').addEventListener('close',render);
+  $('#triage-dialog').onclick=e=>{const b=e.target.closest('[data-triage-field]');if(b)setTriageField(b.dataset.triageField,b.dataset.value)};
+  $('#triage-prev').onclick=()=>moveTriage(-1);$('#triage-next').onclick=()=>moveTriage(1);
+  $('#triage-edit').onclick=()=>{const id=triageList[triageIndex];$('#triage-dialog').close();openEditor(id)};
+  $('#export-json').onclick=exportJson;$('#export-csv').onclick=exportCsv;
+  $('#account-button').onclick=()=>{$('#backup-actions').hidden=!ownerAccess;const text=ownerAccess?`Conectado como ${session.user?.email||'usuário'}. Suas alterações sincronizam entre aparelhos.`:session?'Esta conta não tem permissão para editar esta biblioteca.':'Entre com a conta do proprietário para editar jogos, notas e anotações.';$('#account-explanation').textContent=text;$('#login-form').hidden=!!session||!configured;$('#logout-button').hidden=!session;$('#account-message').textContent='';$('#account-dialog').showModal()};
   $('#close-account').onclick=()=>$('#account-dialog').close();$('#login-form').onsubmit=sendMagicLink;$('#logout-button').onclick=()=>{saveSession(null);$('#account-dialog').close();showToast('Você saiu da conta')};
-  render();if(configured){session=JSON.parse(localStorage.getItem(SESSION_KEY)||'null');await handleAuthRedirect();if(session){if(await ensureSession()){session.user=await api('/auth/v1/user').catch(()=>null);await verifyOwner();if(ownerAccess)sync()}else await verifyOwner();}else await verifyOwner();if(!ownerAccess)await loadPublic();}window.addEventListener('online',()=>{if(session)sync()});window.addEventListener('focus',()=>{if(session)sync()});
+  render();if(configured){session=JSON.parse(localStorage.getItem(SESSION_KEY)||'null');await handleAuthRedirect();if(session){if(await ensureSession()){session.user=await api('/auth/v1/user').catch(()=>null);await verifyOwner();if(ownerAccess)sync()}else await verifyOwner();}else await verifyOwner();if(!ownerAccess)await loadPublic();}window.addEventListener('online',()=>{if(session)sync()});window.addEventListener('focus',()=>{if(session&&Date.now()-lastSyncAt>60000)sync()});
 }
 applyTheme(document.documentElement.dataset.theme, false);
 document.querySelector('.theme-options').addEventListener('click', event => {

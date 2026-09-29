@@ -1,0 +1,45 @@
+name: Backup diário da biblioteca
+
+on:
+  schedule:
+    - cron: "17 9 * * *" # todo dia, 06:17 em Brasília
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Baixar a biblioteca do Supabase
+        run: |
+          URL=$(grep -o 'supabaseUrl:"[^"]*"' index.html | cut -d'"' -f2)
+          KEY=$(grep -o 'publishableKey:"[^"]*"' index.html | cut -d'"' -f2)
+          curl -sf "$URL/rest/v1/games?select=id,data,updated_at&order=id&limit=5000" \
+            -H "apikey: $KEY" -H "Accept: application/json" -o /tmp/games.json
+          python3 - <<'PY'
+          import json
+          rows = json.load(open('/tmp/games.json'))
+          if not rows:
+              raise SystemExit('Resposta vazia do Supabase; backup anterior mantido.')
+          rows.sort(key=lambda r: r['id'])
+          with open('data/backup/games-supabase.json', 'w', encoding='utf-8') as f:
+              json.dump(rows, f, ensure_ascii=False, indent=1)
+              f.write('\n')
+          print(len(rows), 'jogos salvos')
+          PY
+
+      - name: Salvar no repositório se mudou
+        run: |
+          git config user.name "backup-automatico"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/backup/games-supabase.json
+          if git diff --cached --quiet; then
+            echo "Nada mudou desde o último backup."
+          else
+            git commit -m "Backup automático da biblioteca ($(date -u +%Y-%m-%d))"
+            git push
+          fi
