@@ -2,20 +2,16 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' https: data: blob:; connect-src 'self' https://yasqxdskeawmpexwwmjj.supabase.co; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-src 'none'; worker-src 'none'; manifest-src 'self'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#11151f">
   <title>Minha biblioteca de jogos</title>
   <meta name="description" content="Organize jogos, progresso, notas e prioridades por plataforma.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23bcf36a'/%3E%3Cpath fill='%23152512' d='M16 16h32v32H16zm5 5v9h9v-9zm13 0v9h9v-9zM21 34v9h9v-9zm13 0v9h9v-9z'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css?v=20260929-versao">
-  <script>
-    try {
-      const theme = localStorage.getItem('biblioteca-jogos-theme-v1');
-      document.documentElement.dataset.theme = ['original', 'dark', 'light', 'console'].includes(theme) ? theme : 'original';
-    } catch { document.documentElement.dataset.theme = 'original'; }
-  </script>
-  <script>window.APP_CONFIG={supabaseUrl:"https://yasqxdskeawmpexwwmjj.supabase.co",publishableKey:"sb_publishable_uv9mC4MnKO0SMSDt-N6Opg_SgfjOC24"};</script>
-  <script type="module" src="app.js?v=20260929-versao"></script>
+  <link rel="stylesheet" href="styles.css?v=20260929-seguranca">
+  <script src="boot.js?v=20260929-seguranca"></script>
+  <script type="module" src="app.js?v=20260929-seguranca"></script>
 </head>
 <body>
   <div class="app-shell">

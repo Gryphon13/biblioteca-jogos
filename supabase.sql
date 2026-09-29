@@ -87,3 +87,19 @@ revoke all on function private.block_new_signups() from public, anon, authentica
 drop trigger if exists block_new_signups on auth.users;
 create trigger block_new_signups before insert on auth.users
   for each row execute function private.block_new_signups();
+
+-- ============================================================
+-- Atualização de 29/09/2026 (revisão OWASP): validação dos dados no banco.
+-- (Já aplicada no projeto atual.)
+-- ============================================================
+alter table public.games
+  add constraint games_data_objeto check (jsonb_typeof(data) = 'object'),
+  add constraint games_id_confere check (data->>'id' = id::text),
+  add constraint games_tamanho_max check (pg_column_size(data) <= 16384),
+  add constraint games_titulo check (length(coalesce(data->>'title','')) between 1 and 160),
+  add constraint games_plataforma check (coalesce(data->>'platform','PlayStation') in ('PlayStation','Switch')),
+  add constraint games_console check (coalesce(data->>'console','') in ('','PS5','PS4','PS3','PS Vita','Switch','Switch 2')),
+  add constraint games_formato check (coalesce(data->>'format','digital') in ('digital','fisico','outro')),
+  add constraint games_status check (coalesce(data->>'status','nao_classificado') in ('nao_classificado','a_chegar','prioridade','jogando','pausado','zerado','abandonado','nao_jogarei')),
+  add constraint games_prioridade check (coalesce(data->>'priority','') in ('','1','2','3')),
+  add constraint games_capa check (coalesce(data->>'cover','') = '' or data->>'cover' ~ '^(covers/[A-Za-z0-9_./-]+\.(jpg|jpeg|png|webp)|https://[^\s"<>]+|data:image/(jpeg|png|webp);base64,[A-Za-z0-9+/=]+)$');

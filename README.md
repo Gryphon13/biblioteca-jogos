@@ -10,7 +10,7 @@ Abra a pasta com um servidor local. Clicar diretamente no arquivo HTML pode impe
 
 1. Crie um projeto em [Supabase](https://supabase.com/).
 2. No SQL Editor, execute `supabase.sql`.
-3. A URL do projeto e a chave **publishable** ficam no início de `index.html` (não há outro arquivo de configuração). Se mudar de projeto, atualize esses dois valores ali. Nunca coloque a chave `secret` ou `service_role` no site.
+3. A URL do projeto e a chave **publishable** ficam em `boot.js`. Se mudar de projeto, atualize esses dois valores ali. Nunca coloque a chave `secret` ou `service_role` no site.
 4. Em **Authentication → URL Configuration**, informe a URL final do GitHub Pages em **Site URL** e **Redirect URLs**. O link de acesso por e-mail precisa voltar para essa URL.
 5. Publique no GitHub Pages. Entre pelo botão **Sincronizar**. A primeira conexão envia o catálogo inicial e suas alterações locais para sua conta.
 
@@ -44,3 +44,7 @@ O botão **Classificar rapidamente** (só para o proprietário) mostra um jogo p
 
 - **Manual:** em **Minha conta**, baixe o backup completo (JSON) ou uma planilha (CSV).
 - **Automático:** a ação `.github/workflows/backup.yml` roda todo dia, lê a biblioteca pública no Supabase e salva `data/backup/games-supabase.json` no repositório quando algo mudou. O histórico de commits guarda as versões anteriores. Para rodar na hora: aba **Actions** → **Backup diário da biblioteca** → **Run workflow**.
+
+## Segurança
+
+Veja [SECURITY.md](SECURITY.md) para a revisão OWASP Top 10, os testes feitos e o que é público de propósito.
