@@ -16,8 +16,8 @@ jobs:
 
       - name: Baixar a biblioteca do Supabase
         run: |
-          URL=$(grep -o 'supabaseUrl:"[^"]*"' index.html | cut -d'"' -f2)
-          KEY=$(grep -o 'publishableKey:"[^"]*"' index.html | cut -d'"' -f2)
+          URL=$(grep -o 'supabaseUrl:"[^"]*"' boot.js | cut -d'"' -f2)
+          KEY=$(grep -o 'publishableKey:"[^"]*"' boot.js | cut -d'"' -f2)
           curl -sf "$URL/rest/v1/games?select=id,data,updated_at&order=id&limit=5000" \
             -H "apikey: $KEY" -H "Accept: application/json" -o /tmp/games.json
           python3 - <<'PY'
