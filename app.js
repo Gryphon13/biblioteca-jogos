@@ -185,7 +185,8 @@ function openEditor(id=null) {
   currentId=id; const g=id?games.find(x=>x.id===id):null; const f=$('#editor-form'); f.reset();
   $('#editor-title').textContent=g?'Editar jogo':'Adicionar jogo';
   $('#delete-button').hidden=!g;
-  $('#editor-error').hidden=true;
+  $('#duplicate-button').hidden=!g;
+  $('#editor-error').hidden=true; $('#editor-error').classList.remove('info');
   for(const name of ['title','platform','console','format','status','priority','completion','expansions','trophiesEarned','trophiesTotal','trophiesMissing','notes','cover']) f.elements[name].value=(name==='cover' ? (g?.cover || seedCovers.get(g?.id) || '') : name==='console' ? (g ? consoleFor(g) : '') : g?.[name])??(name==='platform'?'PlayStation':name==='format'?'digital':name==='status'?'nao_classificado':'');
   f.elements.disliked.checked=!!g?.disliked; f.elements.returnLater.checked=!!g?.returnLater;
   rating=g?.rating||0; renderRating(); updatePlatformFields();
@@ -196,6 +197,19 @@ function openEditor(id=null) {
   $('#cover-position-y').value=coverPosition(g?.coverPositionY);
   updateCoverPreview();
   $('#editor-dialog').showModal();
+}
+function duplicateCurrent() {
+  const g=games.find(x=>x.id===currentId); if(!g||!ownerAccess)return;
+  const f=$('#editor-form');
+  currentId=null;
+  $('#editor-title').textContent=`Nova versão de ${g.title}`;
+  $('#delete-button').hidden=true; $('#duplicate-button').hidden=true; $('#trophy-auto').hidden=true;
+  for(const name of ['console','priority','completion','expansions','trophiesEarned','trophiesTotal','trophiesMissing','notes']) f.elements[name].value='';
+  f.elements.status.value='nao_classificado'; f.elements.disliked.checked=false; f.elements.returnLater.checked=false;
+  rating=0; renderRating(); updatePlatformFields();
+  $('#editor-error').textContent='Mesmo título e capa copiados. Escolha o console (ou a plataforma) desta versão e salve.';
+  $('#editor-error').hidden=false; $('#editor-error').classList.add('info');
+  f.elements.console.focus();
 }
 function clearPreviewObjectUrl() { if(previewObjectUrl) URL.revokeObjectURL(previewObjectUrl); previewObjectUrl=''; }
 function updateCoverPreview() {
@@ -265,7 +279,7 @@ async function boot(){
   saveCache();
   for(const [value,label] of Object.entries(STATUS)){$('#status-filter').add(new Option(label,value));$('#editor-form').elements.status.add(new Option(label,value));}
   $('#cover-file').closest('label').insertAdjacentHTML('afterend',`<div class="span-2 cover-framing"><strong>Enquadramento da capa</strong><p>Arraste a imagem para escolher o que aparece no card. A proporção original é preservada.</p><div id="cover-preview" class="cover-preview"><img id="cover-preview-image" alt="Prévia da capa" draggable="false" hidden><span id="cover-preview-empty">Escolha uma capa para ajustar o enquadramento</span></div><div class="cover-position-controls"><label>Horizontal<input id="cover-position-x" type="range" min="0" max="100" value="50"></label><label>Vertical<input id="cover-position-y" type="range" min="0" max="100" value="50"></label></div></div>`);
-  $('#add-button').onclick=()=>openEditor();$('#close-editor').onclick=$('#cancel-editor').onclick=()=>$('#editor-dialog').close();$('#editor-form').onsubmit=saveEditor;$('#delete-button').onclick=deleteGame;$('#editor-form').elements.platform.onchange=updatePlatformFields;
+  $('#add-button').onclick=()=>openEditor();$('#close-editor').onclick=$('#cancel-editor').onclick=()=>$('#editor-dialog').close();$('#editor-form').onsubmit=saveEditor;$('#delete-button').onclick=deleteGame;$('#duplicate-button').onclick=duplicateCurrent;$('#editor-form').elements.platform.onchange=updatePlatformFields;
   $('#editor-dialog').addEventListener('close',clearPreviewObjectUrl);
   $('#cover-file').addEventListener('change',()=>{if($('#cover-file').files[0]){$('#cover-position-x').value=50;$('#cover-position-y').value=50;}updateCoverPreview()});
   $('#editor-form').elements.cover.addEventListener('input',()=>{if(!$('#cover-file').files.length)updateCoverPreview()});
@@ -278,6 +292,11 @@ async function boot(){
   $('#game-grid').onclick=e=>{if(!ownerAccess)return;const edit=e.target.closest('[data-edit]');if(edit)openEditor(edit.dataset.edit)};
   $('#game-grid').onkeydown=e=>{if(!ownerAccess||!['Enter',' '].includes(e.key))return;const edit=e.target.closest('.card-main[data-edit]');if(edit){e.preventDefault();openEditor(edit.dataset.edit)}};
   $('#game-grid').onchange=e=>{const consoleSelect=e.target.closest('[data-console]');if(consoleSelect){setQuickConsole(consoleSelect.dataset.console,consoleSelect.value);return}const statusSelect=e.target.closest('[data-status]');if(statusSelect)setQuickStatus(statusSelect.dataset.status,statusSelect.value)};
+  const activeFilters=()=>['platform-filter','console-filter','status-filter','priority-filter'].filter(id=>$('#'+id).value).length;
+  const updateFiltersToggle=()=>{const n=activeFilters();$('#filters-toggle').textContent=n?`Filtros (${n})`:'Filtros';};
+  $('#filters-toggle').onclick=()=>{const open=$('.controls').classList.toggle('filters-open');$('#filters-toggle').setAttribute('aria-expanded',String(open));};
+  const toResults=()=>{updateFiltersToggle();const top=$('.list-heading').getBoundingClientRect().top+window.scrollY-$('.controls').offsetHeight-8;if(window.scrollY>top)window.scrollTo({top});};
+  for(const id of ['search','platform-filter','console-filter','status-filter','priority-filter','sort-filter'])$('#'+id).addEventListener(id==='search'?'input':'change',toResults);
   $('#group-toggle').onclick=()=>{try{localStorage.setItem(GROUP_KEY,groupMode()?'separado':'junto')}catch{}render()};
   $('#triage-button').onclick=openTriage;
   $('#close-triage').onclick=()=>{$('#triage-dialog').close();render()};
