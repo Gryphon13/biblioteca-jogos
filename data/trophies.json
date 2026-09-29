@@ -1,0 +1,4332 @@
+{
+ "source": "Exophase (perfil Gryphonn)",
+ "updatedAt": "2026-09-29",
+ "games": {
+  "8115448a-9271-575d-89e4-71342c2893c1": {
+   "title": "Fortnite",
+   "platforms": "PS5",
+   "earned": 0,
+   "total": 46,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 10,
+    "bronze": 32
+   },
+   "lastPlayed": "2026-09-28",
+   "playtime": "1529h 13m",
+   "exophase": "fortnite-psn-3"
+  },
+  "6ab46ddb-ffe4-5fcf-bd0b-52fd08b112bd": {
+   "title": "Onimusha: Way of the Sword",
+   "platforms": "PS5",
+   "earned": 40,
+   "total": 52,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 4,
+    "bronze": 36
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 9,
+    "bronze": 40
+   },
+   "lastPlayed": "2026-09-27",
+   "playtime": "",
+   "exophase": "onimusha-way-of-the-sword-psn"
+  },
+  "c2c1390c-7f42-557a-8683-06b1cc243eb3": {
+   "title": "CONTROL Resonant",
+   "platforms": "PS5",
+   "earned": 5,
+   "total": 50,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 5
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 1,
+    "silver": 16,
+    "bronze": 32
+   },
+   "lastPlayed": "2026-09-24",
+   "playtime": "",
+   "exophase": "control-resonant-psn"
+  },
+  "e648bb92-b074-5e49-a249-e5d1c9f8d4ef": {
+   "title": "Lies of P",
+   "platforms": "PS5",
+   "earned": 16,
+   "total": 54,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 1,
+    "bronze": 15
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 15,
+    "bronze": 35
+   },
+   "lastPlayed": "2026-08-16",
+   "playtime": "21h 52m",
+   "exophase": "lies-of-p-psn-2"
+  },
+  "25215b61-7fce-5402-b49f-47cd0c0be2d7": {
+   "title": "Dead Cells",
+   "platforms": "PS5",
+   "earned": 52,
+   "total": 116,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 2,
+    "bronze": 50
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 1,
+    "silver": 14,
+    "bronze": 100
+   },
+   "lastPlayed": "2026-08-01",
+   "playtime": "39h 34m",
+   "exophase": "dead-cells-psn-3"
+  },
+  "a9e81f44-a17b-5c8e-bc72-cefc03d3ebc4": {
+   "title": "Returnal",
+   "platforms": "PS5",
+   "earned": 20,
+   "total": 38,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 2,
+    "bronze": 18
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 8,
+    "silver": 6,
+    "bronze": 23
+   },
+   "lastPlayed": "2026-07-25",
+   "playtime": "28h 30m",
+   "exophase": "returnal-psn"
+  },
+  "7ceec03b-13f8-5777-b38f-bae9cf46d562": {
+   "title": "Darwin's Paradox",
+   "platforms": "PS5",
+   "earned": 3,
+   "total": 20,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 3
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 8,
+    "silver": 6,
+    "bronze": 5
+   },
+   "lastPlayed": "2026-07-12",
+   "playtime": "53m",
+   "exophase": "darwin-s-paradox-psn"
+  },
+  "464c25d7-c7cc-5911-8b28-050ba0f91c5f": {
+   "title": "Plants vs. Zombies: Replanted",
+   "platforms": "PS5",
+   "earned": 1,
+   "total": 38,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 4,
+    "silver": 10,
+    "bronze": 23
+   },
+   "lastPlayed": "2026-07-11",
+   "playtime": "21m",
+   "exophase": "plants-vs-zombies-replanted-psn"
+  },
+  "93777a35-94c4-5137-be0c-0c6bce30277c": {
+   "title": "SHINOBI: Art of Vengeance",
+   "platforms": "PS5",
+   "earned": 2,
+   "total": 30,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 2
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 10,
+    "bronze": 14
+   },
+   "lastPlayed": "2026-07-05",
+   "playtime": "51m",
+   "exophase": "shinobi-art-of-vengeance-psn-2"
+  },
+  "a8a99003-0072-5a73-94db-b1f2baa70a3f": {
+   "title": "New Joe & Mac: Caveman Ninja",
+   "platforms": "PS5",
+   "earned": 0,
+   "total": 23,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 10,
+    "silver": 3,
+    "bronze": 9
+   },
+   "lastPlayed": "2026-07-05",
+   "playtime": "3m",
+   "exophase": "new-joe-mac-caveman-ninja-psn-2"
+  },
+  "1d81b3c8-b016-5ceb-8f37-4da13d5d9c88": {
+   "title": "Split Fiction",
+   "platforms": "PS5",
+   "earned": 0,
+   "total": 21,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 8,
+    "silver": 5,
+    "bronze": 7
+   },
+   "lastPlayed": "2026-06-28",
+   "playtime": "4h 19m",
+   "exophase": "split-fiction-psn"
+  },
+  "e0946aef-34e8-5af6-922d-a505fb2d103d": {
+   "title": "Streets of Rage 4",
+   "platforms": "PS4",
+   "earned": 11,
+   "total": 46,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 11
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 20,
+    "bronze": 22
+   },
+   "lastPlayed": "2026-06-28",
+   "playtime": "1h 1m",
+   "exophase": "streets-of-rage-4-psn"
+  },
+  "108739bc-48cd-517b-978d-61f6359d244e": {
+   "title": "FINAL FANTASY XVI",
+   "platforms": "PS5",
+   "earned": 2,
+   "total": 69,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 2
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 6,
+    "bronze": 59
+   },
+   "lastPlayed": "2026-06-27",
+   "playtime": "1h 42m",
+   "exophase": "final-fantasy-xvi-psn"
+  },
+  "e508ba41-2ca4-5e60-8adb-48999710d767": {
+   "title": "Mina the Hollower",
+   "platforms": "PS5",
+   "earned": 1,
+   "total": 50,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 6,
+    "bronze": 40
+   },
+   "lastPlayed": "2026-06-21",
+   "playtime": "1h 22m",
+   "exophase": "mina-the-hollower-psn"
+  },
+  "e3102811-8b1a-5be2-af6b-a5f124b77b2c": {
+   "title": "Alan Wake Remastered",
+   "platforms": "PS5",
+   "earned": 3,
+   "total": 68,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 3
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 5,
+    "bronze": 59
+   },
+   "lastPlayed": "2026-06-21",
+   "playtime": "1h 30m",
+   "exophase": "alan-wake-remastered-psn-2"
+  },
+  "a5044945-ad89-5c9b-921e-eb446a2da0d2": {
+   "title": "Hollow Knight",
+   "platforms": "PS4",
+   "earned": 31,
+   "total": 35,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 3,
+    "silver": 10,
+    "bronze": 18
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 11,
+    "bronze": 18
+   },
+   "lastPlayed": "2026-06-14",
+   "playtime": "41h 17m",
+   "exophase": "hollow-knight-psn-2"
+  },
+  "eecd6936-fad9-558e-87d1-6515676b460d": {
+   "title": "Hades II",
+   "platforms": "PS5",
+   "earned": 0,
+   "total": 50,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 11,
+    "bronze": 36
+   },
+   "lastPlayed": "2026-06-13",
+   "playtime": "1m",
+   "exophase": "hades-ii-psn"
+  },
+  "a83db743-791b-5b20-b7eb-89b677057eae": {
+   "title": "007 First Light",
+   "platforms": "PS5",
+   "earned": 23,
+   "total": 38,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 6,
+    "bronze": 16
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 14,
+    "bronze": 20
+   },
+   "lastPlayed": "2026-06-06",
+   "playtime": "18h 16m",
+   "exophase": "007-first-light-psn"
+  },
+  "0e8fdfca-84c0-5cd8-899c-2161cbf04ba7": {
+   "title": "SAROS",
+   "platforms": "PS5",
+   "earned": 36,
+   "total": 54,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 2,
+    "silver": 13,
+    "bronze": 21
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 17,
+    "bronze": 34
+   },
+   "lastPlayed": "2026-05-10",
+   "playtime": "24h 37m",
+   "exophase": "saros-psn"
+  },
+  "71a5c284-9f35-59e5-9240-950c8bb7ccf1": {
+   "title": "Cuphead",
+   "platforms": "PS4",
+   "earned": 8,
+   "total": 43,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 3,
+    "bronze": 5
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 6,
+    "silver": 12,
+    "bronze": 24
+   },
+   "lastPlayed": "2026-04-27",
+   "playtime": "8h 45m",
+   "exophase": "cuphead-psn"
+  },
+  "8ac9ba16-a9b9-5b5c-b33e-64702bbe21d8": {
+   "title": "Kingdom Two Crowns",
+   "platforms": "PS4",
+   "earned": 18,
+   "total": 47,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 10,
+    "bronze": 8
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 23,
+    "bronze": 18
+   },
+   "lastPlayed": "2026-04-26",
+   "playtime": "22h 9m",
+   "exophase": "kingdom-two-crowns-psn-2"
+  },
+  "b4dedb89-cecb-5a5a-b973-aa827381c9b3": {
+   "title": "Darkest Dungeon II",
+   "platforms": "PS5",
+   "earned": 0,
+   "total": 107,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 8,
+    "bronze": 96
+   },
+   "lastPlayed": "2026-04-11",
+   "playtime": "9m",
+   "exophase": "darkest-dungeon-ii-psn-2"
+  },
+  "eaa13c2c-3254-553f-afad-5bb4e2b8c963": {
+   "title": "Dead Space",
+   "platforms": "PS5",
+   "earned": 0,
+   "total": 48,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 10,
+    "bronze": 35
+   },
+   "lastPlayed": "2026-04-04",
+   "playtime": "49m",
+   "exophase": "dead-space-psn"
+  },
+  "6d88e2f3-015f-5cde-9bff-618ffda38737": {
+   "title": "The Messenger",
+   "platforms": "PS5",
+   "earned": 21,
+   "total": 43,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 2,
+    "bronze": 18
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 4,
+    "silver": 9,
+    "bronze": 29
+   },
+   "lastPlayed": "2026-03-15",
+   "playtime": "6h 57m",
+   "exophase": "the-messenger-psn-3"
+  },
+  "bbd5145c-850c-5620-a10f-7640f53956e8": {
+   "title": "Axiom Verge",
+   "platforms": "PS4/PS Vita",
+   "earned": 0,
+   "total": 30,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 8,
+    "silver": 0,
+    "bronze": 21
+   },
+   "lastPlayed": "2026-02-17",
+   "playtime": "13m",
+   "exophase": "axiom-verge-psn"
+  },
+  "62c631b8-43e6-50b8-a2c6-dac7f1757181": {
+   "title": "Axiom Verge",
+   "platforms": "PS4/PS Vita",
+   "earned": 0,
+   "total": 30,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 8,
+    "silver": 0,
+    "bronze": 21
+   },
+   "lastPlayed": "2026-02-17",
+   "playtime": "13m",
+   "exophase": "axiom-verge-psn"
+  },
+  "567e497e-56c2-50ef-8d9a-5f0a541d389e": {
+   "title": "Forza Horizon 5",
+   "platforms": "PS5",
+   "earned": 1,
+   "total": 165,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 2,
+    "bronze": 159
+   },
+   "lastPlayed": "2026-02-17",
+   "playtime": "36m",
+   "exophase": "forza-horizon-5-psn"
+  },
+  "e2127192-1ee7-5149-bf35-21b129d866cf": {
+   "title": "ENDER LILIES: Quietus of the Knights",
+   "platforms": "PS4",
+   "earned": 3,
+   "total": 39,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 3
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 13,
+    "bronze": 22
+   },
+   "lastPlayed": "2026-02-16",
+   "playtime": "43m",
+   "exophase": "ender-lilies-quietus-of-the-knights-psn"
+  },
+  "01c64e4b-f457-5fd6-b4b0-880e7368bcf5": {
+   "title": "SteamWorld Dig 2",
+   "platforms": "PS4",
+   "earned": 1,
+   "total": 35,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 4,
+    "silver": 12,
+    "bronze": 18
+   },
+   "lastPlayed": "2026-02-15",
+   "playtime": "12m",
+   "exophase": "steamworld-dig-2-psn-2"
+  },
+  "ab23f9c2-0328-54f7-b16a-f9a6a43534b2": {
+   "title": "Cairn",
+   "platforms": "PS5",
+   "earned": 7,
+   "total": 53,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 7
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 1,
+    "silver": 8,
+    "bronze": 43
+   },
+   "lastPlayed": "2026-02-02",
+   "playtime": "2h",
+   "exophase": "cairn-psn"
+  },
+  "2efb854c-0ce6-5a88-9465-0948905400c0": {
+   "title": "Anno 1800",
+   "platforms": "PS5",
+   "earned": 1,
+   "total": 31,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 12,
+    "bronze": 13
+   },
+   "lastPlayed": "2026-01-24",
+   "playtime": "10m",
+   "exophase": "anno-1800-psn"
+  },
+  "63d285ad-ced3-5dca-a333-8b2fe8bec05d": {
+   "title": "Songs Of Silence",
+   "platforms": "PS5",
+   "earned": 0,
+   "total": 54,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 1,
+    "silver": 10,
+    "bronze": 42
+   },
+   "lastPlayed": "2026-01-22",
+   "playtime": "22m",
+   "exophase": "songs-of-silence-psn"
+  },
+  "ea8f3c12-c8e5-5d99-8067-368a81ad02e4": {
+   "title": "Bad North",
+   "platforms": "PS4",
+   "earned": 1,
+   "total": 11,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 5,
+    "bronze": 5
+   },
+   "lastPlayed": "2026-01-19",
+   "playtime": "9m",
+   "exophase": "bad-north-psn"
+  },
+  "dc169c6e-95d0-503b-babf-c23044ba374e": {
+   "title": "Blasphemous",
+   "platforms": "PS4",
+   "earned": 1,
+   "total": 46,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 10,
+    "bronze": 32
+   },
+   "lastPlayed": "2026-01-17",
+   "playtime": "1h 50m",
+   "exophase": "blasphemous-psn"
+  },
+  "d64c7f04-c212-5938-ae8d-7f0931d56843": {
+   "title": "Ball X Pit",
+   "platforms": "PS5",
+   "earned": 20,
+   "total": 64,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 20
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 1,
+    "silver": 1,
+    "bronze": 61
+   },
+   "lastPlayed": "2026-01-04",
+   "playtime": "14h 53m",
+   "exophase": "ball-x-pit-psn"
+  },
+  "dd8f7966-922c-5f3d-b8b1-ea93ac77eeff": {
+   "title": "FINAL FANTASY VII REMAKE",
+   "platforms": "PS5",
+   "earned": 20,
+   "total": 63,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 20
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 11,
+    "bronze": 49
+   },
+   "lastPlayed": "2025-12-31",
+   "playtime": "4m",
+   "exophase": "final-fantasy-vii-remake-psn-5"
+  },
+  "204734bf-bb57-5f50-923a-a0076d1fd3a0": {
+   "title": "Baldur's Gate 3",
+   "platforms": "PS5",
+   "earned": 0,
+   "total": 55,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 4,
+    "bronze": 47
+   },
+   "lastPlayed": "2025-12-27",
+   "playtime": "5m",
+   "exophase": "baldur-s-gate-3-psn"
+  },
+  "b16a3175-a470-5d1a-b099-07ee73a28156": {
+   "title": "Hades",
+   "platforms": "PS5",
+   "earned": 50,
+   "total": 50,
+   "earnedByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 7,
+    "bronze": 40
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 7,
+    "bronze": 40
+   },
+   "lastPlayed": "2025-12-25",
+   "playtime": "128h 40m",
+   "exophase": "hades-psn"
+  },
+  "03fc0470-094b-5370-8e76-9371158fda54": {
+   "title": "Poppy Playtime: Chapter 1",
+   "platforms": "PS5",
+   "earned": 0,
+   "total": 6,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 0,
+    "gold": 2,
+    "silver": 3,
+    "bronze": 1
+   },
+   "lastPlayed": "2025-11-01",
+   "playtime": "12m",
+   "exophase": "poppy-playtime-chapter-1-psn"
+  },
+  "ce6b86a3-f746-555f-8c04-8f8251fbc2f8": {
+   "title": "Clair Obscur: Expedition 33",
+   "platforms": "PS5",
+   "earned": 56,
+   "total": 56,
+   "earnedByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 5,
+    "bronze": 48
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 5,
+    "bronze": 48
+   },
+   "lastPlayed": "2025-10-19",
+   "playtime": "85h 10m",
+   "exophase": "clair-obscur-expedition-33-psn"
+  },
+  "b855079d-0d7c-5d54-82b8-dd8c40889edd": {
+   "title": "DEATH STRANDING DIRECTOR'S CUT",
+   "platforms": "PS5",
+   "earned": 63,
+   "total": 63,
+   "earnedByType": {
+    "platinum": 1,
+    "gold": 1,
+    "silver": 3,
+    "bronze": 58
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 1,
+    "silver": 3,
+    "bronze": 58
+   },
+   "lastPlayed": "2025-09-06",
+   "playtime": "160h 57m",
+   "exophase": "death-stranding-director-s-cut-psn"
+  },
+  "7d18a045-e511-576d-a1b2-72b6813917c9": {
+   "title": "METAL GEAR SOLID Δ: SNAKE EATER",
+   "platforms": "PS5",
+   "earned": 1,
+   "total": 46,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 4,
+    "silver": 5,
+    "bronze": 36
+   },
+   "lastPlayed": "2025-08-30",
+   "playtime": "13m",
+   "exophase": "metal-gear-solid-d-snake-eater-psn"
+  },
+  "9aead30f-39e0-5f8f-9297-c2443e2e4d29": {
+   "title": "Balatro",
+   "platforms": "PS5",
+   "earned": 2,
+   "total": 32,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 2
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 6,
+    "silver": 7,
+    "bronze": 18
+   },
+   "lastPlayed": "2025-06-29",
+   "playtime": "3h 48m",
+   "exophase": "balatro-psn"
+  },
+  "06f9e8ea-6788-519a-8eab-94cedabf2163": {
+   "title": "DAVE THE DIVER",
+   "platforms": "PS5",
+   "earned": 1,
+   "total": 44,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 15,
+    "bronze": 26
+   },
+   "lastPlayed": "2025-06-22",
+   "playtime": "39m",
+   "exophase": "dave-the-diver-psn"
+  },
+  "acc29378-982c-5ee3-8d39-28041e90372b": {
+   "title": "FATAL FURY City of the Wolves",
+   "platforms": "PS5",
+   "earned": 7,
+   "total": 42,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 2,
+    "bronze": 5
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 14,
+    "bronze": 22
+   },
+   "lastPlayed": "2025-06-15",
+   "playtime": "1h 45m",
+   "exophase": "fatal-fury-city-of-the-wolves-psn"
+  },
+  "db55ff93-4d30-5b72-b5ec-6c6a1162d9de": {
+   "title": "DOOM",
+   "platforms": "PS4",
+   "earned": 1,
+   "total": 55,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 27,
+    "bronze": 22
+   },
+   "lastPlayed": "2025-06-04",
+   "playtime": "1h 3m",
+   "exophase": "doom-ps4"
+  },
+  "9fb210cb-60c9-5751-9ac6-c94124923b3e": {
+   "title": "Persona 5 Royal",
+   "platforms": "PS5",
+   "earned": 10,
+   "total": 53,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 10
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 1,
+    "silver": 7,
+    "bronze": 44
+   },
+   "lastPlayed": "2025-06-01",
+   "playtime": "13h",
+   "exophase": "persona-5-royal-psn-3"
+  },
+  "ff855ec0-9bc0-5fe2-9cbd-d110abdaf518": {
+   "title": "The Plucky Squire",
+   "platforms": "PS5",
+   "earned": 3,
+   "total": 21,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 3
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 8,
+    "silver": 5,
+    "bronze": 7
+   },
+   "lastPlayed": "2025-06-01",
+   "playtime": "22m",
+   "exophase": "the-plucky-squire-psn"
+  },
+  "2aa602d6-83b4-5024-939f-7be74fcbaf77": {
+   "title": "Tactics Ogre: Reborn",
+   "platforms": "PS5",
+   "earned": 0,
+   "total": 34,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 4,
+    "silver": 11,
+    "bronze": 18
+   },
+   "lastPlayed": "2025-05-18",
+   "playtime": "15m",
+   "exophase": "tactics-ogre-reborn-psn-2"
+  },
+  "67edfdec-ae3f-5a7c-986c-ab5179146685": {
+   "title": "The Last of Us Part I",
+   "platforms": "PS5",
+   "earned": 2,
+   "total": 29,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 2
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 7,
+    "silver": 7,
+    "bronze": 14
+   },
+   "lastPlayed": "2025-05-18",
+   "playtime": "6h 24m",
+   "exophase": "the-last-of-us-part-i-psn"
+  },
+  "b2035b6b-ba98-5266-9be6-8e89b290d3ee": {
+   "title": "Blue Prince",
+   "platforms": "PS5",
+   "earned": 0,
+   "total": 17,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 8,
+    "silver": 8,
+    "bronze": 0
+   },
+   "lastPlayed": "2025-04-27",
+   "playtime": "25m",
+   "exophase": "blue-prince-psn"
+  },
+  "ffdc9002-c9b9-5749-9eb2-14d1ed4e3970": {
+   "title": "The Last Case of Benedict Fox Definitive Edition",
+   "platforms": "PS5",
+   "earned": 0,
+   "total": 33,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 4,
+    "silver": 16,
+    "bronze": 12
+   },
+   "lastPlayed": "2025-03-21",
+   "playtime": "1m",
+   "exophase": "the-last-case-of-benedict-fox-definitive-edition-psn"
+  },
+  "3db867e1-7708-5a3f-96d6-f58f1b8bdee3": {
+   "title": "Celeste",
+   "platforms": "PS4",
+   "earned": 6,
+   "total": 31,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 2,
+    "bronze": 4
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 4,
+    "silver": 20,
+    "bronze": 6
+   },
+   "lastPlayed": "2025-02-21",
+   "playtime": "2h 24m",
+   "exophase": "celeste-psn"
+  },
+  "061551c7-2de2-50dc-b9fa-7bf925ce2f38": {
+   "title": "ASTRO BOT",
+   "platforms": "PS5",
+   "earned": 19,
+   "total": 63,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 9,
+    "bronze": 10
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 19,
+    "bronze": 41
+   },
+   "lastPlayed": "2025-01-25",
+   "playtime": "26h 18m",
+   "exophase": "astro-bot-psn"
+  },
+  "d99c43d0-e346-5860-8c68-8ab527358393": {
+   "title": "Minecraft",
+   "platforms": "PS5",
+   "earned": 7,
+   "total": 136,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 1,
+    "bronze": 6
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 14,
+    "silver": 36,
+    "bronze": 85
+   },
+   "lastPlayed": "2025-01-22",
+   "playtime": "20h 41m",
+   "exophase": "minecraft-playstation5-edition-psn"
+  },
+  "4be27310-ff90-5a7b-b47a-84f0cfc76e47": {
+   "title": "Nine Sols",
+   "platforms": "PS5",
+   "earned": 31,
+   "total": 36,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 16,
+    "bronze": 15
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 17,
+    "bronze": 15
+   },
+   "lastPlayed": "2025-01-18",
+   "playtime": "46h 22m",
+   "exophase": "nine-sols-psn"
+  },
+  "3e9942c8-5a0f-53e0-b860-0ecc43a5e750": {
+   "title": "The Stanley Parable: Ultra Deluxe",
+   "platforms": "PS5",
+   "earned": 0,
+   "total": 12,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 11,
+    "silver": 0,
+    "bronze": 0
+   },
+   "lastPlayed": "2025-01-13",
+   "playtime": "",
+   "exophase": "the-stanley-parable-ultra-deluxe-psn-2"
+  },
+  "88949e3e-0b58-56a3-bfab-2994cf3dd623": {
+   "title": "Aliens: Dark Descent",
+   "platforms": "PS5",
+   "earned": 1,
+   "total": 46,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 4,
+    "silver": 5,
+    "bronze": 36
+   },
+   "lastPlayed": "2025-01-03",
+   "playtime": "1h 26m",
+   "exophase": "aliens-dark-descent-psn"
+  },
+  "57b7bb28-4395-51f3-9cb2-66da3fd1e015": {
+   "title": "Vampire Survivors",
+   "platforms": "PS5",
+   "earned": 101,
+   "total": 284,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 2,
+    "silver": 17,
+    "bronze": 82
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 15,
+    "silver": 61,
+    "bronze": 207
+   },
+   "lastPlayed": "2024-12-30",
+   "playtime": "19h 31m",
+   "exophase": "vampire-survivors-psn"
+  },
+  "e5f0c29a-fe02-575a-bb43-9ee25eafbe27": {
+   "title": "OKAMI HD",
+   "platforms": "PS4/PS3",
+   "earned": 3,
+   "total": 51,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 3
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 5,
+    "bronze": 42
+   },
+   "lastPlayed": "2024-12-28",
+   "playtime": "52m",
+   "exophase": "okami-hd-ps3"
+  },
+  "70e636df-b6c0-5e49-8511-de06f14bd6a9": {
+   "title": "OKAMI HD",
+   "platforms": "PS4/PS3",
+   "earned": 3,
+   "total": 51,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 3
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 5,
+    "bronze": 42
+   },
+   "lastPlayed": "2024-12-28",
+   "playtime": "52m",
+   "exophase": "okami-hd-ps3"
+  },
+  "f17ccc8a-86c0-55f4-861d-ed080c82c92d": {
+   "title": "Prince of Persia: The Lost Crown",
+   "platforms": "PS5",
+   "earned": 0,
+   "total": 42,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 16,
+    "bronze": 20
+   },
+   "lastPlayed": "2024-12-27",
+   "playtime": "50m",
+   "exophase": "prince-of-persia-the-lost-crown-psn-2"
+  },
+  "52e73ec3-ab74-576a-a4a6-c5a216560ad1": {
+   "title": "Mega Man X Legacy Collection",
+   "platforms": "PS4",
+   "earned": 0,
+   "total": 53,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 1,
+    "silver": 13,
+    "bronze": 38
+   },
+   "lastPlayed": "2024-12-24",
+   "playtime": "11m",
+   "exophase": "mega-man-x-legacy-collection-psn"
+  },
+  "b6948e8d-0580-5271-b00c-190f355ca748": {
+   "title": "Cyberpunk 2077",
+   "platforms": "PS5",
+   "earned": 0,
+   "total": 58,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 1,
+    "silver": 17,
+    "bronze": 39
+   },
+   "lastPlayed": "2024-12-15",
+   "playtime": "3m",
+   "exophase": "cyberpunk-2077-psn-2"
+  },
+  "90def2ab-2d07-574d-9cf7-2f4b14080eee": {
+   "title": "Cult of the Lamb",
+   "platforms": "PS5",
+   "earned": 4,
+   "total": 57,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 4
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 4,
+    "silver": 21,
+    "bronze": 31
+   },
+   "lastPlayed": "2024-12-14",
+   "playtime": "1h 3m",
+   "exophase": "cult-of-the-lamb-psn"
+  },
+  "52ccb329-71a3-5203-a6c9-c4b6ba49848a": {
+   "title": "HOT WHEELS UNLEASHED 2 - Turbocharged",
+   "platforms": "PS5",
+   "earned": 7,
+   "total": 56,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 7
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 8,
+    "bronze": 44
+   },
+   "lastPlayed": "2024-11-21",
+   "playtime": "3h 57m",
+   "exophase": "hot-wheels-unleashed-2-turbocharged-psn"
+  },
+  "473cc5bd-7ef3-5012-98f7-13a26404d633": {
+   "title": "Horizon Zero Dawn Remastered",
+   "platforms": "PS5/PC",
+   "earned": 0,
+   "total": 79,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 11,
+    "bronze": 65
+   },
+   "lastPlayed": "2024-11-19",
+   "playtime": "10m",
+   "exophase": "horizon-zero-dawn-remastered-psn"
+  },
+  "4a052a09-f48e-5b80-a29b-3316245f4edd": {
+   "title": "Ghost of Tsushima",
+   "platforms": "PS5/PC",
+   "earned": 6,
+   "total": 77,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 6
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 4,
+    "silver": 13,
+    "bronze": 59
+   },
+   "lastPlayed": "2024-11-19",
+   "playtime": "8h 27m",
+   "exophase": "ghost-of-tsushima-psn-2"
+  },
+  "3cc401ea-3bc7-589e-8ec6-4c1700dd5ce3": {
+   "title": "Disco Elysium",
+   "platforms": "PS5",
+   "earned": 0,
+   "total": 46,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 6,
+    "silver": 13,
+    "bronze": 26
+   },
+   "lastPlayed": "2024-11-14",
+   "playtime": "",
+   "exophase": "disco-elysium-psn-2"
+  },
+  "797a3d69-1622-52a6-a829-9cbc2677502f": {
+   "title": "Warhammer 40,000: Space Marine 2",
+   "platforms": "PS5",
+   "earned": 1,
+   "total": 50,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 10,
+    "bronze": 37
+   },
+   "lastPlayed": "2024-10-24",
+   "playtime": "51m",
+   "exophase": "warhammer-40-000-space-marine-2-psn"
+  },
+  "6d747295-e8a5-5598-9b40-bb72be6045e1": {
+   "title": "Dragon's Dogma 2",
+   "platforms": "PS5",
+   "earned": 0,
+   "total": 55,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 6,
+    "bronze": 46
+   },
+   "lastPlayed": "2024-09-29",
+   "playtime": "3m",
+   "exophase": "dragon-s-dogma-2-psn"
+  },
+  "dba281d8-99f5-549a-9e6d-72d9268620f8": {
+   "title": "Moonscars",
+   "platforms": "PS5",
+   "earned": 0,
+   "total": 34,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 11,
+    "bronze": 17
+   },
+   "lastPlayed": "2024-09-14",
+   "playtime": "",
+   "exophase": "moonscars-psn"
+  },
+  "4c705483-e01b-568c-bca7-cae766c925c8": {
+   "title": "VALORANT",
+   "platforms": "PS5",
+   "earned": 0,
+   "total": 16,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 0,
+    "gold": 6,
+    "silver": 7,
+    "bronze": 3
+   },
+   "lastPlayed": "2024-08-15",
+   "playtime": "",
+   "exophase": "valorant-psn"
+  },
+  "12afe4ce-f690-5213-bb2d-987f71fae25d": {
+   "title": "DREDGE",
+   "platforms": "PS5",
+   "earned": 0,
+   "total": 60,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 4,
+    "silver": 13,
+    "bronze": 42
+   },
+   "lastPlayed": "2024-07-21",
+   "playtime": "3m",
+   "exophase": "dredge-psn-2"
+  },
+  "b3530858-2818-59db-a263-d2527101e2f4": {
+   "title": "Undertale",
+   "platforms": "PS4/PS Vita",
+   "earned": 3,
+   "total": 30,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 3
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 10,
+    "bronze": 14
+   },
+   "lastPlayed": "2024-07-14",
+   "playtime": "25m",
+   "exophase": "undertale-psn"
+  },
+  "02680fd7-1777-5883-8a3f-723d1303d04e": {
+   "title": "Undertale",
+   "platforms": "PS4/PS Vita",
+   "earned": 3,
+   "total": 30,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 3
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 10,
+    "bronze": 14
+   },
+   "lastPlayed": "2024-07-14",
+   "playtime": "25m",
+   "exophase": "undertale-psn"
+  },
+  "aa5dd314-8dbc-5930-b3a7-2189d61ba75a": {
+   "title": "Among Us",
+   "platforms": "PS5",
+   "earned": 6,
+   "total": 34,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 3,
+    "bronze": 2
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 6,
+    "silver": 15,
+    "bronze": 12
+   },
+   "lastPlayed": "2024-07-07",
+   "playtime": "1h 18m",
+   "exophase": "among-us-psn-2"
+  },
+  "828bee19-a67d-53fa-99c3-d36d1e526d93": {
+   "title": "Surviving Mars",
+   "platforms": "PS4",
+   "earned": 0,
+   "total": 81,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 17,
+    "bronze": 61
+   },
+   "lastPlayed": "2024-06-09",
+   "playtime": "14m",
+   "exophase": "surviving-mars-psn"
+  },
+  "02fd8a23-a277-544b-a003-6f6a814513f8": {
+   "title": "DRAGON BALL FighterZ",
+   "platforms": "PS4",
+   "earned": 6,
+   "total": 36,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 1,
+    "bronze": 5
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 10,
+    "bronze": 20
+   },
+   "lastPlayed": "2024-03-24",
+   "playtime": "9h 39m",
+   "exophase": "dragon-ball-fighterz-psn"
+  },
+  "cd0f5a71-6e26-5d33-9110-ab314dee0888": {
+   "title": "Marvel's Spider-Man 2",
+   "platforms": "PS5/PC",
+   "earned": 0,
+   "total": 43,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 18,
+    "bronze": 22
+   },
+   "lastPlayed": "2024-01-06",
+   "playtime": "",
+   "exophase": "marvel-s-spider-man-2-psn"
+  },
+  "a1b2989a-e8c7-533a-9ccd-cedfa92c30c7": {
+   "title": "Mortal Kombat 1",
+   "platforms": "PS5",
+   "earned": 0,
+   "total": 51,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 1,
+    "silver": 15,
+    "bronze": 34
+   },
+   "lastPlayed": "2024-01-06",
+   "playtime": "4m",
+   "exophase": "mortal-kombat-1-psn"
+  },
+  "b9c1cc9a-43c2-5804-a08a-3b24eb069bb2": {
+   "title": "Diablo IV",
+   "platforms": "PS5",
+   "earned": 16,
+   "total": 46,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 3,
+    "silver": 6,
+    "bronze": 7
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 6,
+    "silver": 18,
+    "bronze": 21
+   },
+   "lastPlayed": "2023-12-02",
+   "playtime": "157h 56m",
+   "exophase": "diablo-iv-psn"
+  },
+  "263d96be-7fa9-527f-97a4-df58c209dc64": {
+   "title": "Inscryption",
+   "platforms": "PS5",
+   "earned": 17,
+   "total": 41,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 2,
+    "bronze": 15
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 12,
+    "bronze": 25
+   },
+   "lastPlayed": "2023-11-23",
+   "playtime": "12h 24m",
+   "exophase": "inscryption-psn-2"
+  },
+  "f2f097c5-4616-58c7-bbdf-829879d70aa8": {
+   "title": "Remnant II",
+   "platforms": "PS5",
+   "earned": 26,
+   "total": 66,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 6,
+    "bronze": 20
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 4,
+    "silver": 24,
+    "bronze": 37
+   },
+   "lastPlayed": "2023-11-05",
+   "playtime": "34h 3m",
+   "exophase": "remnant-2-psn"
+  },
+  "b8c98f03-f50d-53a0-8740-cc6261826718": {
+   "title": "Marvel's Spider-Man: Miles Morales",
+   "platforms": "PS5",
+   "earned": 1,
+   "total": 50,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 10,
+    "bronze": 37
+   },
+   "lastPlayed": "2023-11-02",
+   "playtime": "39m",
+   "exophase": "marvels-spider-man-miles-morales-psn"
+  },
+  "738e683c-449e-5747-a630-f8af1d37e436": {
+   "title": "Armored Core VI: Fires of Rubicon",
+   "platforms": "PS5",
+   "earned": 10,
+   "total": 30,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 2,
+    "bronze": 8
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 10,
+    "bronze": 14
+   },
+   "lastPlayed": "2023-09-24",
+   "playtime": "15h 30m",
+   "exophase": "armored-core-vi-fires-of-rubicon-psn"
+  },
+  "eab943a5-fe6d-50f9-8f71-c3cb92687f51": {
+   "title": "Gris",
+   "platforms": "PS5",
+   "earned": 4,
+   "total": 18,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 4
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 9,
+    "silver": 4,
+    "bronze": 4
+   },
+   "lastPlayed": "2023-07-09",
+   "playtime": "2h 4m",
+   "exophase": "gris-psn-2"
+  },
+  "010724be-9b53-560f-975a-8f1f10643c36": {
+   "title": "Street Fighter 6",
+   "platforms": "PS5",
+   "earned": 5,
+   "total": 44,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 5
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 8,
+    "silver": 9,
+    "bronze": 26
+   },
+   "lastPlayed": "2023-06-03",
+   "playtime": "48m",
+   "exophase": "street-fighter-6-psn"
+  },
+  "b0930206-f265-55ed-a783-204cac1ea10e": {
+   "title": "DARK SOULS III",
+   "platforms": "PS4",
+   "earned": 3,
+   "total": 43,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 3
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 13,
+    "bronze": 26
+   },
+   "lastPlayed": "2023-06-01",
+   "playtime": "2h 22m",
+   "exophase": "dark-souls-iii-ps4"
+  },
+  "6b357f6f-5aa9-5bbe-a578-018386b961a2": {
+   "title": "Thymesia",
+   "platforms": "PS5",
+   "earned": 0,
+   "total": 38,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 23,
+    "bronze": 12
+   },
+   "lastPlayed": "2023-05-24",
+   "playtime": "6m",
+   "exophase": "thymesia-psn"
+  },
+  "eafb2364-41e5-5a6c-a22f-deac9f5f6eaf": {
+   "title": "Mortal Shell",
+   "platforms": "PS5",
+   "earned": 1,
+   "total": 38,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 6,
+    "silver": 11,
+    "bronze": 20
+   },
+   "lastPlayed": "2023-05-23",
+   "playtime": "34m",
+   "exophase": "mortal-shell-psn-4"
+  },
+  "54d9e69d-1c8d-5be7-b8fe-9abb24ea78e4": {
+   "title": "Dead Island 2",
+   "platforms": "PS5",
+   "earned": 7,
+   "total": 60,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 7
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 15,
+    "bronze": 39
+   },
+   "lastPlayed": "2023-05-08",
+   "playtime": "7h 56m",
+   "exophase": "dead-island-2-psn"
+  },
+  "f022de29-c2f4-5543-bc33-7fbc22387dff": {
+   "title": "Overwatch",
+   "platforms": "PS5",
+   "earned": 0,
+   "total": 92,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 1,
+    "silver": 5,
+    "bronze": 85
+   },
+   "lastPlayed": "2023-05-06",
+   "playtime": "19m",
+   "exophase": "overwatch-2-psn"
+  },
+  "02038787-873d-5c47-8166-091514a59f32": {
+   "title": "Resident Evil 4",
+   "platforms": "PS5/PS VR2",
+   "earned": 18,
+   "total": 47,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 2,
+    "bronze": 15
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 11,
+    "bronze": 30
+   },
+   "lastPlayed": "2023-04-24",
+   "playtime": "34h 31m",
+   "exophase": "resident-evil-4-psn"
+  },
+  "18c4886e-b9d7-5b3d-b0e6-f425f6e43407": {
+   "title": "Biped",
+   "platforms": "PS4",
+   "earned": 2,
+   "total": 15,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 2
+   },
+   "totalByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 1,
+    "bronze": 13
+   },
+   "lastPlayed": "2023-03-14",
+   "playtime": "38m",
+   "exophase": "biped-psn-2"
+  },
+  "d0713f80-b98c-5574-84f2-b2d09bac2214": {
+   "title": "Metal: Hellsinger",
+   "platforms": "PS5",
+   "earned": 2,
+   "total": 29,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 1,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 6,
+    "silver": 11,
+    "bronze": 11
+   },
+   "lastPlayed": "2023-02-16",
+   "playtime": "24m",
+   "exophase": "metal-hellsinger-psn"
+  },
+  "0b645887-57aa-57eb-a5ca-0e45fe425b05": {
+   "title": "Alex Kidd in Miracle World DX",
+   "platforms": "PS5",
+   "earned": 0,
+   "total": 17,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 9,
+    "silver": 5,
+    "bronze": 2
+   },
+   "lastPlayed": "2023-02-12",
+   "playtime": "11m",
+   "exophase": "alex-kidd-in-miracle-world-dx-psn"
+  },
+  "d27b754b-a61f-5a93-8616-8d09d5dccf37": {
+   "title": "Sparkle Unleashed",
+   "platforms": "PS4/PS3/PS Vita",
+   "earned": 4,
+   "total": 12,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 4
+   },
+   "totalByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 4,
+    "bronze": 7
+   },
+   "lastPlayed": "2023-01-13",
+   "playtime": "3h 28m",
+   "exophase": "sparkle-unleashed-psn"
+  },
+  "b7b51cb6-2483-5be0-a2d0-4dc59a21feaa": {
+   "title": "Sparkle Unleashed",
+   "platforms": "PS4/PS3/PS Vita",
+   "earned": 4,
+   "total": 12,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 4
+   },
+   "totalByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 4,
+    "bronze": 7
+   },
+   "lastPlayed": "2023-01-13",
+   "playtime": "3h 28m",
+   "exophase": "sparkle-unleashed-psn"
+  },
+  "966b7ed9-cde7-5431-9516-86ffb8ca7eed": {
+   "title": "Sparkle Unleashed",
+   "platforms": "PS4/PS3/PS Vita",
+   "earned": 4,
+   "total": 12,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 4
+   },
+   "totalByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 4,
+    "bronze": 7
+   },
+   "lastPlayed": "2023-01-13",
+   "playtime": "3h 28m",
+   "exophase": "sparkle-unleashed-psn"
+  },
+  "f5dde53b-85e2-5aa5-a83f-9c3baf75e756": {
+   "title": "SONIC FRONTIERS",
+   "platforms": "PS5",
+   "earned": 1,
+   "total": 41,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 1,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 15,
+    "bronze": 23
+   },
+   "lastPlayed": "2023-01-13",
+   "playtime": "18m",
+   "exophase": "sonic-frontiers-psn"
+  },
+  "685f605d-d90a-5483-b57d-d06fd196821d": {
+   "title": "God of War Ragnarök",
+   "platforms": "PS5/PC",
+   "earned": 11,
+   "total": 48,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 2,
+    "bronze": 9
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 4,
+    "silver": 16,
+    "bronze": 27
+   },
+   "lastPlayed": "2023-01-09",
+   "playtime": "33h 30m",
+   "exophase": "god-of-war-ragnarok-psn"
+  },
+  "8d018ca6-ad66-5364-99ee-8482e88acc3b": {
+   "title": "Castlevania Anniversary Collection",
+   "platforms": "PS4",
+   "earned": 0,
+   "total": 14,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 1,
+    "bronze": 12
+   },
+   "lastPlayed": "2022-12-07",
+   "playtime": "",
+   "exophase": "castlevania-anniversary-collection-psn"
+  },
+  "05874fdd-3952-5b04-8ec0-1779488da438": {
+   "title": "Fall Guys: Ultimate Knockout",
+   "platforms": "PS4",
+   "earned": 17,
+   "total": 35,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 3,
+    "bronze": 14
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 8,
+    "bronze": 21
+   },
+   "lastPlayed": "2022-08-28",
+   "playtime": "4h",
+   "exophase": "fall-guys-psn-3"
+  },
+  "6fe18b04-0b39-548a-9c75-1d43df8afe34": {
+   "title": "Stray",
+   "platforms": "PS5",
+   "earned": 4,
+   "total": 25,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 1,
+    "bronze": 3
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 7,
+    "silver": 9,
+    "bronze": 8
+   },
+   "lastPlayed": "2022-08-14",
+   "playtime": "1h 2m",
+   "exophase": "stray-psn"
+  },
+  "0e253e64-df90-53c8-b7ad-02800d8bdb31": {
+   "title": "Salt and Sanctuary",
+   "platforms": "PS4",
+   "earned": 29,
+   "total": 38,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 2,
+    "silver": 13,
+    "bronze": 14
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 4,
+    "silver": 13,
+    "bronze": 20
+   },
+   "lastPlayed": "2022-08-13",
+   "playtime": "26h 16m",
+   "exophase": "salt-and-sanctuary-ps4"
+  },
+  "e9446bc6-7be7-5d9c-ab28-ed63f3ad163c": {
+   "title": "GAROU: MARK OF THE WOLVES",
+   "platforms": "PS4/PS Vita",
+   "earned": 0,
+   "total": 19,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 2,
+    "bronze": 17
+   },
+   "lastPlayed": "2022-08-13",
+   "playtime": "7m",
+   "exophase": "garou-mark-of-the-wolves-psn"
+  },
+  "12d5708c-6114-51e2-9af6-dcb72a127c99": {
+   "title": "GAROU: MARK OF THE WOLVES",
+   "platforms": "PS4/PS Vita",
+   "earned": 0,
+   "total": 19,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 2,
+    "bronze": 17
+   },
+   "lastPlayed": "2022-08-13",
+   "playtime": "7m",
+   "exophase": "garou-mark-of-the-wolves-psn"
+  },
+  "2c8d6cff-62d8-5e45-961a-a9bb1beae97d": {
+   "title": "Gang Beasts",
+   "platforms": "PS4",
+   "earned": 14,
+   "total": 19,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 14
+   },
+   "totalByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 19
+   },
+   "lastPlayed": "2022-06-11",
+   "playtime": "30h 11m",
+   "exophase": "gang-beasts-psn"
+  },
+  "293025ca-2159-5aa9-b51d-4791e4166a36": {
+   "title": "Demon's Souls",
+   "platforms": "PS5",
+   "earned": 21,
+   "total": 37,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 2,
+    "bronze": 19
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 9,
+    "bronze": 22
+   },
+   "lastPlayed": "2022-05-31",
+   "playtime": "63h 13m",
+   "exophase": "demons-souls-psn"
+  },
+  "5537f2f7-0db6-503e-b4c3-5494a5a00136": {
+   "title": "ELDEN RING",
+   "platforms": "PS5",
+   "earned": 42,
+   "total": 42,
+   "earnedByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 14,
+    "bronze": 24
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 14,
+    "bronze": 24
+   },
+   "lastPlayed": "2022-05-20",
+   "playtime": "195h 11m",
+   "exophase": "elden-ring-psn"
+  },
+  "7427a938-3ac3-5fe6-943a-beb21b716930": {
+   "title": "It Takes Two",
+   "platforms": "PS5",
+   "earned": 16,
+   "total": 21,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 8,
+    "silver": 0,
+    "bronze": 8
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 10,
+    "silver": 0,
+    "bronze": 10
+   },
+   "lastPlayed": "2021-12-28",
+   "playtime": "28h 49m",
+   "exophase": "it-takes-two-psn-2"
+  },
+  "c62b0e47-88ff-557d-a60d-88b154d91329": {
+   "title": "Deathloop",
+   "platforms": "PS5",
+   "earned": 1,
+   "total": 59,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 1,
+    "silver": 11,
+    "bronze": 46
+   },
+   "lastPlayed": "2021-10-17",
+   "playtime": "1h 3m",
+   "exophase": "deathloop-psn"
+  },
+  "7fb128a3-3c2a-59dc-8357-83d54aa51a38": {
+   "title": "Plants vs. Zombies: Battle for Neighborville",
+   "platforms": "PS4",
+   "earned": 0,
+   "total": 51,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 1,
+    "silver": 11,
+    "bronze": 38
+   },
+   "lastPlayed": "2021-09-05",
+   "playtime": "",
+   "exophase": "plants-vs-zombies-battle-for-neighborville-psn"
+  },
+  "cb0fbacd-f438-569c-b1fa-53de28c67acc": {
+   "title": "Metro Exodus",
+   "platforms": "PS5",
+   "earned": 6,
+   "total": 69,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 6
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 6,
+    "bronze": 57
+   },
+   "lastPlayed": "2021-08-22",
+   "playtime": "4h 49m",
+   "exophase": "metro-exodus-psn-2"
+  },
+  "08578b37-4a68-5342-8281-a573d6616c4b": {
+   "title": "Sackboy: A Big Adventure",
+   "platforms": "PS5",
+   "earned": 8,
+   "total": 46,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 1,
+    "bronze": 7
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 10,
+    "bronze": 32
+   },
+   "lastPlayed": "2021-05-12",
+   "playtime": "4h 10m",
+   "exophase": "sackboy-a-big-adventure-psn-3"
+  },
+  "fa7cd804-1c9f-5681-9bde-2ed146ce5e8c": {
+   "title": "ASTRO's PLAYROOM",
+   "platforms": "PS5",
+   "earned": 20,
+   "total": 51,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 2,
+    "silver": 6,
+    "bronze": 12
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 14,
+    "bronze": 31
+   },
+   "lastPlayed": "2021-04-01",
+   "playtime": "12h 15m",
+   "exophase": "astros-playroom-psn"
+  },
+  "da4344e7-32c7-5ac4-be98-f6a937e28df6": {
+   "title": "Overcooked",
+   "platforms": "PS4",
+   "earned": 3,
+   "total": 11,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 3
+   },
+   "totalByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 3,
+    "bronze": 7
+   },
+   "lastPlayed": "2020-12-31",
+   "playtime": "37m",
+   "exophase": "overcooked-ps4"
+  },
+  "0324fb5a-bf57-505a-828b-2851c463d973": {
+   "title": "Little Nightmares",
+   "platforms": "PS4",
+   "earned": 0,
+   "total": 22,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 0,
+    "gold": 4,
+    "silver": 5,
+    "bronze": 13
+   },
+   "lastPlayed": "2020-11-21",
+   "playtime": "21m",
+   "exophase": "little-nightmares-psn"
+  },
+  "e442bf9a-2d2e-5a1a-bc9b-1fa3878eeec6": {
+   "title": "Marvel's Spider-Man",
+   "platforms": "PS4",
+   "earned": 52,
+   "total": 74,
+   "earnedByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 10,
+    "bronze": 39
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 14,
+    "bronze": 54
+   },
+   "lastPlayed": "2020-05-17",
+   "playtime": "40h 52m",
+   "exophase": "marvels-spider-man-psn"
+  },
+  "30f402f6-17f2-5e9a-bc98-c95d6f6ca65a": {
+   "title": "Control",
+   "platforms": "PS4",
+   "earned": 54,
+   "total": 68,
+   "earnedByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 12,
+    "bronze": 38
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 14,
+    "bronze": 50
+   },
+   "lastPlayed": "2020-04-20",
+   "playtime": "48h 7m",
+   "exophase": "control-psn"
+  },
+  "42ecda22-26c4-5ef6-8c99-0dd81e2e35ab": {
+   "title": "DRAGON BALL Z: KAKAROT",
+   "platforms": "PS4",
+   "earned": 1,
+   "total": 42,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 4,
+    "silver": 9,
+    "bronze": 28
+   },
+   "lastPlayed": "2020-02-07",
+   "playtime": "27m",
+   "exophase": "dragon-ball-z-kakarot-psn"
+  },
+  "57d88c2c-75b8-5866-9bc7-1aa56d2529a7": {
+   "title": "The Witcher 3: Wild Hunt – Complete Edition",
+   "platforms": "PS4",
+   "earned": 4,
+   "total": 79,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 1,
+    "bronze": 3
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 8,
+    "bronze": 68
+   },
+   "lastPlayed": "2020-01-12",
+   "playtime": "16h 5m",
+   "exophase": "the-witcher-3-wild-hunt-complete-edition-ps4"
+  },
+  "52c972db-c9da-570b-a394-d3389e0f90a2": {
+   "title": "STAR WARS Jedi: Fallen Order",
+   "platforms": "PS4",
+   "earned": 2,
+   "total": 40,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 2
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 11,
+    "bronze": 25
+   },
+   "lastPlayed": "2019-12-22",
+   "playtime": "3h 50m",
+   "exophase": "star-wars-jedi-fallen-order-psn"
+  },
+  "b4c5c681-bbd5-5e05-90c4-87f5fd2beceb": {
+   "title": "Bloodstained: Ritual of the Night",
+   "platforms": "PS4",
+   "earned": 4,
+   "total": 57,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 4
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 12,
+    "bronze": 41
+   },
+   "lastPlayed": "2019-09-09",
+   "playtime": "2h 24m",
+   "exophase": "bloodstained-ritual-of-the-night-psn"
+  },
+  "9e9c19ec-dbc5-5ebe-aa6f-01f9a544f6de": {
+   "title": "Another World",
+   "platforms": "PS4/PS3/PS Vita",
+   "earned": 13,
+   "total": 13,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 3,
+    "bronze": 9
+   },
+   "totalByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 3,
+    "bronze": 9
+   },
+   "lastPlayed": "2019-07-13",
+   "playtime": "1h 15m",
+   "exophase": "another-world-psn"
+  },
+  "42839a79-4dfb-5209-a881-1107cf307b74": {
+   "title": "Another World",
+   "platforms": "PS4/PS3/PS Vita",
+   "earned": 13,
+   "total": 13,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 3,
+    "bronze": 9
+   },
+   "totalByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 3,
+    "bronze": 9
+   },
+   "lastPlayed": "2019-07-13",
+   "playtime": "1h 15m",
+   "exophase": "another-world-psn"
+  },
+  "f835a751-1b9b-531f-92b8-6657c4c92042": {
+   "title": "Another World",
+   "platforms": "PS4/PS3/PS Vita",
+   "earned": 13,
+   "total": 13,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 3,
+    "bronze": 9
+   },
+   "totalByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 3,
+    "bronze": 9
+   },
+   "lastPlayed": "2019-07-13",
+   "playtime": "1h 15m",
+   "exophase": "another-world-psn"
+  },
+  "a43161be-2fe4-513c-8d65-ce5a699034e4": {
+   "title": "Horizon Zero Dawn",
+   "platforms": "PS4",
+   "earned": 10,
+   "total": 79,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 10
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 11,
+    "bronze": 65
+   },
+   "lastPlayed": "2019-06-22",
+   "playtime": "13h 3m",
+   "exophase": "horizon-zero-dawn-ps4"
+  },
+  "3de1f4fa-70b3-5d25-9d23-b8460cd28039": {
+   "title": "inFAMOUS 2",
+   "platforms": "PS3",
+   "earned": 23,
+   "total": 52,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 3,
+    "bronze": 20
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 9,
+    "bronze": 40
+   },
+   "lastPlayed": "2019-06-03",
+   "playtime": "",
+   "exophase": "infamous-2"
+  },
+  "6c4bdcd4-19d3-5d09-a461-bcdd89006ced": {
+   "title": "Sekiro: Shadows Die Twice",
+   "platforms": "PS4",
+   "earned": 34,
+   "total": 34,
+   "earnedByType": {
+    "platinum": 1,
+    "gold": 4,
+    "silver": 11,
+    "bronze": 18
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 4,
+    "silver": 11,
+    "bronze": 18
+   },
+   "lastPlayed": "2019-05-18",
+   "playtime": "128h 24m",
+   "exophase": "sekiro-shadows-die-twice-psn"
+  },
+  "ccb385b3-1fd9-534a-8486-2828425179a3": {
+   "title": "Call of Duty: Modern Warfare Remastered",
+   "platforms": "PS4",
+   "earned": 3,
+   "total": 51,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 3
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 1,
+    "silver": 15,
+    "bronze": 34
+   },
+   "lastPlayed": "2019-03-08",
+   "playtime": "35m",
+   "exophase": "call-of-duty-modern-warfare-remastered-ps4"
+  },
+  "ac2837a0-5d74-510a-a3e9-14b30dda5f78": {
+   "title": "Resident Evil 2",
+   "platforms": "PS4",
+   "earned": 13,
+   "total": 45,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 13
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 4,
+    "silver": 10,
+    "bronze": 30
+   },
+   "lastPlayed": "2019-02-13",
+   "playtime": "5h 6m",
+   "exophase": "resident-evil-2-psn"
+  },
+  "84aaa292-ad70-5926-9af5-66bc553a0bed": {
+   "title": "Batman: Return to Arkham - Arkham City",
+   "platforms": "PS4",
+   "earned": 1,
+   "total": 71,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 1,
+    "silver": 21,
+    "bronze": 48
+   },
+   "lastPlayed": "2019-01-30",
+   "playtime": "42m",
+   "exophase": "batman-return-to-arkham-arkham-city-ps4"
+  },
+  "d3e6cf77-6275-591f-b8ea-ce552ecd5bc2": {
+   "title": "Resident Evil",
+   "platforms": "PS4/PS3",
+   "earned": 0,
+   "total": 45,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 1,
+    "silver": 15,
+    "bronze": 28
+   },
+   "lastPlayed": "2019-01-30",
+   "playtime": "28m",
+   "exophase": "resident-evil-psn"
+  },
+  "28fe7f7f-b747-566a-b610-bacb86692763": {
+   "title": "Resident Evil",
+   "platforms": "PS4/PS3",
+   "earned": 0,
+   "total": 45,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 1,
+    "silver": 15,
+    "bronze": 28
+   },
+   "lastPlayed": "2019-01-30",
+   "playtime": "28m",
+   "exophase": "resident-evil-psn"
+  },
+  "4f6da480-2def-51f8-a740-53d94db69f22": {
+   "title": "Red Dead Redemption 2",
+   "platforms": "PS4",
+   "earned": 12,
+   "total": 52,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 12
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 4,
+    "bronze": 44
+   },
+   "lastPlayed": "2018-12-08",
+   "playtime": "75h 5m",
+   "exophase": "red-dead-redemption-2-psn"
+  },
+  "875d6034-1be3-57f7-9c47-0f0bc09e64b9": {
+   "title": "Castlevania Requiem: Symphony Of The Night & Rondo Of Blood",
+   "platforms": "PS4",
+   "earned": 1,
+   "total": 44,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 12,
+    "bronze": 28
+   },
+   "lastPlayed": "2018-10-27",
+   "playtime": "16m",
+   "exophase": "castlevania-requiem-symphony-of-the-night-rondo-of-blood-psn"
+  },
+  "a89f0649-6404-55a1-9655-5d6239e0826d": {
+   "title": "DARK SOULS: REMASTERED",
+   "platforms": "PS4",
+   "earned": 25,
+   "total": 41,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 14,
+    "bronze": 10
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 20,
+    "bronze": 18
+   },
+   "lastPlayed": "2018-10-25",
+   "playtime": "54h 22m",
+   "exophase": "dark-souls-remastered-psn"
+  },
+  "04e955b1-9364-5c66-8b75-806b3f25f1bc": {
+   "title": "NieR:Automata",
+   "platforms": "PS4",
+   "earned": 4,
+   "total": 48,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 4
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 13,
+    "bronze": 32
+   },
+   "lastPlayed": "2018-10-15",
+   "playtime": "2h 21m",
+   "exophase": "nierautomata-ps4"
+  },
+  "b3fd0e37-3f2b-59e4-98c2-b8697772bdfe": {
+   "title": "Shadow of the Colossus",
+   "platforms": "PS4",
+   "earned": 12,
+   "total": 38,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 12
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 7,
+    "bronze": 25
+   },
+   "lastPlayed": "2018-06-20",
+   "playtime": "4h 57m",
+   "exophase": "shadow-of-the-colossus-psn"
+  },
+  "50b95e52-86c6-5ed6-9d7f-c62982d5da37": {
+   "title": "God of War",
+   "platforms": "PS4",
+   "earned": 37,
+   "total": 37,
+   "earnedByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 9,
+    "bronze": 22
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 9,
+    "bronze": 22
+   },
+   "lastPlayed": "2018-06-19",
+   "playtime": "79h 58m",
+   "exophase": "god-of-war-psn"
+  },
+  "356e9c63-11f0-5f30-b58a-d353d4b2219b": {
+   "title": "Monster Hunter: World",
+   "platforms": "PS4",
+   "earned": 6,
+   "total": 50,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 6
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 11,
+    "bronze": 36
+   },
+   "lastPlayed": "2018-02-18",
+   "playtime": "12h 23m",
+   "exophase": "monster-hunter-world-psn"
+  },
+  "eede15c4-7840-5932-a9be-931aa7b45743": {
+   "title": "STREET FIGHTER V",
+   "platforms": "PS4",
+   "earned": 4,
+   "total": 45,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 4
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 4,
+    "silver": 5,
+    "bronze": 35
+   },
+   "lastPlayed": "2018-01-28",
+   "playtime": "4h 15m",
+   "exophase": "street-fighter-v-ps4"
+  },
+  "d2181b1d-d97b-5e4e-b5cf-98a4549e738a": {
+   "title": "Bloodborne",
+   "platforms": "PS4",
+   "earned": 0,
+   "total": 40,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 7,
+    "silver": 8,
+    "bronze": 24
+   },
+   "lastPlayed": "2018-01-23",
+   "playtime": "5h 6m",
+   "exophase": "bloodborne-ps4"
+  },
+  "da4be3f5-9484-523d-8f9a-579dfd94a29a": {
+   "title": "Destiny 2",
+   "platforms": "PS4",
+   "earned": 12,
+   "total": 24,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 10,
+    "silver": 2,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 11,
+    "silver": 4,
+    "bronze": 8
+   },
+   "lastPlayed": "2017-11-18",
+   "playtime": "157h 39m",
+   "exophase": "destiny-2-psn"
+  },
+  "fffdff68-ceaf-5604-b5ec-03dc11224ce2": {
+   "title": "FINAL FANTASY Ⅻ THE ZODIAC AGE",
+   "platforms": "PS4",
+   "earned": 0,
+   "total": 41,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 4,
+    "silver": 10,
+    "bronze": 26
+   },
+   "lastPlayed": "2017-09-29",
+   "playtime": "",
+   "exophase": "final-fantasy-%e2%85%ab-the-zodiac-age-ps4"
+  },
+  "84ebf32c-5154-5ae6-91d6-3e19c3037d22": {
+   "title": "Mortal Kombat X",
+   "platforms": "PS4",
+   "earned": 11,
+   "total": 74,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 11
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 1,
+    "silver": 5,
+    "bronze": 67
+   },
+   "lastPlayed": "2017-09-20",
+   "playtime": "8h 55m",
+   "exophase": "mortal-kombat-x-ps4"
+  },
+  "362b188a-92f5-5775-89c7-567b9b15d0f4": {
+   "title": "Middle-earth: Shadow of Mordor - Game of the Year Edition",
+   "platforms": "PS4",
+   "earned": 1,
+   "total": 75,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 1,
+    "silver": 17,
+    "bronze": 56
+   },
+   "lastPlayed": "2017-09-20",
+   "playtime": "31m",
+   "exophase": "middle-earth-shadow-of-mordor-game-of-the-year-edition-ps4"
+  },
+  "b4b6c971-1e18-54f0-b998-a8719b2755ed": {
+   "title": "FIFA 17",
+   "platforms": "PS4",
+   "earned": 3,
+   "total": 45,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 3
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 9,
+    "bronze": 32
+   },
+   "lastPlayed": "2017-09-19",
+   "playtime": "3h 51m",
+   "exophase": "fifa-17-ps4"
+  },
+  "7c094551-c7db-5863-b068-0cbb3f267156": {
+   "title": "Castlevania: Lords of Shadow - Mirror of Fate HD",
+   "platforms": "PS3",
+   "earned": 15,
+   "total": 20,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 15
+   },
+   "totalByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 1,
+    "bronze": 19
+   },
+   "lastPlayed": "2017-07-24",
+   "playtime": "",
+   "exophase": "castlevania-lords-of-shadow-mirror-of-fate-hd-ps3"
+  },
+  "d2bbd9b4-df16-5c79-86c6-07ab6f0dd2c5": {
+   "title": "The Last of Us Remastered",
+   "platforms": "PS4",
+   "earned": 1,
+   "total": 50,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 9,
+    "silver": 18,
+    "bronze": 22
+   },
+   "lastPlayed": "2017-04-29",
+   "playtime": "13h 27m",
+   "exophase": "the-last-of-us-remastered-ps4"
+  },
+  "c19fc86a-6fb8-547f-813a-2ea7d5fc3108": {
+   "title": "Helldivers",
+   "platforms": "PS4/PS3/PS Vita",
+   "earned": 1,
+   "total": 40,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 19,
+    "bronze": 15
+   },
+   "lastPlayed": "2017-04-01",
+   "playtime": "1h 2m",
+   "exophase": "helldivers-psn"
+  },
+  "d962bef6-4842-5690-bbcb-b1174cb8dceb": {
+   "title": "Helldivers",
+   "platforms": "PS4/PS3/PS Vita",
+   "earned": 1,
+   "total": 40,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 19,
+    "bronze": 15
+   },
+   "lastPlayed": "2017-04-01",
+   "playtime": "1h 2m",
+   "exophase": "helldivers-psn"
+  },
+  "2cb613f8-85e8-5003-a80f-96625eb369a1": {
+   "title": "Helldivers",
+   "platforms": "PS4/PS3/PS Vita",
+   "earned": 1,
+   "total": 40,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 19,
+    "bronze": 15
+   },
+   "lastPlayed": "2017-04-01",
+   "playtime": "1h 2m",
+   "exophase": "helldivers-psn"
+  },
+  "b6f874c4-b53c-52d3-9e1b-f6bbbd7046e8": {
+   "title": "FINAL FANTASY XV",
+   "platforms": "PS4",
+   "earned": 35,
+   "total": 98,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 2,
+    "bronze": 32
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 9,
+    "silver": 11,
+    "bronze": 77
+   },
+   "lastPlayed": "2017-02-11",
+   "playtime": "89h 20m",
+   "exophase": "final-fantasy-xv-ps4"
+  },
+  "12156882-9efc-5339-94ad-54e7bf599526": {
+   "title": "God of War: Ascension",
+   "platforms": "PS3",
+   "earned": 21,
+   "total": 36,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 2,
+    "silver": 6,
+    "bronze": 13
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 10,
+    "bronze": 20
+   },
+   "lastPlayed": "2016-12-20",
+   "playtime": "",
+   "exophase": "god-of-war-ascension-ps3"
+  },
+  "57a95f89-0d9d-5818-b098-bbc129ba6b5d": {
+   "title": "Uncharted 4: A Thief’s End",
+   "platforms": "PS4",
+   "earned": 15,
+   "total": 68,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 15
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 1,
+    "silver": 10,
+    "bronze": 56
+   },
+   "lastPlayed": "2016-11-27",
+   "playtime": "9h 57m",
+   "exophase": "uncharted-4-a-thiefs-end-ps4"
+  },
+  "404492ac-f711-5011-8011-d569ce0585a3": {
+   "title": "Destiny",
+   "platforms": "PS4/PS3",
+   "earned": 47,
+   "total": 61,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 14,
+    "bronze": 32
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 18,
+    "bronze": 40
+   },
+   "lastPlayed": "2016-11-25",
+   "playtime": "632h",
+   "exophase": "destiny-psn"
+  },
+  "7f9b43b2-ee34-560e-b36e-3406156d9135": {
+   "title": "Destiny",
+   "platforms": "PS4/PS3",
+   "earned": 47,
+   "total": 61,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 14,
+    "bronze": 32
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 18,
+    "bronze": 40
+   },
+   "lastPlayed": "2016-11-25",
+   "playtime": "632h",
+   "exophase": "destiny-psn"
+  },
+  "c9677fa5-d411-5ba1-a85a-cf2ed01544a5": {
+   "title": "Dragon's Crown",
+   "platforms": "PS4/PS3/PS Vita",
+   "earned": 11,
+   "total": 49,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 11
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 7,
+    "bronze": 38
+   },
+   "lastPlayed": "2015-10-13",
+   "playtime": "",
+   "exophase": "dragons-crown-psn"
+  },
+  "010df1e8-e860-53f0-8258-bd572c2c107b": {
+   "title": "Dragon's Crown",
+   "platforms": "PS4/PS3/PS Vita",
+   "earned": 11,
+   "total": 49,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 11
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 7,
+    "bronze": 38
+   },
+   "lastPlayed": "2015-10-13",
+   "playtime": "",
+   "exophase": "dragons-crown-psn"
+  },
+  "51d533fc-f0ea-5435-87da-becb1dacdc99": {
+   "title": "Dragon's Crown",
+   "platforms": "PS4/PS3/PS Vita",
+   "earned": 11,
+   "total": 49,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 11
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 7,
+    "bronze": 38
+   },
+   "lastPlayed": "2015-10-13",
+   "playtime": "",
+   "exophase": "dragons-crown-psn"
+  },
+  "44481bf2-7737-54d9-9b7b-c4f094fd254c": {
+   "title": "Castlevania: Lords of Shadow",
+   "platforms": "PS3",
+   "earned": 29,
+   "total": 54,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 4,
+    "bronze": 25
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 25,
+    "bronze": 26
+   },
+   "lastPlayed": "2015-10-13",
+   "playtime": "",
+   "exophase": "castlevania-lords-of-shadow"
+  },
+  "5aa07d82-321e-592f-b12d-8cc9e767b2a2": {
+   "title": "SUPER STREET FIGHTER IV",
+   "platforms": "PS3",
+   "earned": 9,
+   "total": 67,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 1,
+    "bronze": 8
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 14,
+    "bronze": 50
+   },
+   "lastPlayed": "2015-03-31",
+   "playtime": "",
+   "exophase": "super-street-fighter-iv"
+  },
+  "e9b85788-fec3-534f-bae3-c9906281ef5d": {
+   "title": "Batman: Arkham Origins",
+   "platforms": "PS3",
+   "earned": 0,
+   "total": 63,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 12,
+    "bronze": 48
+   },
+   "lastPlayed": "2013-11-09",
+   "playtime": "",
+   "exophase": "batman-arkham-origins-ps3"
+  },
+  "fe3514f4-2e33-57ac-a437-776a38188ea2": {
+   "title": "The Last of Us",
+   "platforms": "PS3",
+   "earned": 1,
+   "total": 50,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 9,
+    "silver": 18,
+    "bronze": 22
+   },
+   "lastPlayed": "2013-11-09",
+   "playtime": "",
+   "exophase": "the-last-of-us-ps3"
+  },
+  "a0186f74-3bfa-5bdc-a37b-fb4bd521fd7a": {
+   "title": "Grand Theft Auto V",
+   "platforms": "PS3",
+   "earned": 1,
+   "total": 59,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 8,
+    "bronze": 47
+   },
+   "lastPlayed": "2013-09-21",
+   "playtime": "",
+   "exophase": "grand-theft-auto-v-ps3"
+  },
+  "9cc26656-b644-5c0e-bd5c-ed0f45dad363": {
+   "title": "Dungeons & Dragons: Chronicles of Mystara",
+   "platforms": "PS3",
+   "earned": 2,
+   "total": 18,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 2
+   },
+   "totalByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 3,
+    "bronze": 15
+   },
+   "lastPlayed": "2013-07-23",
+   "playtime": "",
+   "exophase": "dungeons-dragons-chronicles-of-mystara-ps3"
+  },
+  "46ef96f3-d808-5e67-8485-310f14ac91de": {
+   "title": "The Unfinished Swan",
+   "platforms": "PS3",
+   "earned": 1,
+   "total": 10,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 0,
+    "gold": 2,
+    "silver": 1,
+    "bronze": 7
+   },
+   "lastPlayed": "2013-06-22",
+   "playtime": "",
+   "exophase": "the-unfinished-swan-ps3"
+  },
+  "cc1a4621-fa19-538d-ae09-5691314107d3": {
+   "title": "Flower",
+   "platforms": "PS3",
+   "earned": 10,
+   "total": 14,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 1,
+    "bronze": 8
+   },
+   "totalByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 2,
+    "bronze": 11
+   },
+   "lastPlayed": "2013-06-22",
+   "playtime": "",
+   "exophase": "flower"
+  },
+  "b8f655f3-d933-578e-b0db-fcc0259f9fa8": {
+   "title": "flOw",
+   "platforms": "PS3",
+   "earned": 6,
+   "total": 14,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 3,
+    "bronze": 3
+   },
+   "totalByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 3,
+    "bronze": 10
+   },
+   "lastPlayed": "2013-06-22",
+   "playtime": "",
+   "exophase": "flow"
+  },
+  "f1a1898f-3921-5a14-bcca-b032e35bb794": {
+   "title": "Quantum Conundrum",
+   "platforms": "PS3",
+   "earned": 2,
+   "total": 25,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 2
+   },
+   "totalByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 1,
+    "bronze": 23
+   },
+   "lastPlayed": "2013-06-09",
+   "playtime": "",
+   "exophase": "quantum-conundrum"
+  },
+  "b7c87385-77b0-587e-9d2b-37f8f9a68cfc": {
+   "title": "METAL GEAR SOLID 4",
+   "platforms": "PS3",
+   "earned": 0,
+   "total": 34,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 9,
+    "bronze": 19
+   },
+   "lastPlayed": "2013-06-09",
+   "playtime": "",
+   "exophase": "metal-gear-solid-4-ps3"
+  },
+  "1b9d8468-8026-5a6e-b3d3-8a63321b180d": {
+   "title": "Mass Effect 3",
+   "platforms": "PS3",
+   "earned": 0,
+   "total": 69,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 13,
+    "bronze": 53
+   },
+   "lastPlayed": "2013-03-27",
+   "playtime": "",
+   "exophase": "mass-effect-3"
+  },
+  "6ff4f5f6-6994-51e5-a933-0c227317bc30": {
+   "title": "METAL GEAR RISING: REVENGEANCE",
+   "platforms": "PS3",
+   "earned": 0,
+   "total": 61,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 6,
+    "silver": 8,
+    "bronze": 46
+   },
+   "lastPlayed": "2013-03-27",
+   "playtime": "",
+   "exophase": "metal-gear-rising-revengeance-ps3"
+  },
+  "1fcabdf8-e008-569e-aee9-47c4fc51d97e": {
+   "title": "Uncharted 3: Drake's Deception",
+   "platforms": "PS3",
+   "earned": 19,
+   "total": 105,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 3,
+    "bronze": 16
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 1,
+    "silver": 25,
+    "bronze": 78
+   },
+   "lastPlayed": "2013-02-27",
+   "playtime": "",
+   "exophase": "uncharted-3-drakes-deception"
+  },
+  "2b3d26cc-0001-5730-9526-a5a6fdd2e81b": {
+   "title": "Journey",
+   "platforms": "PS3",
+   "earned": 13,
+   "total": 14,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 1,
+    "bronze": 11
+   },
+   "totalByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 2,
+    "bronze": 11
+   },
+   "lastPlayed": "2013-01-05",
+   "playtime": "",
+   "exophase": "journey"
+  },
+  "cbcc2ccf-2db4-546d-af55-ba1c142f914e": {
+   "title": "Shadow of the Colossus",
+   "platforms": "PS3",
+   "earned": 1,
+   "total": 31,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 6,
+    "silver": 6,
+    "bronze": 18
+   },
+   "lastPlayed": "2012-12-29",
+   "playtime": "",
+   "exophase": "shadow-of-the-colossus"
+  },
+  "006963b1-a9c4-55a6-a448-484fcd2d6b2b": {
+   "title": "ICO",
+   "platforms": "PS3",
+   "earned": 0,
+   "total": 16,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 9,
+    "silver": 4,
+    "bronze": 2
+   },
+   "lastPlayed": "2012-09-09",
+   "playtime": "",
+   "exophase": "ico"
+  },
+  "eacf612e-06a0-5a64-9e8e-6be9dd29886b": {
+   "title": "DARK SOULS",
+   "platforms": "PS3",
+   "earned": 19,
+   "total": 41,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 9,
+    "bronze": 10
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 20,
+    "bronze": 18
+   },
+   "lastPlayed": "2011-12-17",
+   "playtime": "",
+   "exophase": "dark-souls"
+  },
+  "82e2fc3e-c192-5af4-9a17-fb4c645ef632": {
+   "title": "Batman: Arkham City",
+   "platforms": "PS3",
+   "earned": 0,
+   "total": 71,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 1,
+    "silver": 21,
+    "bronze": 48
+   },
+   "lastPlayed": "2011-11-07",
+   "playtime": "",
+   "exophase": "batman-arkham-city"
+  },
+  "ec01e45f-1f83-59c8-8232-2f86b1956c15": {
+   "title": "Grand Theft Auto IV",
+   "platforms": "PS3",
+   "earned": 10,
+   "total": 66,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 10
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 5,
+    "bronze": 57
+   },
+   "lastPlayed": "2011-10-22",
+   "playtime": "",
+   "exophase": "grand-theft-auto-iv"
+  },
+  "b3ea1c41-47f9-52ff-a452-a79147966368": {
+   "title": "God of War II",
+   "platforms": "PS3",
+   "earned": 30,
+   "total": 35,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 3,
+    "silver": 9,
+    "bronze": 18
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 11,
+    "bronze": 18
+   },
+   "lastPlayed": "2011-09-09",
+   "playtime": "",
+   "exophase": "god-of-war-ii"
+  },
+  "33552e12-e80a-5171-a490-24742959264b": {
+   "title": "Heavy Rain",
+   "platforms": "PS3",
+   "earned": 32,
+   "total": 57,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 3,
+    "bronze": 29
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 4,
+    "bronze": 50
+   },
+   "lastPlayed": "2011-09-06",
+   "playtime": "",
+   "exophase": "heavy-rain"
+  },
+  "2b935d13-30b2-5cf4-b529-3bcab09536aa": {
+   "title": "Batman: Arkham Asylum",
+   "platforms": "PS3",
+   "earned": 30,
+   "total": 48,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 11,
+    "bronze": 19
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 1,
+    "silver": 18,
+    "bronze": 28
+   },
+   "lastPlayed": "2011-09-04",
+   "playtime": "",
+   "exophase": "batman-arkham-asylum"
+  },
+  "f8b2f4bf-f6ac-5930-88fb-9b26e060d093": {
+   "title": "Mass Effect 2",
+   "platforms": "PS3",
+   "earned": 50,
+   "total": 59,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 6,
+    "bronze": 43
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 6,
+    "bronze": 50
+   },
+   "lastPlayed": "2011-09-01",
+   "playtime": "",
+   "exophase": "mass-effect-2"
+  },
+  "b4f23905-8179-51c7-aeb1-18cbd5fab06d": {
+   "title": "Dead Nation",
+   "platforms": "PS3",
+   "earned": 1,
+   "total": 41,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 6,
+    "silver": 10,
+    "bronze": 24
+   },
+   "lastPlayed": "2011-08-21",
+   "playtime": "",
+   "exophase": "dead-nation"
+  },
+  "6ba3d471-c3a1-537f-9008-295a4d4f6eec": {
+   "title": "inFamous",
+   "platforms": "PS3",
+   "earned": 31,
+   "total": 50,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 7,
+    "bronze": 24
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 1,
+    "silver": 11,
+    "bronze": 37
+   },
+   "lastPlayed": "2011-08-21",
+   "playtime": "",
+   "exophase": "infamous"
+  },
+  "099b2f74-2c4e-540c-862e-b47dc971f1bf": {
+   "title": "WipEout HD",
+   "platforms": "PS3",
+   "earned": 0,
+   "total": 51,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 7,
+    "bronze": 38
+   },
+   "lastPlayed": "2011-08-15",
+   "playtime": "",
+   "exophase": "wipeout-hd"
+  },
+  "9a1c068e-246b-5b0f-af16-f78f6b85606e": {
+   "title": "SUPER STARDUST HD",
+   "platforms": "PS3",
+   "earned": 0,
+   "total": 17,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 0,
+    "gold": 2,
+    "silver": 6,
+    "bronze": 9
+   },
+   "lastPlayed": "2011-08-13",
+   "playtime": "",
+   "exophase": "super-stardust-hd"
+  },
+  "bf51e0e9-3065-5278-b7f4-b9aacf6ef361": {
+   "title": "LittleBigPlanet 2",
+   "platforms": "PS3",
+   "earned": 1,
+   "total": 79,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 1
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 6,
+    "silver": 12,
+    "bronze": 60
+   },
+   "lastPlayed": "2011-04-19",
+   "playtime": "",
+   "exophase": "littlebigplanet-2"
+  },
+  "0ba9038f-e10f-54b9-965a-9c074507ed3d": {
+   "title": "ENSLAVED: Odyssey to the West",
+   "platforms": "PS3",
+   "earned": 30,
+   "total": 59,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 1,
+    "bronze": 29
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 6,
+    "bronze": 49
+   },
+   "lastPlayed": "2011-02-11",
+   "playtime": "",
+   "exophase": "enslaved-odyssey-to-the-west"
+  },
+  "9439be3a-29fd-5d6e-901d-c1f2cd9931af": {
+   "title": "Need for Speed: Hot Pursuit",
+   "platforms": "PS3",
+   "earned": 10,
+   "total": 73,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 10
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 14,
+    "bronze": 56
+   },
+   "lastPlayed": "2011-02-06",
+   "playtime": "",
+   "exophase": "need-for-speed-hot-pursuit"
+  },
+  "895e94e9-cf30-5f96-a525-2972c1b268c5": {
+   "title": "Red Dead Redemption",
+   "platforms": "PS3",
+   "earned": 25,
+   "total": 91,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 2,
+    "silver": 5,
+    "bronze": 18
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 17,
+    "bronze": 71
+   },
+   "lastPlayed": "2010-12-17",
+   "playtime": "",
+   "exophase": "red-dead-redemption"
+  },
+  "9ff38df1-b1a8-59b0-afcd-8dbc1a68ceed": {
+   "title": "Guitar Hero Metallica",
+   "platforms": "PS3",
+   "earned": 9,
+   "total": 51,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 3,
+    "bronze": 6
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 1,
+    "silver": 12,
+    "bronze": 37
+   },
+   "lastPlayed": "2010-12-09",
+   "playtime": "",
+   "exophase": "guitar-hero-metallica"
+  },
+  "2429881a-5cd1-5a93-aa51-f5fd64d43c1e": {
+   "title": "Uncharted 2: Among Thieves",
+   "platforms": "PS3",
+   "earned": 18,
+   "total": 71,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 2,
+    "bronze": 15
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 10,
+    "bronze": 57
+   },
+   "lastPlayed": "2010-10-16",
+   "playtime": "",
+   "exophase": "uncharted-2-among-thieves"
+  },
+  "86ceb1fa-51cf-517f-a526-617652cf680c": {
+   "title": "God of War III",
+   "platforms": "PS3",
+   "earned": 25,
+   "total": 36,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 9,
+    "bronze": 15
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 10,
+    "bronze": 20
+   },
+   "lastPlayed": "2010-10-11",
+   "playtime": "",
+   "exophase": "god-of-war-3"
+  },
+  "3de330e8-65d1-5222-83c1-f0d8cab68079": {
+   "title": "Guitar Hero 5",
+   "platforms": "PS3",
+   "earned": 10,
+   "total": 50,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 10
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 1,
+    "silver": 12,
+    "bronze": 36
+   },
+   "lastPlayed": "2010-10-08",
+   "playtime": "",
+   "exophase": "guitar-hero-5"
+  },
+  "48eb70ac-47ff-5a48-b260-a8d068111527": {
+   "title": "LittleBigPlanet",
+   "platforms": "PS3",
+   "earned": 20,
+   "total": 70,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 1,
+    "bronze": 19
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 12,
+    "bronze": 54
+   },
+   "lastPlayed": "2010-02-16",
+   "playtime": "",
+   "exophase": "littlebigplanet"
+  },
+  "6db8587c-ee4f-5e7f-9340-cc513d4992b9": {
+   "title": "Demon's Souls",
+   "platforms": "PS3",
+   "earned": 8,
+   "total": 38,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 1,
+    "bronze": 7
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 5,
+    "bronze": 27
+   },
+   "lastPlayed": "2010-02-06",
+   "playtime": "",
+   "exophase": "demons-souls"
+  },
+  "5e033687-0300-5953-9d73-3fe59c1134b1": {
+   "title": "Pro Evolution Soccer 2010",
+   "platforms": "PS3",
+   "earned": 0,
+   "total": 29,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 5,
+    "silver": 11,
+    "bronze": 12
+   },
+   "lastPlayed": "2010-01-04",
+   "playtime": "",
+   "exophase": "pro-evolution-soccer-2010-uk"
+  },
+  "7fb5231d-4b82-566c-a684-626ec82a075b": {
+   "title": "Uncharted: Drake's Fortune",
+   "platforms": "PS3",
+   "earned": 19,
+   "total": 48,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 3,
+    "bronze": 15
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 8,
+    "bronze": 36
+   },
+   "lastPlayed": "2009-12-13",
+   "playtime": "",
+   "exophase": "uncharted-drakes-fortune"
+  },
+  "49238185-dd91-5e82-b2eb-1d70d3469773": {
+   "title": "Killzone 2",
+   "platforms": "PS3",
+   "earned": 0,
+   "total": 84,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 0
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 3,
+    "silver": 8,
+    "bronze": 72
+   },
+   "lastPlayed": "2009-11-19",
+   "playtime": "",
+   "exophase": "killzone-2"
+  },
+  "c7adf467-690c-580c-9137-abd7a86b53af": {
+   "title": "Need for Speed SHIFT",
+   "platforms": "PS3",
+   "earned": 10,
+   "total": 35,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 1,
+    "silver": 1,
+    "bronze": 8
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 6,
+    "silver": 15,
+    "bronze": 13
+   },
+   "lastPlayed": "2009-11-19",
+   "playtime": "",
+   "exophase": "need-for-speed-shift"
+  },
+  "5a5f4bd5-d6dc-5790-af0f-192d48afbe06": {
+   "title": "STREET FIGHTER IV",
+   "platforms": "PS3",
+   "earned": 19,
+   "total": 48,
+   "earnedByType": {
+    "platinum": 0,
+    "gold": 0,
+    "silver": 0,
+    "bronze": 19
+   },
+   "totalByType": {
+    "platinum": 1,
+    "gold": 2,
+    "silver": 10,
+    "bronze": 35
+   },
+   "lastPlayed": "2009-10-26",
+   "playtime": "",
+   "exophase": "street-fighter-%e2%85%a3"
+  }
+ }
+}
