@@ -43,7 +43,7 @@ O botão **Classificar rapidamente** (só para o proprietário) mostra um jogo p
 ## Backup
 
 - **Manual:** em **Minha conta**, baixe o backup completo (JSON) ou uma planilha (CSV).
-- **Automático:** a ação `.github/workflows/backup.yml` roda todo dia, lê a biblioteca pública no Supabase e salva `data/backup/games-supabase.json` no repositório quando algo mudou. O histórico de commits guarda as versões anteriores. Para rodar na hora: aba **Actions** → **Backup diário da biblioteca** → **Run workflow**.
+- **Automático:** desativado de propósito. Como o repositório é público, uma cópia diária aqui ficaria visível e guardaria no histórico versões antigas das anotações, mesmo depois de editadas ou apagadas no site. Para backup automático, use um repositório privado separado.
 
 ## Segurança
 
