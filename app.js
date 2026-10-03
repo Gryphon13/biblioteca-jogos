@@ -68,7 +68,7 @@ function trophyHtml(game, label='') {
   const plat=t.auto?.earnedByType.platinum>0;
   return `<div class="trophy-row${plat?' has-platinum':''}"><div class="trophy-head"><span>🏆 ${label?`<em>${escapeHtml(label)}</em> `:''}${t.earned}/${t.total} troféus</span><b>${plat?'Platinado':pct+'%'}</b></div><div class="trophy-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}"><i style="width:${pct}%"></i></div>${types?`<div class="trophy-types">${types}</div>`:''}</div>`;
 }
-function consoleFor(game) { return game.console || seedConsoles.get(game.id) || ''; }
+function consoleFor(game) { return game.console || ''; }
 function initials(title) { return title.split(/\s+/).filter(w => !/^(the|of|a|de|do|da|e)$/i.test(w)).slice(0,2).map(w => w[0]).join('').toUpperCase(); }
 function showToast(message) { const t=$('#toast'); t.textContent=message; t.classList.add('show'); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'),2700); }
 function applyTheme(theme, persist = true) {
@@ -151,32 +151,81 @@ function renderCard({versions, primary:g}) {
 function consoleChoices(g) { return g.platform==='Switch'?['Switch','Switch 2']:['PS5','PS4','PS3','PS Vita']; }
 function needsTriage(g) { return !consoleFor(g) || g.format==='outro' || g.status==='nao_classificado'; }
 function triageQueue() { return activeGames().filter(needsTriage).sort((a,b)=>a.title.localeCompare(b.title,'pt-BR')||CONSOLE_ORDER.indexOf(consoleFor(a))-CONSOLE_ORDER.indexOf(consoleFor(b))); }
+const COMPLETION_OPTIONS=[['zerado','Zerei'],['platinado','Zerei e platinei']];
+const EXPANSION_OPTIONS=[['nao_tem','Não tem expansões'],['pendentes','Zerei, faltam expansões'],['jogadas','Joguei as expansões'],['nao_quero','Não pretendo jogar']];
+// Campos de escolha usados no editor e na classificação rápida. Tocar na opção já marcada desmarca (volta para "empty").
+function choiceFields(platform) {
+  const sw=platform==='Switch';
+  return [
+    {name:'console',label:'Console',empty:'',options:consoleChoices({platform}).map(c=>[c,c])},
+    {name:'format',label:'Formato',empty:'outro',options:[['digital','Digital'],['fisico','Físico']]},
+    {name:'status',label:'Status',empty:'nao_classificado',options:Object.entries(STATUS).filter(([v])=>v!=='nao_classificado')},
+    {name:'priority',label:'Prioridade para jogar',empty:'',options:[['1','Prioridade 1'],['2','Prioridade 2'],['3','Prioridade 3']]},
+    {name:'completion',label:'Campanha',empty:'',options:sw?COMPLETION_OPTIONS.slice(0,1):COMPLETION_OPTIONS},
+    {name:'expansions',label:'Expansões',empty:'',options:EXPANSION_OPTIONS}
+  ];
+}
+function chipGroupHtml(def,current,scope) {
+  return `<div class="chip-field" data-chip-field="${def.name}"><span class="chip-label">${escapeHtml(def.label)}</span><div class="chip-row">${def.options.map(([v,l])=>`<button type="button" class="chip${current===v?' selected':''}" data-${scope}-field="${def.name}" data-value="${escapeHtml(v)}" aria-pressed="${current===v}">${escapeHtml(l)}</button>`).join('')}</div></div>`;
+}
+function starsHtml(value,scope) {
+  return `<div class="chip-field"><span class="chip-label">Minha nota</span><div class="chip-row stars-row" role="group" aria-label="Nota de 1 a 5">${[1,2,3,4,5].map(n=>`<button type="button" class="star${n<=value?' active':''}" data-${scope}-star="${n}" aria-pressed="${value===n}" aria-label="${n} de 5 estrelas">★</button>`).join('')}<span class="star-hint">${value?`${value} de 5 · toque de novo para limpar`:'Sem nota'}</span></div></div>`;
+}
+function impressionsHtml(disliked,returnLater,scope) {
+  const chip=(name,on,label)=>`<button type="button" class="chip${on?' selected':''}" data-${scope}-flag="${name}" aria-pressed="${on}">${label}</button>`;
+  return `<div class="chip-field"><span class="chip-label">Impressões</span><div class="chip-row">${chip('disliked',disliked,'Joguei e não gostei')}${chip('returnLater',returnLater,'Pretendo voltar')}</div></div>`;
+}
+function toggled(def,current,value) { return current===value ? def.empty : value; }
+function fixForPlatform(obj) {
+  if(obj.console && !consoleChoices(obj).includes(obj.console)) obj.console='';
+  if(obj.platform==='Switch' && obj.completion==='platinado') obj.completion='zerado';
+}
 function openTriage() {
   if(!ownerAccess)return;
   triageList=triageQueue().map(g=>g.id); triageIndex=0;
   if(!triageList.length){ showToast('Nada pendente: todos os jogos já têm console, formato e status'); return; }
   renderTriage(); $('#triage-dialog').showModal();
 }
+function triageGame() { return games.find(x=>x.id===triageList[triageIndex]); }
 function renderTriage() {
-  const g=games.find(x=>x.id===triageList[triageIndex]);
+  const g=triageGame();
   if(!g){ $('#triage-dialog').close(); render(); return; }
   const cover=coverOf(g), pending=triageList.filter(id=>{const x=games.find(y=>y.id===id);return x&&needsTriage(x)}).length;
   $('#triage-progress').textContent=`${triageIndex+1} de ${triageList.length} · ${pending} pendentes`;
   $('#triage-game').innerHTML=`<div class="triage-cover">${cover?`<img src="${escapeHtml(cover)}" alt="">`:`<span>${escapeHtml(initials(g.title))}</span>`}</div><div><span class="eyebrow">${g.platform==='Switch'?'NINTENDO':'PLAYSTATION'}</span><h3>${escapeHtml(g.title)}</h3>${trophyHtml(g)}</div>`;
-  const row=(field,options,current)=>options.map(([value,label])=>`<button type="button" class="triage-option${current===value?' selected':''}" data-triage-field="${field}" data-value="${value}" aria-pressed="${current===value}">${escapeHtml(label)}</button>`).join('');
-  $('#triage-console').innerHTML=row('console',consoleChoices(g).map(c=>[c,c]),consoleFor(g));
-  $('#triage-format').innerHTML=row('format',[['digital','Digital'],['fisico','Físico']],g.format);
-  $('#triage-status').innerHTML=row('status',Object.entries(STATUS).filter(([v])=>v!=='nao_classificado'),g.status);
+  renderTriageChoices();
+  const notes=$('#triage-notes'); notes.value=g.notes||''; notes.dataset.id=g.id;
   $('#triage-prev').disabled=triageIndex===0;
   $('#triage-next').textContent=triageIndex===triageList.length-1?'Concluir':'Próximo →';
 }
-function setTriageField(field,value) {
-  const g=games.find(x=>x.id===triageList[triageIndex]); if(!g||!ownerAccess)return;
-  if(field==='console'&&!consoleChoices(g).includes(value))return;
-  g[field]=value; stamp(g); scheduleSync(4000); renderTriage();
-  if(!needsTriage(g)) setTimeout(()=>{ if(triageList[triageIndex]===g.id) moveTriage(1); },450);
+function renderTriageChoices() {
+  const g=triageGame(); if(!g)return;
+  const values={...g,console:consoleFor(g)};
+  const defs=choiceFields(g.platform);
+  $('#triage-main').innerHTML=defs.slice(0,4).map(d=>chipGroupHtml(d,values[d.name],'tri')).join('');
+  $('#triage-extra').innerHTML=starsHtml(g.rating,'tri')+defs.slice(4).map(d=>chipGroupHtml(d,values[d.name],'tri')).join('')+impressionsHtml(g.disliked,g.returnLater,'tri');
+}
+function saveTriage(g) { stamp(g); scheduleSync(4000); renderTriageChoices(); }
+function onTriageClick(e) {
+  const g=triageGame(); if(!g||!ownerAccess)return;
+  const field=e.target.closest('[data-tri-field]'), star=e.target.closest('[data-tri-star]'), flag=e.target.closest('[data-tri-flag]');
+  if(field){ const def=choiceFields(g.platform).find(d=>d.name===field.dataset.triField); if(!def)return; const current=def.name==='console'?consoleFor(g):g[def.name]; g[def.name]=toggled(def,current,field.dataset.value); saveTriage(g); }
+  else if(star){ const n=Number(star.dataset.triStar); g.rating=g.rating===n?0:n; saveTriage(g); }
+  else if(flag){ const k=flag.dataset.triFlag; if(k==='disliked'||k==='returnLater'){ g[k]=!g[k]; saveTriage(g); } }
+}
+let triageNotesTimer;
+function onTriageNotes() {
+  const box=$('#triage-notes'); const g=games.find(x=>x.id===box.dataset.id); if(!g||!ownerAccess)return;
+  clearTimeout(triageNotesTimer);
+  triageNotesTimer=setTimeout(()=>{ g.notes=text(box.value.trim(),4000); stamp(g); scheduleSync(4000); },500);
+}
+function flushTriageNotes() {
+  const box=$('#triage-notes'); const g=games.find(x=>x.id===box.dataset.id);
+  clearTimeout(triageNotesTimer);
+  if(g&&ownerAccess&&(g.notes||'')!==box.value.trim()){ g.notes=text(box.value.trim(),4000); stamp(g); scheduleSync(2000); }
 }
 function moveTriage(step) {
+  flushTriageNotes();
   triageIndex+=step;
   if(triageIndex>=triageList.length){ $('#triage-dialog').close(); render(); showToast('Classificação concluída'); return; }
   triageIndex=Math.max(0,triageIndex); renderTriage();
@@ -204,8 +253,8 @@ function openEditor(id=null) {
   $('#duplicate-button').hidden=!g;
   $('#editor-error').hidden=true; $('#editor-error').classList.remove('info');
   for(const name of ['title','platform','console','format','status','priority','completion','expansions','trophiesEarned','trophiesTotal','trophiesMissing','notes','cover']) f.elements[name].value=(name==='cover' ? (g?.cover || seedCovers.get(g?.id) || '') : name==='console' ? (g ? consoleFor(g) : '') : g?.[name])??(name==='platform'?'PlayStation':name==='format'?'digital':name==='status'?'nao_classificado':'');
-  f.elements.disliked.checked=!!g?.disliked; f.elements.returnLater.checked=!!g?.returnLater;
-  rating=g?.rating||0; renderRating(); updatePlatformFields();
+  f.elements.disliked.value=g?.disliked?'1':''; f.elements.returnLater.value=g?.returnLater?'1':'';
+  rating=g?.rating||0; updatePlatformFields();
   const auto=g?trophiesFor(g):null;
   $('#trophy-auto').hidden=!auto;
   if(auto)$('#trophy-auto').textContent=`Importado do Exophase: ${auto.earned}/${auto.total} · Platina ${auto.earnedByType.platinum}/${auto.totalByType.platinum} · Ouro ${auto.earnedByType.gold}/${auto.totalByType.gold} · Prata ${auto.earnedByType.silver}/${auto.totalByType.silver} · Bronze ${auto.earnedByType.bronze}/${auto.totalByType.bronze}${auto.lastPlayed?` · jogado em ${auto.lastPlayed.split('-').reverse().join('/')}`:''}${auto.playtime?` · ${auto.playtime}`:''}. Esses números aparecem no card; os campos abaixo são para anotações manuais.`;
@@ -221,8 +270,8 @@ function duplicateCurrent() {
   $('#editor-title').textContent=`Nova versão de ${g.title}`;
   $('#delete-button').hidden=true; $('#duplicate-button').hidden=true; $('#trophy-auto').hidden=true;
   for(const name of ['console','priority','completion','expansions','trophiesEarned','trophiesTotal','trophiesMissing','notes']) f.elements[name].value='';
-  f.elements.status.value='nao_classificado'; f.elements.disliked.checked=false; f.elements.returnLater.checked=false;
-  rating=0; renderRating(); updatePlatformFields();
+  f.elements.status.value='nao_classificado'; f.elements.format.value='outro'; f.elements.disliked.value=''; f.elements.returnLater.value='';
+  rating=0; updatePlatformFields();
   $('#editor-error').textContent='Mesmo título e capa copiados. Escolha o console (ou a plataforma) desta versão e salve.';
   $('#editor-error').hidden=false; $('#editor-error').classList.add('info');
   f.elements.console.focus();
@@ -261,15 +310,35 @@ function dragCover(event) {
   frame.onpointerup=finish;
   frame.onpointercancel=finish;
 }
-function renderRating(){ $('#rating-buttons').innerHTML=[1,2,3,4,5].map(n=>`<button type="button" class="${n<=rating?'active':''}" data-rating="${n}" role="radio" aria-checked="${rating===n}" aria-label="${n} de 5 estrelas">★</button>`).join(''); }
-function updatePlatformFields(){const f=$('#editor-form');const isSwitch=f.elements.platform.value==='Switch';const o=f.elements.completion.querySelector('option[value="platinado"]');o.hidden=isSwitch;$('#trophy-fields').hidden=isSwitch;if(isSwitch&&f.elements.completion.value==='platinado')f.elements.completion.value='zerado';for(const option of f.elements.console.options)if(option.value)option.hidden=isSwitch?!option.value.startsWith('Switch'):option.value.startsWith('Switch');if(f.elements.console.selectedOptions[0]?.hidden)f.elements.console.value='';}
+function renderEditorChips() {
+  const f=$('#editor-form'), platform=f.elements.platform.value, el=f.elements;
+  const v=name=>el[name].value;
+  const defs=choiceFields(platform);
+  $('#editor-chips').innerHTML=defs.slice(0,4).map(d=>chipGroupHtml(d,v(d.name),'ed')).join('')+starsHtml(rating,'ed')+defs.slice(4).map(d=>chipGroupHtml(d,v(d.name),'ed')).join('')+impressionsHtml(v('disliked')==='1',v('returnLater')==='1','ed');
+}
+function updatePlatformFields() {
+  const f=$('#editor-form'), el=f.elements;
+  const obj={platform:el.platform.value,console:el.console.value,completion:el.completion.value};
+  fixForPlatform(obj); el.console.value=obj.console; el.completion.value=obj.completion;
+  $('#trophy-fields').hidden=obj.platform==='Switch';
+  renderEditorChips();
+}
+function onEditorChipClick(e) {
+  const f=$('#editor-form'), el=f.elements;
+  const field=e.target.closest('[data-ed-field]'), star=e.target.closest('[data-ed-star]'), flag=e.target.closest('[data-ed-flag]');
+  if(field){ const def=choiceFields(el.platform.value).find(d=>d.name===field.dataset.edField); if(!def)return; el[def.name].value=toggled(def,el[def.name].value,field.dataset.value); }
+  else if(star){ const n=Number(star.dataset.edStar); rating=rating===n?0:n; }
+  else if(flag){ const k=flag.dataset.edFlag; if(k==='disliked'||k==='returnLater') el[k].value=el[k].value==='1'?'':'1'; }
+  else return;
+  renderEditorChips();
+}
 async function saveEditor(event) {
   event.preventDefault(); if (!ownerAccess) return; const f=$('#editor-form'); const existing=currentId?games.find(x=>x.id===currentId):null;
   const title=f.elements.title.value.trim(); if(!title)return;
   const file=$('#cover-file').files[0]; let cover=f.elements.cover.value.trim();
   if(file) { try { cover=await uploadCover(file,currentId||crypto.randomUUID()); } catch(err){ $('#editor-error').textContent=err.message;$('#editor-error').hidden=false;return; } }
   if(cover&&!safeCover(cover)){ $('#editor-error').textContent='Use uma URL https ou um arquivo dentro de covers/.';$('#editor-error').hidden=false;return; }
-  const game=normalized({...existing,id:existing?.id||crypto.randomUUID(),title,platform:f.elements.platform.value,console:f.elements.console.value,format:f.elements.format.value,status:f.elements.status.value,priority:f.elements.priority.value,rating,completion:f.elements.completion.value,expansions:f.elements.expansions.value,disliked:f.elements.disliked.checked,returnLater:f.elements.returnLater.checked,trophiesEarned:f.elements.platform.value==='Switch'?'':f.elements.trophiesEarned.value,trophiesTotal:f.elements.platform.value==='Switch'?'':f.elements.trophiesTotal.value,trophiesMissing:f.elements.platform.value==='Switch'?'':f.elements.trophiesMissing.value.trim(),notes:f.elements.notes.value.trim(),cover,coverPositionX:$('#cover-position-x').value,coverPositionY:$('#cover-position-y').value,source:existing?.source||'manual'});
+  const game=normalized({...existing,id:existing?.id||crypto.randomUUID(),title,platform:f.elements.platform.value,console:f.elements.console.value,format:f.elements.format.value,status:f.elements.status.value,priority:f.elements.priority.value,rating,completion:f.elements.completion.value,expansions:f.elements.expansions.value,disliked:f.elements.disliked.value==='1',returnLater:f.elements.returnLater.value==='1',trophiesEarned:f.elements.platform.value==='Switch'?'':f.elements.trophiesEarned.value,trophiesTotal:f.elements.platform.value==='Switch'?'':f.elements.trophiesTotal.value,trophiesMissing:f.elements.platform.value==='Switch'?'':f.elements.trophiesMissing.value.trim(),notes:f.elements.notes.value.trim(),cover,coverPositionX:$('#cover-position-x').value,coverPositionY:$('#cover-position-y').value,source:existing?.source||'manual'});
   if(existing)Object.assign(existing,game);else games.push(game);
   stamp(existing||game); $('#editor-dialog').close(); clearPreviewObjectUrl(); render(); showToast('Jogo salvo'); scheduleSync();
 }
@@ -293,7 +362,7 @@ async function boot(){
   const cached=JSON.parse(localStorage.getItem(STORE_KEY)||'null');games=Array.isArray(cached)?cached.map(normalized):seed.map(normalized);
   if(Array.isArray(cached)){const known=new Set(games.map(g=>g.id));for(const g of seed)if(!known.has(g.id))games.push(normalized(g));}
   saveCache();
-  for(const [value,label] of Object.entries(STATUS)){$('#status-filter').add(new Option(label,value));$('#editor-form').elements.status.add(new Option(label,value));}
+  for(const [value,label] of Object.entries(STATUS)){$('#status-filter').add(new Option(label,value));}
   $('#cover-file').closest('label').insertAdjacentHTML('afterend',`<div class="span-2 cover-framing"><strong>Enquadramento da capa</strong><p>Arraste a imagem para escolher o que aparece no card. A proporção original é preservada.</p><div id="cover-preview" class="cover-preview"><img id="cover-preview-image" alt="Prévia da capa" draggable="false" hidden><span id="cover-preview-empty">Escolha uma capa para ajustar o enquadramento</span></div><div class="cover-position-controls"><label>Horizontal<input id="cover-position-x" type="range" min="0" max="100" value="50"></label><label>Vertical<input id="cover-position-y" type="range" min="0" max="100" value="50"></label></div></div>`);
   $('#add-button').onclick=()=>openEditor();$('#close-editor').onclick=$('#cancel-editor').onclick=()=>$('#editor-dialog').close();$('#editor-form').onsubmit=saveEditor;$('#delete-button').onclick=deleteGame;$('#duplicate-button').onclick=duplicateCurrent;$('#editor-form').elements.platform.onchange=updatePlatformFields;
   $('#editor-dialog').addEventListener('close',clearPreviewObjectUrl);
@@ -303,7 +372,7 @@ async function boot(){
   $('#cover-preview-image').addEventListener('load',()=>{$('#cover-preview-empty').textContent='Escolha uma capa para ajustar o enquadramento';});
   for(const id of ['cover-position-x','cover-position-y'])$('#'+id).addEventListener('input',updateCoverPosition);
   $('#cover-preview').addEventListener('pointerdown',dragCover);
-  $('#rating-buttons').onclick=e=>{const btn=e.target.closest('[data-rating]');if(btn){rating=Number(btn.dataset.rating);renderRating()}};$('#clear-rating').onclick=()=>{rating=0;renderRating()};
+  $('#editor-chips').addEventListener('click',onEditorChipClick);
   for(const id of ['search','platform-filter','console-filter','status-filter','priority-filter','sort-filter'])$('#'+id).addEventListener(id==='search'?'input':'change',render);
   $('#game-grid').onclick=e=>{if(!ownerAccess)return;const edit=e.target.closest('[data-edit]');if(edit)openEditor(edit.dataset.edit)};
   $('#game-grid').onkeydown=e=>{if(!ownerAccess||!['Enter',' '].includes(e.key))return;const edit=e.target.closest('.card-main[data-edit]');if(edit){e.preventDefault();openEditor(edit.dataset.edit)}};
@@ -317,10 +386,11 @@ async function boot(){
   $('#group-toggle').onclick=()=>{try{localStorage.setItem(GROUP_KEY,groupMode()?'separado':'junto')}catch{}render()};
   $('#triage-button').onclick=openTriage;
   $('#close-triage').onclick=()=>{$('#triage-dialog').close();render()};
-  $('#triage-dialog').addEventListener('close',render);
-  $('#triage-dialog').onclick=e=>{const b=e.target.closest('[data-triage-field]');if(b)setTriageField(b.dataset.triageField,b.dataset.value)};
+  $('#triage-dialog').addEventListener('close',()=>{flushTriageNotes();render()});
+  $('#triage-dialog').addEventListener('click',onTriageClick);
+  $('#triage-notes').addEventListener('input',onTriageNotes);
   $('#triage-prev').onclick=()=>moveTriage(-1);$('#triage-next').onclick=()=>moveTriage(1);
-  $('#triage-edit').onclick=()=>{const id=triageList[triageIndex];$('#triage-dialog').close();openEditor(id)};
+  $('#triage-edit').onclick=()=>{flushTriageNotes();const id=triageList[triageIndex];$('#triage-dialog').close();openEditor(id)};
   $('#export-json').onclick=exportJson;$('#export-csv').onclick=exportCsv;
   $('#account-button').onclick=()=>{$('#backup-actions').hidden=!ownerAccess;const text=ownerAccess?`Conectado como ${session.user?.email||'usuário'}. Suas alterações sincronizam entre aparelhos.`:session?'Esta conta não tem permissão para editar esta biblioteca.':'Entre com a conta do proprietário para editar jogos, notas e anotações.';$('#account-explanation').textContent=text;$('#login-form').hidden=!!session||!configured;$('#logout-button').hidden=!session;$('#account-message').textContent='';$('#account-dialog').showModal()};
   $('#close-account').onclick=()=>$('#account-dialog').close();$('#login-form').onsubmit=sendMagicLink;$('#logout-button').onclick=async()=>{const token=session?.access_token;if(token)fetch(config.supabaseUrl+'/auth/v1/logout?scope=global',{method:'POST',headers:{apikey:config.publishableKey,Authorization:`Bearer ${token}`}}).catch(()=>{});saveSession(null);$('#account-dialog').close();showToast('Você saiu da conta')};
