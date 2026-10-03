@@ -38,7 +38,9 @@ Com **Versões juntas** (padrão), o mesmo jogo em vários consoles da mesma pla
 
 ## Classificação rápida
 
-O botão **Classificar rapidamente** (só para o proprietário) mostra um jogo por vez entre os que ainda estão sem console, sem formato ou "Para organizar". Toque em console, formato e status; quando os três estão definidos, o próximo jogo abre sozinho.
+O botão **Classificar rapidamente** (só para o proprietário) mostra um jogo por vez entre os que ainda estão sem console, sem formato ou "Para organizar". Na mesma tela dá para marcar console, formato, status, prioridade, nota, campanha, expansões, impressões e escrever anotações. Tudo é salvo na hora; o próximo jogo só abre quando você toca em **Próximo**.
+
+Em todo o site (classificação rápida e editor), tocar numa opção já marcada desmarca, inclusive as estrelas da nota.
 
 ## Backup
 
